@@ -6,8 +6,15 @@
 </head>
 <body>
 	<h3>Cadastro de clientes</h3>
-	Nome: <input type="text" name="nome"/> <br/>
-	
-	
+	<form action="ManterCliente.do" method="post">
+		Id:  <input type="text" name="id"/> <br/>
+		Nome: <input type="text" name="nome"/> <br/>
+		Fone:  <input type="text" name="fone"/> <br/>
+		
+		<input type="submit" name="acao" value="salvar"/>
+		<input type="submit" name="acao" value="atualizar"/>
+		<input type="submit" name="acao" value="consultar"/>
+		<input type="submit" name="acao" value="excluir"/>
+	</form>
 </body>
 </html>

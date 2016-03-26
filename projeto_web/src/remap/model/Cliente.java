@@ -7,6 +7,10 @@ public class Cliente {
 	private int id;
 	private String nome , fone;
 	
+	public Cliente(){
+		this("","");
+	}
+	
 	public Cliente(String nome, String fone) {
 		this.nome = nome;
 		this.fone = fone;
@@ -66,6 +70,22 @@ public class Cliente {
 		
 		dao.atualizar(to);
 		
+	}
+	
+	public void excluir(){
+		ClienteDAO dao = new ClienteDAO();
+		
+		dao.excluir( getId() );
+	}
+	
+	public Cliente consultar(){
+		ClienteDAO dao = new ClienteDAO();
+		ClienteTO to = dao.consultar( getId() );
+		
+		setNome( to.getNome() );
+		setFone( to.getFone() );
+		
+		return this;
 	}
 	
 }

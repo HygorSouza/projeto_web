@@ -3,6 +3,7 @@ package remap.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Types;
 
 import remap.factory.ConnectionFactory;
@@ -23,11 +24,11 @@ public class ClienteDAO {
 				 if( rs.next() ){
 					 to.setId( rs.getInt(1) );
 				 }
-			} catch (Exception e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 			
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
@@ -42,10 +43,45 @@ public class ClienteDAO {
 			stm.setString( 2 , to.getFone() );
 			stm.setInt( 3 , to.getId() );
 			
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void excluir( int id ){
+		String sqlDelete = "DELETE FROM tb_cliente WHERE id_cliente = ?";
+		try( Connection conn = ConnectionFactory.getConnection();
+			 PreparedStatement stm = conn.prepareStatement(sqlDelete) ;){
+			stm.setInt( 1 , id );
+			stm.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public ClienteTO consultar( int id ){
+		ClienteTO to = new ClienteTO();
+		String sqlSelect = "SELECT * FROM tb_cliente WHERE id_cliente = ?";
+		try( Connection conn = ConnectionFactory.getConnection(); 
+			 PreparedStatement stm = conn.prepareStatement(sqlSelect);){
+			
+			stm.setInt( 1 , id );
+			
+			try(ResultSet rs = stm.executeQuery();){
+				if( rs.next() ){
+					to.setNome( rs.getString("nome_cliente") );
+					to.setFone( rs.getString("fone_cliente"));
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return to;
 	}
 	
 }
