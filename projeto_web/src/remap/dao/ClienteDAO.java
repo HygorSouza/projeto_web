@@ -42,7 +42,7 @@ public class ClienteDAO {
 			stm.setString( 1 , to.getNome() );
 			stm.setString( 2 , to.getFone() );
 			stm.setInt( 3 , to.getId() );
-			
+			stm.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
