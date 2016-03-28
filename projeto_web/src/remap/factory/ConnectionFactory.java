@@ -16,8 +16,8 @@ public class ConnectionFactory {
 	
 	public static Connection getConnection() throws SQLException {
 		
-		String user = "root";
-		String password = "papagaio123";
+		String user = "alunos";
+		String password = "alunos";
 		String database = "remapbd_web";
 		return DriverManager.getConnection( "jdbc:mysql://localhost:3306/"+database+"?user="+user+"&password="+password);
 		
