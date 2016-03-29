@@ -15,10 +15,12 @@
 		<tag:campo name="codigo" value="Codigo:"/> <br/>
 		<tag:campo name="nome" value="Nome:" /> <br/>
 		<tag:campo name="preco" value="Preço:" /> <br/>
-		<tag:campo name="descricao"  value="Descricao:"/> <br/>
+		<tag:area name="descricao"  value="Descricao:"/> <br/>
 		
 		<input type="submit" name="acao" value="salvar" />
+		<input type="submit" name="acao" value="atualizar" />
 		<input type="submit" name="acao" value="consultar" />
+		<input type="submit" name="acao" value="excluir" />
 	</form>
 </body>
 </html>

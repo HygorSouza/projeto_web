@@ -12,13 +12,14 @@ import remap.to.ProdutoTO;
 public class ProdutoDAO {
 	
 	public ProdutoTO salvar( ProdutoTO to ){
-		String sqlInsert = "INSERT INTO tb_produto VALUES (?,?,?)";
+		String sqlInsert = "INSERT INTO tb_produto VALUES (?,?,?,?)";
 		try( Connection conn = ConnectionFactory.getConnection();
 			 PreparedStatement stm = conn.prepareStatement(sqlInsert);){
 			
 			 stm.setNull( 1 , Types.INTEGER );
 			 stm.setString( 2, to.getNome() );
 			 stm.setDouble( 3, to.getPreco() );
+			 stm.setString(4, to.getDescricao() );
 			 stm.execute();
 			 
 			 try( PreparedStatement stm2 = conn.prepareStatement("SELECT LAST_INSERT_ID()");
@@ -40,13 +41,14 @@ public class ProdutoDAO {
 	}
 	
 	public void atualizar( ProdutoTO to ){
-		String sqlUpdate = "UPDATE tb_produto SET nome_produto = ? , preco = ? WHERE cod_produto = ?";
+		String sqlUpdate = "UPDATE tb_produto SET nome_produto = ? , descricao = ? ,preco = ? WHERE cod_produto = ?";
 		try( Connection conn = ConnectionFactory.getConnection() ;
 			 PreparedStatement stm = conn.prepareStatement(sqlUpdate);){
 			
 			stm.setString( 1 , to.getNome()   );
 			stm.setDouble( 2 , to.getPreco()  );
-			stm.setInt   ( 3 , to.getCodigo() );
+			stm.setString( 3, to.getDescricao() );
+			stm.setInt   ( 4 , to.getCodigo() );
 			stm.execute();
 	
 		} catch (SQLException e) {
@@ -81,6 +83,7 @@ public class ProdutoDAO {
 				if( rs.next() ){
 					to.setNome(  rs.getString("nome_produto") );
 					to.setPreco( rs.getDouble("preco") );
+					to.setDescricao( rs.getString("descricao") );
 				}
 				
 			} catch (SQLException e) {

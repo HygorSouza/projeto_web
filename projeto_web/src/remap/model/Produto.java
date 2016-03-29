@@ -52,8 +52,9 @@ public class Produto {
 		ProdutoTO to = new ProdutoTO();
 		
 		to.setCodigo( getCodigo() );
-		to.setNome(getNome());
-		to.setPreco(getPreco());
+		to.setNome( getNome() );
+		to.setPreco( getPreco() );
+		to.setDescricao( getDescricao() );
 		
 		return to;
 		
@@ -66,6 +67,7 @@ public class Produto {
 		
 		to.setNome( getNome() );
 		to.setPreco( getPreco() );
+		to.setDescricao( getDescricao() );
 		
 		setCodigo(  dao.salvar(to).getCodigo()  );
 	}
@@ -76,6 +78,7 @@ public class Produto {
 		
 		to.setNome  ( getNome()   );
 		to.setPreco ( getPreco()  );
+		to.setDescricao( getDescricao() );
 		to.setCodigo( getCodigo() );
 		
 		dao.atualizar(to);
@@ -98,6 +101,7 @@ public class Produto {
 		
 		setNome( to.getNome() );
 		setPreco( to.getPreco() );
+		setDescricao( to.getDescricao() );
 		
 		return this;
 	}

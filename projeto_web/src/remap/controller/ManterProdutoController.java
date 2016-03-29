@@ -62,6 +62,9 @@ public class ManterProdutoController extends HttpServlet {
 		}else if( acao.equals("consultar") ){
 			produto.setCodigo(codigo);
 			produto.consultar();
+		}else if(  acao.equals("excluir") ){
+			produto.setCodigo(codigo);
+			produto.excluir();
 		}
 		
 		request.setAttribute("produto", produto.geraTO() );

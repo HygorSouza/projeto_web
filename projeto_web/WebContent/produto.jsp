@@ -10,5 +10,8 @@
 	Codigo: ${produto.codigo} <br/>
 	Nome: ${produto.nome} <br/>
 	Preço: ${produto.preco} <br/>
+	Descrição:<br/>
+	<textarea disabled> ${produto.descricao} </textarea>
+	<br/>
 </body>
 </html>

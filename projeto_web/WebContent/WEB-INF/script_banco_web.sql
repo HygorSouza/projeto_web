@@ -15,9 +15,10 @@ CREATE TABLE tb_cliente(
 
 
 CREATE TABLE tb_produto(
-	cod_produto SMALLINT UNSIGNED AUTO_INCREMENT,
+	cod_produto    SMALLINT UNSIGNED AUTO_INCREMENT,
     nome_produto   VARCHAR(50) NOT NULL,
     preco          DECIMAL(10,2) NOT NULL,
+    descricao      VARCHAR(200) NOT NULL,
     
     CONSTRAINT pk_produto PRIMARY KEY(cod_produto)
 );
@@ -27,6 +28,8 @@ CREATE TABLE tb_usuario(
 	cod_usuario    SMALLINT UNSIGNED AUTO_INCREMENT,
 	nome_usuario   VARCHAR(50) NOT NULL,
 	senha_usuario  VARCHAR(20) NOT NULL,
+	cargo          VARCHAR(30) NOT NULL,
+	
 	CONSTRAINT pk_usuario PRIMARY KEY(cod_usuario)
 );
 
