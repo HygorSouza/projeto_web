@@ -41,12 +41,12 @@ public class UsuarioDAO {
 	}
 	
 	public void atualizar( UsuarioTO to ){
-		String sqlUpdate = "UPDATE tb_usuario SET nome_usuario_ = ? , cargo = ? WHERE  cod_usuario = ?";
+		String sqlUpdate = "UPDATE tb_usuario SET nome_usuario = ? , cargo = ? WHERE  cod_usuario = ?";
 		try( Connection conn = ConnectionFactory.getConnection();
 			 PreparedStatement stm = conn.prepareStatement(sqlUpdate); ){
 			stm.setString( 1 , to.getUsuario() );
 			stm.setString( 2 , to.getCargo() );
-			stm.setInt( 1 , to.getId() );
+			stm.setInt( 3 , to.getId() );
 			
 			stm.execute();
 		} catch (SQLException e) {
@@ -55,7 +55,7 @@ public class UsuarioDAO {
 	}
 	
 	public void excluir( int id ){
-		String sqlDelete = "DELETE FORM tb_usuario WHERE cod_usuario = ?";
+		String sqlDelete = "DELETE FROM tb_usuario WHERE cod_usuario = ?";
 		try( Connection conn = ConnectionFactory.getConnection();
 			 PreparedStatement stm = conn.prepareStatement(sqlDelete);){
 			stm.setInt( 1 , id );
