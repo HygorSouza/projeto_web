@@ -72,7 +72,7 @@ public class ProdutoDAO {
 		}
 	}
 	
-	public ProdutoTO carregar( int codigo ){
+	public ProdutoTO consultar( int codigo ){
 		String sqlSelect = "SELECT * FROM tb_produto WHERE cod_produto = ?";
 		ProdutoTO to = new ProdutoTO();
 		try( Connection conn = ConnectionFactory.getConnection() ;

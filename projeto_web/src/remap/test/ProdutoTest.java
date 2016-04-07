@@ -2,29 +2,31 @@ package remap.test;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import remap.model.Produto;
 
 public class ProdutoTest {
-	Produto produto , copia ;
+	static Produto produto , copia ;
 	
-	@Before
-	public void setUp() throws Exception {
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
 		produto = new Produto("test", "test", 2.00 );
+		produto.salvar();
 		copia = new Produto("test", "test", 2.00 );
 	}
 
 	@Test
 	public void testSalvar() {
-		produto.salvar();
+	
 		
-		Produto p2 = produto.consultar();
+		copia.setCodigo(  produto.getCodigo() );
 		
-		assertEquals("testa inclusao", produto , p2 );
+		assertEquals("testa inclusao", produto , copia );
 	}
-
+	
+	
 	@Test
 	public void testAtualizar() {
 		copia.setCodigo( produto.getCodigo() );

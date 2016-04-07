@@ -2,17 +2,18 @@ package remap.test;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import remap.model.Cliente;
 
 
 public class ClienteTest {
-	Cliente cliente , copia;
+	static Cliente cliente , copia;
 	
-	@Before
-	public void setUp() throws Exception {
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
 		cliente = new Cliente("Bela Lugosi", "123456789" );
+		cliente.salvar();
 		copia = new Cliente("Bela Lugosi", "123456789" );
 	}
 	
@@ -25,14 +26,15 @@ public class ClienteTest {
 		c.consultar();
 		
 		assertEquals("testa inclusao", c , cli );
+		cli.excluir();
 	}
 	
 	
 	@Test
 	public void test01Salvar() {
-		cliente.salvar();
 		cliente.consultar();
 		copia.setId( cliente.getId() );
+		copia.consultar();
 		
 		assertEquals("testa inclusao", copia , cliente );
 	}
@@ -40,8 +42,16 @@ public class ClienteTest {
 	@Test
 	public void test02Atualizar() {
 		cliente.setFone("123");
+		
+		copia.setId(  cliente.getId() );
 		copia.setFone("123");
+		
+		
 		cliente.atualizar();
+		cliente.consultar();
+		
+		copia.consultar();
+		
 		assertEquals("testa inclusao", copia, cliente);
 	}
 
@@ -51,6 +61,7 @@ public class ClienteTest {
 		c.setId(  cliente.getId() );
 		cliente.excluir();
 		cliente.consultar();
+		c.consultar();
 		assertEquals("testa inclusao", c , cliente );
 	}
 

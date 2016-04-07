@@ -121,7 +121,7 @@ public class Produto {
 	
 	public Produto consultar(){
 		ProdutoDAO dao = new ProdutoDAO();
-		ProdutoTO to = dao.carregar(getCodigo());
+		ProdutoTO to = dao.consultar(getCodigo());
 		
 		setNome( to.getNome() );
 		setPreco( to.getPreco() );

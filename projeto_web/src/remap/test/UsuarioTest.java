@@ -2,23 +2,23 @@ package remap.test;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import remap.model.Usuario;
 
+
 public class UsuarioTest {
-	Usuario user , copia ;
+	static Usuario user ;
 	
-	@Before
-	public void setUp() throws Exception {
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
 		user = new Usuario("nome","cargo","senha");
-		copia = new Usuario("nome","cargo","senha");
+		user.salvar();
 	}
 
 	@Test
 	public void testSalvar() {
-		user.salvar();
 		Usuario s = new Usuario();
 		s.setId( user.getId() );
 		s.consultar();
@@ -39,7 +39,7 @@ public class UsuarioTest {
 		
 		s.consultar();
 		
-		assertEquals("testa inclusao", user , copia );
+		assertEquals("testa inclusao", user , s );
 	}
 
 	@Test
@@ -59,9 +59,13 @@ public class UsuarioTest {
 		Usuario s = new Usuario();
 		s.setId( user.getId() );
 		
+		
 		user.excluir();
 		user.consultar();
 		s.consultar();
+		
+		System.out.println( user.getId() );
+		System.out.println( s.getId() );
 		
 		assertEquals("testa exclusao", user , s );
 		
