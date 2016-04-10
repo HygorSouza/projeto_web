@@ -16,23 +16,28 @@
 		<c:import url="navbar-default.html" />
 		
 		<jsp:useBean id="cliente" class="remap.to.ClienteTO" scope="request"/>
-	
-		<form action="ManterCliente.do" method="post">
-			<input name="id" type="hidden" value="${cliente.id}"/>
-			<div class="container">
-				<div class="row">
-					<label>Nome:</label>
-					<input name="nome" required type="text" value="${cliente.nome}"/>
-				</div>
-				<div class="row">
-					<label>Fone:</label>
-					<input name="fone" type="tel" value="${cliente.fone}"/>
-				</div>
-				<div class="row">
-					<input type="submit" name="acao" value="atualizar"/>
-				</div>
-			</div>
-		</form>
+		
+		<div class="container">
+			<form action="ManterCliente.do" method="post">
+				<input name="id" type="hidden" value="${cliente.id}"/>
+				
+					<div class="row">
+						<div class="input-group">
+							<span class="input-group-addon">Nome:</span>
+							<input class="form-control" name="nome" required type="text" value="${cliente.nome}"/>
+						</div>
+					</div>
+					<div class="row">
+						<span>Fone:</span>
+						<input name="fone" type="tel" value="${cliente.fone}"/>
+					</div>
+					<div class="row">
+						<input type="submit" name="acao" value="atualizar"/>
+					</div>
+				
+			</form>
+		</div>
+		
 		<script src="js/jquery.min.js"></script>
     	<script src="js/bootstrap.min.js"></script>
 	</body>
