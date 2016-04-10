@@ -40,8 +40,28 @@
 	    <!-- fim nav Barra superior com os menus de navegação -->
 		
 		<div class="container">
-			<a href="cadastro_cliente.html" class="btn btn-primary" >Novo cliente</a>
-			<hr/>
+			<div class="row">
+				<div class="col-md-3" >
+					<h2>Clientes</h2>
+				</div>
+				
+				<form action="lista_de_clientes.do" method="post">
+					<div class="col-md-6">
+						<div class="input-group h2">
+							<input type="text" name="key"  class="form-control" />
+							<span class="input-group-btn">
+			                <button class="btn btn-primary" type="submit">
+			                    <span class="glyphicon glyphicon-search"></span>
+			                </button>
+		            		</span>
+						</div>
+					</div>
+				</form>
+				
+				<div class="col-md-3">
+					<a href="cadastro_cliente.html" class="btn btn-primary pull-right h2" >Novo cliente</a>
+				</div>	
+			</div>
 		</div>
 		
 		<script src="js/jquery.min.js"></script>
