@@ -1,15 +1,3 @@
-<!DOCTYPE html >
-<html>
-<head>
-	<title>Insert title here</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link href="css/bootstrap.min.css" rel="stylesheet"/>
-   	<link href="css/style.css" rel="stylesheet"/>
-</head>
-<body>
    <!-- nav Barra superior com os menus de navegação -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
@@ -24,7 +12,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Clientes</a>
+                    <li><a href="cadastro_cliente.html">Clientes</a>
                     </li>
                     <li><a href="#">Marcas</a>
                     </li>
@@ -38,23 +26,3 @@
     </nav>
     <!-- fim nav Barra superior com os menus de navegação -->
     
-	<div id="main" class="container">
-		
-		<form action="ManterProduto.do" method="post">
-			
-			<label>Nome:</label>
-			<input type="text"  name="nome" /> <br/>
-			
-			<label>Preço:</label>
-			<input type="text" name="preco" /> <br/>
-			
-			<label>Descricao:</label> <br/>
-			<textarea name="descricao"  ></textarea> <br/>
-			
-			<input type="submit" name="acao" value="salvar" class="btn btn-primary" />
-		</form>
-	</div>
-	<script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-</body>
-</html>
