@@ -15,6 +15,8 @@
 		<link href="css/style.css" rel="stylesheet"/>
 	</head>
 	<body>
+		<c:import url="navbar-default.html" />
+	
 		<jsp:useBean id="lista" class="remap.to.ListaDeClienteTO" scope="request" />
 	
 		<div class="container">
