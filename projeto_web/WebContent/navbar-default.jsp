@@ -9,11 +9,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">projeto_web</a>
+                <a class="navbar-brand" href="index.jsp">projeto_web</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="pesquisar_cliente.html">Clientes</a>
+                    <li><a href="pesquisar_cliente.jsp">Clientes</a>
                     </li>
                     <li><a href="#">Produtos</a>
                     </li>

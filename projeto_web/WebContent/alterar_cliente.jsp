@@ -13,8 +13,8 @@
 	   	<link href="css/style.css" rel="stylesheet"/>
 	</head>
 	<body>
-		<!--  menu de navegacao  -->
-		<c:import url="navbar-default.jsp" />
+		<!-- Barra superior com os menus de navegação -->
+		<c:import url="navbar-default.jsp"/>
 		
 		<jsp:useBean id="cliente" class="remap.to.ClienteTO" scope="request"/>
 		

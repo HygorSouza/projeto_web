@@ -13,7 +13,9 @@
 	   	<link href="css/style.css" rel="stylesheet"/>
 	</head>
 	<body>
-		<c:import url="navbar-default.html" />
+		<!-- Barra superior com os menus de navegação -->
+		<c:import url="navbar-default.jsp"/>
+		
 		<jsp:useBean id="cliente" class="remap.to.ClienteTO" scope="request"/>
 		<div class="container">
 			<input name="id" type="hidden" value="${cliente.id}" />
