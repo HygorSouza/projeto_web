@@ -49,7 +49,7 @@ public class ManterClienteController extends HttpServlet {
 		
 		if( acao.equals("salvar") ){
 			cliente.salvar();
-			view = request.getRequestDispatcher("exibir_cliente.jsp");
+			view = request.getRequestDispatcher("//lista_de_clientes.do?key="+cliente.getNome());
 		}
 		else if( acao.equals("atualizar") ){
 			cliente.setId(id);
@@ -64,7 +64,7 @@ public class ManterClienteController extends HttpServlet {
 		else if( acao.equals("excluir") ){
 			cliente.setId(id);
 			cliente.excluir();
-			view = request.getRequestDispatcher("cadastro_cliente.html");
+			view = request.getRequestDispatcher("cadastro_cliente.jsp");
 		}
 		else if(  acao.equals("consultar") ){
 			cliente.setId(id);

@@ -38,9 +38,10 @@
 				</form>
 				
 				<div class="col-md-3">
-					<a href="cadastro_cliente.html" class="btn btn-primary pull-right h2" >Novo cliente</a>
+					<a href="cadastro_cliente.jsp" class="btn btn-primary pull-right h2" >Novo cliente</a>
 				</div>	
 			</div>
+			
 		</div>
 		
 		<script src="js/jquery.min.js"></script>

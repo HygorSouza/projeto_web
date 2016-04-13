@@ -17,7 +17,10 @@
 	<body>
 		<!-- Barra superior com os menus de navegação -->
 		<c:import url="navbar-default.jsp"/>
-	
+		
+		
+		<hr/>
+		
 		<jsp:useBean id="lista" class="remap.to.ListaDeClienteTO" scope="request" />
 	
 		<div class="container">

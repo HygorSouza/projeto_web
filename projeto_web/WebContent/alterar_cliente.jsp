@@ -29,11 +29,13 @@
 						</div>
 					</div>
 					<div class="row">
-						<span>Fone:</span>
-						<input name="fone" type="tel" value="${cliente.fone}"/>
+						<div class="input-group">
+							<span class="input-group-addon">Fone:</span>
+							<input class="form-control" name="fone" type="tel" value="${cliente.fone}"/>
+						</div>
 					</div>
 					<div class="row">
-						<input type="submit" name="acao" value="atualizar"/>
+						<input class="btn-primary btn-xs" type="submit" name="acao" value="atualizar"/>
 					</div>
 				
 			</form>
