@@ -15,31 +15,24 @@
 	<body>
 		<!--  menu de navegacao  -->
 		<c:import url="navbar-default.jsp" />
-		
-		<jsp:useBean id="cliente" class="remap.to.ClienteTO" scope="request"/>
-		
-		<div class="container">
-			<form action="ManterCliente.do" method="post">
-				<input name="id" type="hidden" value="${cliente.id}"/>
+	    
+		<div id="main" class="container">
+			
+			<form action="ManterProduto.do" method="post">
 				
-					<div class="row">
-						<div class="input-group">
-							<span class="input-group-addon">Nome:</span>
-							<input class="form-control" name="nome" required type="text" value="${cliente.nome}"/>
-						</div>
-					</div>
-					<div class="row">
-						<span>Fone:</span>
-						<input name="fone" type="tel" value="${cliente.fone}"/>
-					</div>
-					<div class="row">
-						<input type="submit" name="acao" value="atualizar"/>
-					</div>
+				<label>Nome:</label>
+				<input type="text"  name="nome" /> <br/>
 				
+				<label>Preço:</label>
+				<input type="text" name="preco" /> <br/>
+				
+				<label>Descricao:</label> <br/>
+				<textarea name="descricao"  ></textarea> <br/>
+				
+				<input type="submit" name="acao" value="salvar" class="btn btn-primary" />
 			</form>
 		</div>
-		
 		<script src="js/jquery.min.js"></script>
-    	<script src="js/bootstrap.min.js"></script>
+	    <script src="js/bootstrap.min.js"></script>
 	</body>
 </html>
