@@ -35,7 +35,8 @@
 						</div>
 					</div>
 					<div class="row">
-						<input class="btn-primary btn-xs" type="submit" name="acao" value="atualizar"/>
+						<input class="btn btn-primary btn-xs" type="submit" name="acao" value="atualizar"/>
+						<a  class="btn btn-default btn-xs" href="pesquisar_cliente.jsp" >Cancelar</a>
 					</div>
 				
 			</form>

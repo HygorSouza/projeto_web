@@ -18,18 +18,43 @@
 		<!-- Barra superior com os menus de navegação -->
 		<c:import url="navbar-default.jsp"/>
 		
-		
-		<hr/>
-		
-		<jsp:useBean id="lista" class="remap.to.ListaDeClienteTO" scope="request" />
-	
 		<div class="container">
+			
+			<div class="row">
+				<div class="col-md-3" >
+					<h2>Clientes</h2>
+				</div>
+				
+				<form action="lista_de_clientes.do" method="post">
+					<div class="col-md-6">
+						<div class="input-group h2">
+							<input type="text" name="key"  class="form-control"  required placeholder="Digite o nome do cliente" />
+							<span class="input-group-btn">
+			                <button class="btn btn-primary" type="submit">
+			                    <span class="glyphicon glyphicon-search"></span>
+			                </button>
+		            		</span>
+						</div>
+					</div>
+				</form>
+				
+				<div class="col-md-3">
+					<a href="cadastro_cliente.jsp" class="btn btn-primary pull-right h2" >Novo cliente</a>
+				</div>	
+			</div>
+		
+			<hr/>
+		
+			<jsp:useBean id="lista" class="remap.to.ListaDeClienteTO" scope="request" />
+	
+		
 			<table class="table table-responsive table-hover">
 				<thead>
 					<tr>
 						<th>Id</th>
 						<th>Nome</th>
 						<th>Fone</th>
+						<th>Acoes</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -38,6 +63,9 @@
 							<td>${cliente.id}</td>
 							<td>${cliente.nome}</td>
 							<td>${cliente.fone}</td>
+							<td class="actions">
+								<a class="btn btn-primary btn-xs" href="ManterCliente.do?acao=editar&id=${cliente.id}">Editar</a>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
