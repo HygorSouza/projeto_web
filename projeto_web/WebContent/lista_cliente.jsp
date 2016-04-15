@@ -42,36 +42,36 @@
 					<a href="cadastro_cliente.jsp" class="btn btn-primary pull-right h2" >Novo cliente</a>
 				</div>	
 			</div>
-		
-			<hr/>
-		
-			<jsp:useBean id="lista" class="remap.to.ListaDeClienteTO" scope="request" />
-	
-		
-			<table class="table table-responsive table-hover">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Nome</th>
-						<th>Fone</th>
-						<th>Acoes</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="cliente" items="${lista.lista}" >
-						<tr>
-							<td>${cliente.id}</td>
-							<td>${cliente.nome}</td>
-							<td>${cliente.fone}</td>
-							<td class="actions">
-								<a class="btn btn-primary btn-xs" href="ManterCliente.do?acao=editar&id=${cliente.id}">Editar</a>
-							</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
 			
+			<c:if test="${not empty lista }" >
+			
+				<hr/>		
+				<table class="table table-responsive table-hover">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Nome</th>
+							<th>Fone</th>
+							<th>Acoes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="cliente" items="${lista.lista}" >
+							<tr>
+								<td>${cliente.id}</td>
+								<td>${cliente.nome}</td>
+								<td>${cliente.fone}</td>
+								<td class="actions">
+									<a class="btn btn-primary btn-xs" href="ManterCliente.do?acao=editar&id=${cliente.id}">Editar</a>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+					
+			</c:if>
+		</div>
+		
 		<script src="js/jquery.min.js"></script>
     	<script src="js/bootstrap.min.js"></script>
 	</body>
