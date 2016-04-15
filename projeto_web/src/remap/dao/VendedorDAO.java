@@ -9,13 +9,11 @@ import java.util.List;
 
 import remap.factory.ConnectionFactory;
 import remap.to.ClienteTO;
-import remap.to.ListaDeClienteTO;
 
 public class VendedorDAO {
 
-	public ListaDeClienteTO  listaDeClientes( String key ) {
+	public List<ClienteTO>  listaDeClientes( String key ) {
 		List<ClienteTO> list = new ArrayList<ClienteTO>() ;
-		ListaDeClienteTO listaCliente = new ListaDeClienteTO();
 		
 		ClienteTO to;
 		String sqlSelect = "SELECT * FROM tb_cliente WHERE UPPER(nome_cliente) LIKE ?";
@@ -38,9 +36,7 @@ public class VendedorDAO {
 			e.printStackTrace();
 		}
 		
-		listaCliente.setLista(list);
-		
-		return listaCliente;
+		return list;
 	}
 
 }

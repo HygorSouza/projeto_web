@@ -1,6 +1,7 @@
 package remap.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import remap.model.Vendedor;
-import remap.to.ListaDeClienteTO;
+import remap.to.ClienteTO;
 
 /**
  * Servlet implementation class ListaDeClienteController
@@ -26,7 +27,7 @@ public class ListaDeClienteController extends HttpServlet {
 		String key = request.getParameter("key");
 		
 		Vendedor vendedor = new Vendedor();
-		ListaDeClienteTO lista = vendedor.listaDeClientes(key);
+		List<ClienteTO> lista = vendedor.listaDeClientes(key);
 		
 		request.setAttribute("lista", lista );
 		
