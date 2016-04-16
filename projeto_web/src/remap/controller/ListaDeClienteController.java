@@ -16,7 +16,7 @@ import remap.to.ClienteTO;
 /**
  * Servlet implementation class ListaDeClienteController
  */
-@WebServlet("/lista_de_clientes.do")
+@WebServlet("/ListaDeCliente.do")
 public class ListaDeClienteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -25,13 +25,26 @@ public class ListaDeClienteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String key = request.getParameter("key");
+		int idCliente = 0;
+		
+		try{
+			idCliente = Integer.parseInt(key);
+		}catch(NumberFormatException e){
+			
+		}
 		
 		Vendedor vendedor = new Vendedor();
-		List<ClienteTO> lista = vendedor.listaDeClientes(key);
+		List<ClienteTO> lista = null;
 		
+		if( idCliente > 0 ){
+			lista = vendedor.listaDeClientes(idCliente);
+		}else{
+			
+			lista = vendedor.listaDeClientes(key);
+		}
 		request.setAttribute("lista", lista );
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("lista_cliente.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("pesquisar_cliente.jsp");
 		dispatcher.forward(request, response);
 		
 	}

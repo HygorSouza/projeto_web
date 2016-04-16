@@ -38,6 +38,8 @@ public class ManterClienteController extends HttpServlet {
 		
 		int id = -1;
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		try {
 			id = Integer.parseInt(sId);
 		} catch (Exception e) {
@@ -49,12 +51,12 @@ public class ManterClienteController extends HttpServlet {
 		
 		if( acao.equals("salvar") ){
 			cliente.salvar();
-			view = request.getRequestDispatcher("//lista_de_clientes.do?key="+cliente.getNome());
+			view = request.getRequestDispatcher("ListaDeCliente.do?key="+cliente.getId() );
 		}
 		else if( acao.equals("atualizar") ){
 			cliente.setId(id);
 			cliente.atualizar();
-			view = request.getRequestDispatcher("exibir_cliente.jsp");
+			view = request.getRequestDispatcher("ListaDeCliente.do?key="+cliente.getId() );
 		}
 		else if( acao.equals("editar") ){
 			cliente.setId(id);

@@ -16,32 +16,36 @@
 		<!-- Barra superior com os menus de navegação -->
 		<c:import url="navbar-default.jsp"/>
 		
-		<jsp:useBean id="cliente" class="remap.to.ClienteTO" scope="request"/>
 		
 		<div class="container">
 			<form action="ManterCliente.do" method="post">
 				<input name="id" type="hidden" value="${cliente.id}"/>
 				
 					<div class="row">
-						<div class="input-group">
-							<span class="input-group-addon">Nome:</span>
-							<input class="form-control" name="nome" required type="text" value="${cliente.nome}"/>
+						<div class="form-group col-md-12">
+							<div class="input-group">
+								<span class="input-group-addon">Nome:</span>
+								<input class="form-control" name="nome" required type="text" value="${cliente.nome}"/>
+							</div>
+						</div>
+						
+						<div class="form-group col-md-6">
+							<div class="input-group">
+								<span class="input-group-addon">Fone:</span>
+								<input class="form-control" name="fone" type="tel" value="${cliente.fone}"/>
+							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="input-group">
-							<span class="input-group-addon">Fone:</span>
-							<input class="form-control" name="fone" type="tel" value="${cliente.fone}"/>
+						<div class="form-group">
+							<input class="btn btn-primary" type="submit" name="acao" value="atualizar"/>
+							<a 	class="btn btn-default" href="pesquisar_cliente.jsp" >Cancelar</a>
 						</div>
-					</div>
-					<div class="row">
-						<input class="btn btn-primary btn-xs" type="submit" name="acao" value="atualizar"/>
-						<a  class="btn btn-default btn-xs" href="lista_cliente.jsp" >Cancelar</a>
 					</div>
 				
 			</form>
 		</div>
-		
+		<!--  library jQuery  -->
 		<script src="js/jquery.min.js"></script>
     	<script src="js/bootstrap.min.js"></script>
 	</body>

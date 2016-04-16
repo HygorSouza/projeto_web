@@ -9,15 +9,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.jsp">projeto_web</a>
+                <a class="navbar-brand" href="home.jsp">projeto_web</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="lista_cliente.jsp">Clientes</a>
+                    <li><a href="pesquisar_cliente.jsp">Cliente</a>
                     </li>
-                    <li><a href="#">Produtos</a>
+                    <li><a href="cadastro_produto.jsp">Produto</a>
                     </li>
-                    <li><a href="#">#</a>
+                    <li><a href="tela_venda.jsp">Venda</a>
                     </li>
                     <li><a href="#">#</a>
                     </li>

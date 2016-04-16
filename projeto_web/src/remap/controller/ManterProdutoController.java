@@ -38,6 +38,8 @@ public class ManterProdutoController extends HttpServlet {
 		double valor = 0.0;
 		int codigo = -1;
 		
+		request.setCharacterEncoding("UTF-8");
+		
 	    try{
 	    	valor = Double.parseDouble(sPreco);
 	    }catch(Exception e){

@@ -3,7 +3,7 @@ package remap.model;
 import remap.dao.ProdutoDAO;
 import remap.to.ProdutoTO;
 
-public class Produto {
+public class Produto implements Model {
 	private int codigo;
 	private String nome  , descricao;
 	private double preco;
@@ -128,6 +128,12 @@ public class Produto {
 		setDescricao( to.getDescricao() );
 		
 		return this;
+	}
+
+	@Override
+	public int identificador() {
+		
+		return getCodigo();
 	}
 	
 }

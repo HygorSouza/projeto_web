@@ -7,6 +7,13 @@ import remap.to.ClienteTO;
 
 public class Vendedor {
 	
+	public List<ClienteTO> listaDeClientes(int idCliente){
+		VendedorDAO dao = new VendedorDAO();
+		
+		List<ClienteTO> lista = dao.listaDeClientes(idCliente);
+		
+		return lista;
+	}
 	
 	public List<ClienteTO> listaDeClientes(String key){
 		VendedorDAO dao = new VendedorDAO();

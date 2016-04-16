@@ -19,19 +19,25 @@
 	<div class="container">
 		<div class="jumbotron">
 			<h3 class="page-header">Cadastro de clientes</h3>
-			<form name="form1" action="ManterCliente.do" method="post">
+			<form  action="ManterCliente.do" method="post">
 				<div class="row">
-					<div class="input-group">
-						<span class="input-group-addon">Nome</span> <input type="text"
-							name="nome" required class="form-control" />
-					</div>
+					
+						<div class="form-group col-md-12">
+							<div class="input-group">
+								<span class="input-group-addon">Nome</span> 
+								<input type="text" name="nome" required class="form-control" />
+							</div>
+						</div>
+					
+						<div class="form-group col-md-6">
+							<div class="input-group">
+								<span class="input-group-addon">Fone</span> 
+								<input type="text" name="fone" class="form-control" />
+							</div>
+						</div>
+				
 				</div>
-				<div class="row">
-					<div class="input-group">
-						<span class="input-group-addon">Fone</span> <input type="text"
-							name="fone" class="form-control" />
-					</div>
-				</div>
+				
 				<div class="row">
 					<input class="btn btn-primary" type="submit" name="acao"
 						value="salvar" /> <a class="btn btn-default"

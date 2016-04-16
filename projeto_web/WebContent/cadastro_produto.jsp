@@ -14,22 +14,37 @@
 	</head>
 	<body>
 		<!--  menu de navegacao  -->
-		<c:import url="navbar-default.jsp" />
+		<%@ include file="navbar-default.jsp" %>
 	    
-		<div id="main" class="container">
+		<div  class="container">
 			
 			<form action="ManterProduto.do" method="post">
-				
-				<label>Nome:</label>
-				<input type="text"  name="nome" /> <br/>
-				
-				<label>Preço:</label>
-				<input type="text" name="preco" /> <br/>
-				
-				<label>Descricao:</label> <br/>
-				<textarea name="descricao"  ></textarea> <br/>
-				
+				<div class="row">
+					<div class="form-group col-md-12">
+						<div class="input-group" >
+							<span class="input-group-addon" >Nome</span>
+							<input type="text"  name="nome"  required class="form-control" /> 
+						</div>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<div class="input-group" >
+							<span class="input-group-addon" >Preço</span>
+							<input type="text" name="preco" required class="form-control" />
+						</div>
+					</div>
+					
+					
+					<div class="form-group col-md-12">
+						<div class="input-group">
+							<span class="input-group-addon">Descricao</span> 
+							<textarea name="descricao"  required class="form-control"  ></textarea>
+						</div>
+					</div>
+				</div>
 				<input type="submit" name="acao" value="salvar" class="btn btn-primary" />
+				<a href="#" class="btn btn-default" >Cancelar</a>
+				
 			</form>
 		</div>
 		<script src="js/jquery.min.js"></script>

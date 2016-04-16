@@ -38,5 +38,32 @@ public class VendedorDAO {
 		
 		return list;
 	}
+	
+	public List<ClienteTO>  listaDeClientes( int idCliente ) {
+		List<ClienteTO> list = new ArrayList<ClienteTO>() ;
+		
+		ClienteTO to;
+		String sqlSelect = "SELECT * FROM tb_cliente WHERE id_cliente = ?";
+		try( Connection conn = ConnectionFactory.getConnection();
+			 PreparedStatement stm = conn.prepareStatement(sqlSelect);){ 
+			 stm.setInt( 1 , idCliente );
+			try( ResultSet rs = stm.executeQuery(); ){
+				 while( rs.next() ){
+					 to = new ClienteTO();
+					 to.setId( rs.getInt("id_cliente") );
+					 to.setNome( rs.getString("nome_cliente") );
+					 to.setFone( rs.getString("fone_cliente") );
+					 list.add(to);
+				 }
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 
 }
