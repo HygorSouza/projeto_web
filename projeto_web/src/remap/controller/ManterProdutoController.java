@@ -63,27 +63,38 @@ public class ManterProdutoController extends HttpServlet {
 		
 		Produto produto = new Produto(nome , descricao , valor , quantidade );
 		
+		RequestDispatcher view = null;
+		
 		if( acao.equals("salvar") ){
 			produto.salvar();
-		}
-		else if( acao.equals("editar") ){
+			view = request.getRequestDispatcher("ListaDeProduto.do?key="+produto.getCodigo() );
+			
+		}else if( acao.equals("editar") ){
 			produto.setCodigo(codigo);
 			produto.consultar();
+			view = request.getRequestDispatcher("alterar_produto.jsp");
 			
 		}else if( acao.equals("atualizar") ){
 			produto.setCodigo(codigo);
 			produto.atualizar();
+			view = request.getRequestDispatcher("ListaDeProduto.do?key="+produto.getCodigo() );
+			
 		}else if( acao.equals("consultar") ){
 			produto.setCodigo(codigo);
 			produto.consultar();
+			view = request.getRequestDispatcher("exibir_produto.jsp");
+		
 		}else if(  acao.equals("excluir") ){
 			produto.setCodigo(codigo);
 			produto.excluir();
+			view = request.getRequestDispatcher("listar_produto.jsp");
+		
 		}
 		
 		request.setAttribute("produto", produto.geraTO() );
 		
-		RequestDispatcher view = request.getRequestDispatcher("produto.jsp");
+		
+		
 		view.forward(request, response);
 	}
 

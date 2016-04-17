@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html >
 <html>
 <head>
@@ -13,16 +14,16 @@
 </head>
 <body>
 	<%@ include file="menu.jsp" %>
-	
-	<div class="container">
-		<div></div>
+
+	<div class="container" >
+		<div class="jumbotron">
+			
+			
+		</div>
 	</div>
-	
-	<!--  library jQuery  -->
+
+	<!-- library JQuery -->
 	<script src="js/jquery.min.js"></script>
-   	<script src="js/bootstrap.min.js"></script>
-   	<script type="text/javascript">
-   		
-   	</script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

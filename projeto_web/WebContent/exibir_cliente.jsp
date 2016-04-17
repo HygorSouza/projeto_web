@@ -38,7 +38,7 @@
             <!-- /.modal -->
 	
 		<!-- Barra superior com os menus de navegação -->
-		<c:import url="navbar-default.jsp"/>
+		<%@ include file="menu.jsp" %>
 		
 		<div class="container">
 			<input name="id" type="hidden" value="${cliente.id}" />

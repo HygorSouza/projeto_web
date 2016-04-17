@@ -18,16 +18,39 @@
 	
 	<div class="container">
 		<div class="jumbotron">
+		
+			<h3>Item # ${produto.codigo}</h3>
+		
 			<form action="ManterProduto.do" method="post">
-				<input type="hidden" name="codigo" value="${produto.codigo}" >
+				<input type="hidden" name="codigo" disabled value="${produto.codigo}" >
 				
 				<div class="row">
-					<div class="form-group">
+					<div class="form-group col-md-12">
 						<div class="input-group">
 							<span class="input-group-addon" >Nome</span>
 							<input type="text" name="nome" value="${produto.nome}" class="form-control" />
-						</div>>
+						</div>
 					</div>
+					
+					<div class="form-group col-md-6">
+						<div class="input-group">
+							<span class="input-group-addon" >Preço</span>
+							<input type="number" step="0.01" name="preco" value="${produto.preco}" class="form-control" />
+						</div>
+					</div>
+					
+					<div class="form-group col-md-12" >
+						<div  class="input-group">
+							<span class="input-group-addon">Descrição</span>
+							<c:if test="${not empty produto.descricao}">
+								<textarea name="descricao" class="form-control" >${produto.descricao}</textarea>
+							</c:if>
+							<c:if test="${empty produto.descricao}">
+								<textarea name="descricao" class="form-control" placeholder="Descricão do produto não informada" ></textarea>
+							</c:if>
+						</div>
+					</div>
+					
 				</div>
 			</form> 
 		</div>

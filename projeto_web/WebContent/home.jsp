@@ -15,7 +15,7 @@
 	</head>
 	<body>
 		<!-- Barra superior com os menus de navegação -->
-		<c:import url="navbar-default.jsp"/>
+		<%@ include file="menu.jsp" %>
 	    
 	    <script src="js/jquery.min.js"></script>
     	<script src="js/bootstrap.min.js"></script>

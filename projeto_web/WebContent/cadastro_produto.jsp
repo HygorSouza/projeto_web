@@ -15,7 +15,7 @@
 	</head>
 	<body>
 		<!--  menu de navegacao  -->
-		<%@ include file="navbar-default.jsp" %>
+		<%@ include file="menu.jsp" %>
 	    
 		<div  class="container">
 			

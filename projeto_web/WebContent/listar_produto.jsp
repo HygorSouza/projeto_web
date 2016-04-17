@@ -14,8 +14,10 @@
 	<link href="css/style.css" rel="stylesheet" />
 </head>
 <body>
+
+
 	<!-- menu navegação -->
-	<c:import url="navbar-default.jsp" />
+	<%@ include file="menu.jsp" %>
 
 	<div class="container">
 
@@ -64,7 +66,7 @@
 							<td class="actions">
 								<a class="btn btn-default btn-xs" href="ManterProduto.do?acao=consultar&codigo=${produto.codigo}">Visualizar</a>
 								<a class="btn btn-primary btn-xs" href="ManterProduto.do?acao=editar&codigo=${produto.codigo}">Editar</a>
-								<button id="btn${cliente.id}" type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal" data-cliente="${produto.codigo}">Excluir</button>
+								<button id="btn${produto.codigo}" type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal" data-produto="${produto.codigo}">Excluir</button>
 							</td>
 						</tr>
 					</c:forEach>

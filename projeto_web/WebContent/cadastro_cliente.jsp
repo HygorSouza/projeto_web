@@ -18,7 +18,7 @@
 
 	<div class="container">
 		<div class="jumbotron">
-			<h3 class="page-header">Cadastro de clientes</h3>
+			<h3 class="">Cadastro de clientes</h3>
 			<form  action="ManterCliente.do" method="post">
 				<div class="row">
 					
