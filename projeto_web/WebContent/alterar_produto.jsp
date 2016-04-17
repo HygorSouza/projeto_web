@@ -14,15 +14,16 @@
 </head>
 <body>
 	<!-- menu de navegacao -->
-	<c:import url="navbar-default.jsp"/>
-	
+	<%@ include file="menu.jsp" %>
+		
 	<div class="container">
 		<div class="">
 		
 			<h3>Item # ${produto.codigo}</h3>
 		
 			<form action="ManterProduto.do" method="post">
-				<input type="hidden" name="codigo" disabled value="${produto.codigo}" >
+				<input type="hidden" name="codigo"  value="${produto.codigo}" />
+				<input type="hidden" name="quantidade" value="${produto.quantidadeEmEstoque}"/>
 				
 				<div class="row">
 					<div class="form-group col-md-12">
@@ -43,15 +44,23 @@
 						<div  class="input-group">
 							<span class="input-group-addon">Descrição</span>
 							<c:if test="${not empty produto.descricao}">
-								<textarea name="descricao" class="form-control" >${produto.descricao}</textarea>
+								<textarea name="descricao"  class="form-control" >${produto.descricao}</textarea>
 							</c:if>
 							<c:if test="${empty produto.descricao}">
-								<textarea name="descricao" class="form-control" placeholder="Descricão do produto não informada" ></textarea>
+								<textarea name="descricao"  class="form-control" placeholder="Descricão do produto não informada" ></textarea>
 							</c:if>
 						</div>
 					</div>
 					
 				</div>
+				
+				<div class="row">
+					<div class="form-group col-md-12">
+						<input class="btn btn-primary" type="submit" name="acao" value="atualizar"/>
+						<a 	class="btn btn-default" href="listar_produto.jsp" >Cancelar</a>
+					</div>
+				</div>
+				
 			</form> 
 		</div>
 	</div>

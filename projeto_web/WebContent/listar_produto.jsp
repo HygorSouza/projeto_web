@@ -21,10 +21,10 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span>
                            </button>
-                           <h4 class="modal-title" id="modalLabel">Excluir Cliente</h4>
+                           <h4 class="modal-title" id="modalLabel">Excluir Produto</h4>
                     </div>
                     <div class="modal-body">
-                        Deseja realmente excluir este cliente?
+                        Deseja realmente excluir este Item?
                     </div>
                     <div class="modal-footer">
                         <input type="hidden" name="id" id="id_excluir" />
@@ -74,6 +74,7 @@
 						<th>Codigo</th>
 						<th>Nome</th>
 						<th>Preço</th>
+						<th>Quantidade</th>
 						<th>Acoes</th>
 					</tr>
 				</thead>
@@ -83,6 +84,7 @@
 							<td>${produto.codigo}</td>
 							<td>${produto.nome}</td>
 							<td>${produto.preco}</td>
+							<td>${produto.quantidadeEmEstoque}</td>
 							<td class="actions">
 								<a class="btn btn-default btn-xs" href="ManterProduto.do?acao=consultar&codigo=${produto.codigo}">Visualizar</a>
 								<a class="btn btn-primary btn-xs" href="ManterProduto.do?acao=editar&codigo=${produto.codigo}">Editar</a>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html >
 <html>
 <head>
@@ -13,20 +13,59 @@
 	<link href="css/style.css" rel="stylesheet" />
 </head>
 <body>
-	<%@ include file="menu.jsp" %>
-
-	<div class="container" >
-		<div class="">	
-			<div class="row">
-				
-				
-				
+	<!-- Modal -->
+	<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="modalLabel">Excluir Produto</h4>
+				</div>
+				<div class="modal-body">Deseja realmente excluir este produto?
+				</div>
+				<div class="modal-footer">
+					<form action="ManterProduto.do" method="post">
+						<input type="hidden" name="codigo" id="id_excluir" />
+						<button id="btn_excluir" type="submit" class="btn btn-primary" name="acao" value="excluir">Sim</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
+	<!-- /.modal -->
 
-	<!-- library JQuery -->
+	<%@ include file="menu.jsp"%>
+
+	<div class="container">
+		<div class="">
+			<h3>Item # ${produto.codigo}</h3>
+
+			<div class="row">
+				<label></label>
+
+
+			</div>
+			
+		    <div class="row">
+				<a class="btn btn-primary" href="ManterProduto.do?acao=editar&codigo=${produto.codigo}" >Editar</a>
+				<button id="btn${produto.codigo}" type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal" data-produto="${produto.codigo}">Excluir</button>
+				<a class="btn btn-default" href="listar_produto.jsp" >Voltar</a>
+		    </div>
+			
+		</div>
+	</div>
+
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$("#delete-modal").on('show.bs.modal', function(event) {
+			var button = $(event.relatedTarget); //botao que disparou a modal
+			var recipient = button.data('produto');
+			$("#id_excluir").val(recipient);
+		});
+	</script>
 </body>
 </html>

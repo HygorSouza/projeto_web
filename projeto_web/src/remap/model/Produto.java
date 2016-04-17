@@ -8,6 +8,7 @@ public class Produto {
 	private String nome  , descricao;
 	private double preco;
 	private int quantidade;
+	private int quantidadeEmEstoque;
 	
 	public Produto(){}
 
@@ -58,6 +59,14 @@ public class Produto {
 		this.quantidade = quantidade;
 	}
 
+	public int getQuantidadeEmEstoque() {
+		return quantidadeEmEstoque;
+	}
+
+	public void setQuantidadeEmEstoque(int quantidadeEmEstoque) {
+		this.quantidadeEmEstoque = quantidadeEmEstoque;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -88,9 +97,9 @@ public class Produto {
 		to.setPreco( getPreco() );
 		to.setDescricao( getDescricao() );
 		to.setQuantidade( getQuantidade() );
+		to.setQuantidadeEmEstoque( getQuantidadeEmEstoque() );
 		
 		return to;
-		
 	}
 	
 	
@@ -137,6 +146,7 @@ public class Produto {
 		setPreco( to.getPreco() );
 		setDescricao( to.getDescricao() );
 		setQuantidade( to.getQuantidade() );
+		setQuantidadeEmEstoque( to.getQuantidadeEmEstoque() );
 		
 		return this;
 	}	

@@ -87,7 +87,7 @@ public class VendedorDAO {
 					to.setPreco(rs.getDouble("preco"));
 					to.setDescricao(rs.getString("descricao"));
 					to.setQuantidadeEmEstoque( rs.getInt("quantidade") );
-					to.setQuantidade( to.getQuantidadeEmEstoque() );
+					
 					lista.add(to);
 				}
 
@@ -120,7 +120,7 @@ public class VendedorDAO {
 					to.setPreco( rs.getDouble("preco") );
 					to.setDescricao( rs.getString("descricao") );
 					to.setQuantidadeEmEstoque( rs.getInt("quantidade") );
-					to.setQuantidade( to.getQuantidadeEmEstoque() );
+					
 					lista.add(to);
 				}
 				

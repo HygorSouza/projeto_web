@@ -23,6 +23,8 @@ public class ProdutoDAO {
 			 stm.setInt( 5 , to.getQuantidade() );
 			 stm.execute();
 			 
+			 to.setQuantidadeEmEstoque( to.getQuantidade() );
+			 
 			 try( PreparedStatement stm2 = conn.prepareStatement("SELECT LAST_INSERT_ID()");
 				  ResultSet rs = stm2.executeQuery(); ){
 				 
@@ -47,8 +49,8 @@ public class ProdutoDAO {
 			 PreparedStatement stm = conn.prepareStatement(sqlUpdate);){
 			
 			stm.setString( 1 , to.getNome()   );
-			stm.setDouble( 2 , to.getPreco()  );
-			stm.setString( 3, to.getDescricao() );
+			stm.setString( 2, to.getDescricao() );
+			stm.setDouble( 3 , to.getPreco()  );
 			stm.setInt   ( 4 , to.getCodigo() );
 			stm.execute();
 	
@@ -86,7 +88,6 @@ public class ProdutoDAO {
 					to.setPreco( rs.getDouble("preco") );
 					to.setDescricao( rs.getString("descricao") );
 					to.setQuantidadeEmEstoque( rs.getInt("quantidade") );
-					to.setQuantidade( to.getQuantidadeEmEstoque() );
 				}
 				
 			} catch (SQLException e) {

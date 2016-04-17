@@ -43,7 +43,7 @@ public class ManterProdutoController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 	    try{
-	    	valor = Double.parseDouble(sPreco);
+	    	valor = Double.parseDouble( sPreco.replace('.', ',' ) );
 	    }catch(Exception e){
 	    	
 	    }

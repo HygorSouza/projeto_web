@@ -1,23 +1,20 @@
 package remap.controller;
 
 import java.io.IOException;
-import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import remap.model.Vendedor;
-import remap.to.ProdutoTO;
+import remap.model.Produto;
 
 /**
- * Servlet implementation class ListaDeProdutoController
+ * Servlet implementation class ExcluirProdutoController
  */
-@WebServlet("/ListaDeProduto.do")
-public class ListaDeProdutoController extends HttpServlet {
+@WebServlet("/ExcluirProduto.do")
+public class ExcluirProdutoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -31,30 +28,21 @@ public class ListaDeProdutoController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String key = request.getParameter("key");
-		int codigo = 0;
+		String sCodigo = request.getParameter("codigo");
+		int codigo = -1;
 		
 		try {
-			codigo = Integer.parseInt(key);
-		} catch (Exception e) {
+			codigo = Integer.parseInt(sCodigo);
+		} catch (NumberFormatException e) {
 			
 		}
 		
-		Vendedor vendedor = new Vendedor();
-		List<ProdutoTO> lista = null;
+		Produto produto = new Produto();
 		
+		produto.setCodigo(codigo);
+		produto.excluir();
 		
-		if( codigo > 0 ){
-			lista = vendedor.listaDeProdutos(codigo);
-		}else{
-			lista = vendedor.listaDeProdutos(key);
-		}
-		
-		request.setAttribute("lista", lista );
-		
-		RequestDispatcher view = request.getRequestDispatcher("listar_produto.jsp");
-		view.forward(request, response);
-		
+		response.setStatus(200);
 	}
 
 }
