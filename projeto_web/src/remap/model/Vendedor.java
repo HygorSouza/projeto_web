@@ -4,6 +4,7 @@ import java.util.List;
 
 import remap.dao.VendedorDAO;
 import remap.to.ClienteTO;
+import remap.to.ProdutoTO;
 
 public class Vendedor {
 	
@@ -22,5 +23,21 @@ public class Vendedor {
 		
 		return lista;
 	}
+	
+	
+	public List<ProdutoTO> listaDeProdutos(String key) {
+		VendedorDAO dao = new VendedorDAO();	
+		
+		return dao.listaDeProdutos(key);
+	
+	}
+	
+	public List<ProdutoTO> listaDeProdutos(int codigo) {
+		VendedorDAO dao = new VendedorDAO();	
+		
+		return dao.listaDeProdutos(codigo);
+	
+	}
+	
 	
 }

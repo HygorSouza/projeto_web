@@ -25,7 +25,7 @@ public class ClienteTest {
 		c.setId(  cli.getId() );
 		c.consultar();
 		
-		assertEquals("testa inclusao", c , cli );
+		assertEquals("teste consultar", c , cli );
 		cli.excluir();
 	}
 	
@@ -36,7 +36,7 @@ public class ClienteTest {
 		copia.setId( cliente.getId() );
 		copia.consultar();
 		
-		assertEquals("testa inclusao", copia , cliente );
+		assertEquals("teste inclusao", copia , cliente );
 	}
 
 	@Test
@@ -52,7 +52,7 @@ public class ClienteTest {
 		
 		copia.consultar();
 		
-		assertEquals("testa inclusao", copia, cliente);
+		assertEquals("teste atualizar", copia, cliente);
 	}
 
 	@Test
@@ -62,7 +62,7 @@ public class ClienteTest {
 		cliente.excluir();
 		cliente.consultar();
 		c.consultar();
-		assertEquals("testa inclusao", c , cliente );
+		assertEquals("teste inclusao", c , cliente );
 	}
 
 

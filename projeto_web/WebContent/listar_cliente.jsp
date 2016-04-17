@@ -50,7 +50,7 @@
 				<form name="form" action="ListaDeCliente.do" method="post">
 					<div class="col-md-6">
 						<div class="input-group h2">
-							<input type="text" name="key"  class="form-control"  required placeholder="Digite o nome do cliente" />
+							<input type="text" name="key"  class="form-control"  required placeholder="Digite o nome ou id do cliente" />
 							<span class="input-group-btn">
 			                <button id="btn" class="btn btn-primary" type="submit" >
 			                    <span class="glyphicon glyphicon-search"></span>
@@ -96,20 +96,21 @@
 			</c:if>
 		</div>
 		
+		<!--  Library jQuery -->
 		<script src="js/jquery.min.js"></script>
     	<script src="js/bootstrap.min.js"></script>
-    			<script type="text/javascript">
-                $("#delete-modal").on('show.bs.modal', function(event) {
-                    var button = $(event.relatedTarget); //botao que disparou a modal
-                    var recipient = button.data('cliente');
-                    $("#id_excluir").val(recipient);
-                });
+    	<script type="text/javascript">
+             $("#delete-modal").on('show.bs.modal', function(event) {
+                 var button = $(event.relatedTarget); //botao que disparou a modal
+  	             var recipient = button.data('cliente');
+                $("#id_excluir").val(recipient);
+             });
                 
-                $("#btn_excluir").on('click' , function(){
-                	$.post("ExcluirCliente.do?id="+( $("#id_excluir").val() ),function(response){
-                		$("#table").find("#"+( $("#id_excluir").val() ) ).hide();
-                	});
-                });
+             $("#btn_excluir").on('click' , function(){
+               	$.post("ExcluirCliente.do?id="+( $("#id_excluir").val() ),function(response){
+           		$("#table").find("#"+( $("#id_excluir").val() ) ).remove();
+               	});
+             });
         </script>
 	</body>
 </html>

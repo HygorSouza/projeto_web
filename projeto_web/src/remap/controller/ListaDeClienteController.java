@@ -44,7 +44,7 @@ public class ListaDeClienteController extends HttpServlet {
 		}
 		request.setAttribute("lista", lista );
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("pesquisar_cliente.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("listar_cliente.jsp");
 		dispatcher.forward(request, response);
 		
 	}

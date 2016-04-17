@@ -41,7 +41,7 @@
 				<div class="row">
 					<input class="btn btn-primary" type="submit" name="acao"
 						value="salvar" /> <a class="btn btn-default"
-						href="pesquisar_cliente.jsp">Cancelar</a>
+						href="listar_cliente.jsp">Cancelar</a>
 				</div>
 			</form>
 		</div>

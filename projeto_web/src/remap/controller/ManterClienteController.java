@@ -66,7 +66,8 @@ public class ManterClienteController extends HttpServlet {
 		else if( acao.equals("excluir") ){
 			cliente.setId(id);
 			cliente.excluir();
-			view = request.getRequestDispatcher("cadastro_cliente.jsp");
+			response.setStatus(200);
+			view = request.getRequestDispatcher("listar_cliente.jsp");
 		}
 		else if(  acao.equals("consultar") ){
 			cliente.setId(id);
@@ -78,7 +79,6 @@ public class ManterClienteController extends HttpServlet {
 		
 		
 		view.forward(request,response);
-		
 		
 	}
 

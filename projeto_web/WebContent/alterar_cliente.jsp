@@ -39,7 +39,7 @@
 					<div class="row">
 						<div class="form-group">
 							<input class="btn btn-primary" type="submit" name="acao" value="atualizar"/>
-							<a 	class="btn btn-default" href="pesquisar_cliente.jsp" >Cancelar</a>
+							<a 	class="btn btn-default" href="listar_cliente.jsp" >Cancelar</a>
 						</div>
 					</div>
 				

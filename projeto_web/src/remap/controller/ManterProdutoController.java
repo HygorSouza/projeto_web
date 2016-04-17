@@ -29,14 +29,16 @@ public class ManterProdutoController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String sCodigo   = request.getParameter("codigo");
-		String nome      = request.getParameter("nome");
-		String sPreco    = request.getParameter("preco");
-		String descricao = request.getParameter("descricao");
-		String acao      = request.getParameter("acao");
+		String sCodigo   	= request.getParameter("codigo");
+		String nome      	= request.getParameter("nome");
+		String sPreco    	= request.getParameter("preco");
+		String sQuantidade  = request.getParameter("quantidade");
+		String descricao 	= request.getParameter("descricao");
+		String acao      	= request.getParameter("acao");
 		
 		double valor = 0.0;
 		int codigo = -1;
+		int quantidade = 0;
 		
 		request.setCharacterEncoding("UTF-8");
 		
@@ -51,14 +53,24 @@ public class ManterProdutoController extends HttpServlet {
 	    }catch(Exception e){
 	    	
 	    }
+	    
+	    try {
+			quantidade = Integer.parseInt(sQuantidade);
+		} catch (Exception e) {
+			
+		}
 		
 		
-		Produto produto = new Produto(nome , descricao , valor);
+		Produto produto = new Produto(nome , descricao , valor , quantidade );
 		
 		if( acao.equals("salvar") ){
 			produto.salvar();
 		}
-		else if( acao.equals("atualizar") ){
+		else if( acao.equals("editar") ){
+			produto.setCodigo(codigo);
+			produto.consultar();
+			
+		}else if( acao.equals("atualizar") ){
 			produto.setCodigo(codigo);
 			produto.atualizar();
 		}else if( acao.equals("consultar") ){

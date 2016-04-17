@@ -3,19 +3,21 @@ package remap.model;
 import remap.dao.ProdutoDAO;
 import remap.to.ProdutoTO;
 
-public class Produto implements Model {
+public class Produto {
 	private int codigo;
 	private String nome  , descricao;
 	private double preco;
+	private int quantidade;
 	
 	public Produto(){}
 
-	public Produto(String nome , String descricao, double preco) {
+	public Produto(String nome , String descricao, double preco , int quantidade ) {
 		this.nome = nome;
 		this.preco = preco;
 		this.descricao = descricao;
+		this.quantidade = quantidade;
 	}
-
+	
 	public int getCodigo() {
 		return codigo;
 	}
@@ -48,7 +50,13 @@ public class Produto implements Model {
 		this.descricao = descricao;
 	}
 	
-	
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
 
 	@Override
 	public int hashCode() {
@@ -79,6 +87,7 @@ public class Produto implements Model {
 		to.setNome( getNome() );
 		to.setPreco( getPreco() );
 		to.setDescricao( getDescricao() );
+		to.setQuantidade( getQuantidade() );
 		
 		return to;
 		
@@ -92,6 +101,7 @@ public class Produto implements Model {
 		to.setNome( getNome() );
 		to.setPreco( getPreco() );
 		to.setDescricao( getDescricao() );
+		to.setQuantidade( getQuantidade() );
 		
 		setCodigo(  dao.salvar(to).getCodigo()  );
 	}
@@ -126,14 +136,8 @@ public class Produto implements Model {
 		setNome( to.getNome() );
 		setPreco( to.getPreco() );
 		setDescricao( to.getDescricao() );
+		setQuantidade( to.getQuantidade() );
 		
 		return this;
-	}
-
-	@Override
-	public int identificador() {
-		
-		return getCodigo();
-	}
-	
+	}	
 }

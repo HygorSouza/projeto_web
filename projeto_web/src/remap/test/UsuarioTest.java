@@ -23,7 +23,7 @@ public class UsuarioTest {
 		s.setId( user.getId() );
 		s.consultar();
 		
-		assertEquals("testa inclusao", user , s );
+		assertEquals("teste inclusao", user , s );
 	}
 
 	
@@ -39,7 +39,7 @@ public class UsuarioTest {
 		
 		s.consultar();
 		
-		assertEquals("testa inclusao", user , s );
+		assertEquals("teste atualizar", user , s );
 	}
 
 	@Test
@@ -51,7 +51,7 @@ public class UsuarioTest {
 		s.consultar();
 		
 		
-		assertEquals("testa consulta", user , s );
+		assertEquals("teste consulta", user , s );
 	}
 	
 	@Test
@@ -67,7 +67,7 @@ public class UsuarioTest {
 		System.out.println( user.getId() );
 		System.out.println( s.getId() );
 		
-		assertEquals("testa exclusao", user , s );
+		assertEquals("testa excluir", user , s );
 		
 		
 	}

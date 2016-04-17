@@ -12,9 +12,9 @@ public class ProdutoTest {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		produto = new Produto("test", "test", 2.00 );
+		produto = new Produto("test", "test", 2.00 , 10 );
 		produto.salvar();
-		copia = new Produto("test", "test", 2.00 );
+		copia = new Produto("test", "test", 2.00  , 10 );
 	}
 
 	@Test
@@ -23,7 +23,7 @@ public class ProdutoTest {
 		
 		copia.setCodigo(  produto.getCodigo() );
 		
-		assertEquals("testa inclusao", produto , copia );
+		assertEquals("teste inclusao", produto , copia );
 	}
 	
 	
@@ -35,7 +35,7 @@ public class ProdutoTest {
 		produto.atualizar();
 		produto.consultar();
 		
-		assertEquals("testa inclusao", copia , produto );
+		assertEquals("teste de atualizacao", copia , produto );
 	}
 
 	
@@ -48,7 +48,7 @@ public class ProdutoTest {
 		p.consultar();
 		
 		
-		assertEquals("testa inclusao", p , produto );
+		assertEquals("teste consulta", p , produto );
 	}
 	
 	@Test
@@ -59,7 +59,7 @@ public class ProdutoTest {
 		produto.excluir();
 		produto.consultar();
 		
-		assertEquals("testa inclusao", p , produto );
+		assertEquals("teste para excluir produto", p , produto );
 	}
 
 }

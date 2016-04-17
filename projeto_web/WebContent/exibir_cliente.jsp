@@ -26,9 +26,11 @@
                             Deseja realmente excluir este cliente?
                         </div>
                         <div class="modal-footer">
+                        	<form action="ManterCliente.do" method="post" >
                                 <input type="hidden" name="id" id="id_excluir" />
-                                <button id="btn_excluir" type="button" class="btn btn-primary" name="acao" value="excluir">Sim</button>
+                                <button id="btn_excluir" type="submit" class="btn btn-primary" name="acao" value="excluir">Sim</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -41,33 +43,36 @@
 		<div class="container">
 			<input name="id" type="hidden" value="${cliente.id}" />
 			
-			<div class="row">
-				<div>
-					<h2>Cliente #${cliente.id}</h2>
+			<div class="jumbotron">
+				
+				<div class="row">
+					<div>
+						<h2>Cliente #${cliente.id}</h2>
+					</div>
+					
+					<div class="col-md-12" >
+						<div>
+							<label> <strong>Nome</strong> </label> 
+							<label>${cliente.nome}</label>
+						</div>
+					</div>
+					
+					<div class="col-md-12" >
+						<div>
+							<label> <strong>Fone</strong> </label> 
+							<label>${cliente.fone}</label>
+						</div>
+					</div>
+					
 				</div>
 				
-				<div class="col-md-12" >
-					<div>
-						<label> <strong>Nome</strong> </label> 
-						<label>${cliente.nome}</label>
-					</div>
-				</div>
-				
-				<div class="col-md-12" >
-					<div>
-						<label> <strong>Fone</strong> </label> 
-						<label>${cliente.fone}</label>
-					</div>
+				<div class="row">
+					<a class="btn btn-primary" href="ManterCliente.do?acao=editar&id=${cliente.id}" >Editar</a>
+					<button id="btn${cliente.id}" type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal" data-cliente="${cliente.id}">Excluir</button>
+					<a class="btn btn-default" href="listar_cliente.jsp" >Voltar</a>
 				</div>
 				
 			</div>
-			
-			<div class="row">
-				<a class="btn btn-primary" href="ManterCliente.do?acao=editar&id=${cliente.id}" >Editar</a>
-				<button id="btn${cliente.id}" type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal" data-cliente="${cliente.id}">Excluir</button>
-				<a class="btn btn-default" href="pesquisar_cliente.jsp" >Cancelar</a>
-			</div>
-			
 		</div>
 		
 		<script src="js/jquery.min.js"></script>
@@ -77,10 +82,6 @@
                     var button = $(event.relatedTarget); //botao que disparou a modal
                     var recipient = button.data('cliente');
                     $("#id_excluir").val(recipient);
-                });
-                
-                $("#btn_excluir").on('click' , function(){
-                	$.post("");
                 });
         </script>
 	</body>

@@ -18,7 +18,8 @@ CREATE TABLE tb_produto(
 	cod_produto    SMALLINT UNSIGNED AUTO_INCREMENT,
     nome_produto   VARCHAR(50) NOT NULL,
     preco          DECIMAL(10,2) NOT NULL,
-    descricao      VARCHAR(200) NOT NULL,
+    descricao      VARCHAR(200) NULL ,
+    quantidade     SMALLINT UNSIGNED NOT NULL,
     
     CONSTRAINT pk_produto PRIMARY KEY(cod_produto)
 );
@@ -83,3 +84,5 @@ CREATE TABLE tb_produto(
 );
 
 */
+
+USE remapbd_web;

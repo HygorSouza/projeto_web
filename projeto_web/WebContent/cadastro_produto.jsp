@@ -8,7 +8,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	
+		
+		<!-- Bootstrap -->
 	    <link href="css/bootstrap.min.css" rel="stylesheet"/>
 	   	<link href="css/style.css" rel="stylesheet"/>
 	</head>
@@ -34,11 +35,17 @@
 						</div>
 					</div>
 					
+					<div class="form-group col-md-6">
+						<div class="input-group" >
+							<span class="input-group-addon" >Quantidade</span>
+							<input type="text" name="quantidade" required class="form-control" />
+						</div>
+					</div>
 					
 					<div class="form-group col-md-12">
 						<div class="input-group">
 							<span class="input-group-addon">Descricao</span> 
-							<textarea name="descricao"  required class="form-control"  ></textarea>
+							<textarea name="descricao" class="form-control"  ></textarea>
 						</div>
 					</div>
 				</div>
@@ -47,6 +54,8 @@
 				
 			</form>
 		</div>
+		
+		<!-- library JQuery -->
 		<script src="js/jquery.min.js"></script>
 	    <script src="js/bootstrap.min.js"></script>
 	</body>
