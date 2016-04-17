@@ -14,10 +14,10 @@
 </head>
 <body>
 	<!-- Barra superior com os menus de navegação -->
-	<c:import url="navbar-default.jsp"/>
+	<%@ include file="menu.jsp" %>
 
 	<div class="container">
-		<div class="jumbotron">
+		<div class="">
 			<h3 class="">Cadastro de clientes</h3>
 			<form  action="ManterCliente.do" method="post">
 				<div class="row">

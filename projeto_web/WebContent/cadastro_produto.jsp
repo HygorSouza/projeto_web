@@ -50,7 +50,7 @@
 					</div>
 				</div>
 				<input type="submit" name="acao" value="salvar" class="btn btn-primary" />
-				<a href="#" class="btn btn-default" >Cancelar</a>
+				<a href="listar_produto.jsp" class="btn btn-default" >Cancelar</a>
 				
 			</form>
 		</div>

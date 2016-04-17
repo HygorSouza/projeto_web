@@ -14,7 +14,27 @@
 	<link href="css/style.css" rel="stylesheet" />
 </head>
 <body>
-
+		<!-- Modal -->
+        <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+             <div class="modal-dialog" role="document">
+                 <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span>
+                           </button>
+                           <h4 class="modal-title" id="modalLabel">Excluir Cliente</h4>
+                    </div>
+                    <div class="modal-body">
+                        Deseja realmente excluir este cliente?
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="id" id="id_excluir" />
+                            <button id="btn_excluir" type="button" class="btn btn-primary" data-dismiss="modal" >Sim</button>
+                            <button  type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+                        </div>
+                  </div>
+              </div>
+         </div>
+         <!-- /.modal -->
 
 	<!-- menu navegação -->
 	<%@ include file="menu.jsp" %>
@@ -80,5 +100,18 @@
 	<!-- library JQuery -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+    	<script type="text/javascript">
+             $("#delete-modal").on('show.bs.modal', function(event) {
+                 var button = $(event.relatedTarget); //botao que disparou a modal
+  	             var recipient = button.data('produto');
+                $("#id_excluir").val(recipient);
+             });
+                
+             $("#btn_excluir").on('click' , function(){
+               	$.post("ExcluirProduto.do?codigo="+( $("#id_excluir").val() ),function(response){
+           		$("#table").find("#"+( $("#id_excluir").val() ) ).remove();
+               	});
+             });
+        </script>
 </body>
 </html>

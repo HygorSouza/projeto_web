@@ -17,7 +17,7 @@
 	<c:import url="navbar-default.jsp"/>
 	
 	<div class="container">
-		<div class="jumbotron">
+		<div class="">
 		
 			<h3>Item # ${produto.codigo}</h3>
 		

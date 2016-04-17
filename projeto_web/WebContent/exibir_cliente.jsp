@@ -43,7 +43,7 @@
 		<div class="container">
 			<input name="id" type="hidden" value="${cliente.id}" />
 			
-			<div class="jumbotron">
+			<div class="">
 				
 				<div class="row">
 					<div>

@@ -16,7 +16,6 @@
 		<!-- Barra superior com os menus de navegação -->
 		<%@ include file="menu.jsp" %>
 		
-		
 		<div class="container">
 			<form action="ManterCliente.do" method="post">
 				<input name="id" type="hidden" value="${cliente.id}"/>

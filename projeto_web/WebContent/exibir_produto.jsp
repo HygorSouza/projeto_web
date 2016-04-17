@@ -16,9 +16,12 @@
 	<%@ include file="menu.jsp" %>
 
 	<div class="container" >
-		<div class="jumbotron">
-			
-			
+		<div class="">	
+			<div class="row">
+				
+				
+				
+			</div>
 		</div>
 	</div>
 
