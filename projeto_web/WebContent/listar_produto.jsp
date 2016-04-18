@@ -80,7 +80,7 @@
 				</thead>
 				<tbody>
 					<c:forEach var="produto" items="${lista}">
-						<tr id="${produto.codigo}">
+						<tr id="${produto.codigo}" class="" >
 							<td>${produto.codigo}</td>
 							<td>${produto.nome}</td>
 							<td>${produto.preco}</td>

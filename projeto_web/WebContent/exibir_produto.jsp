@@ -41,16 +41,18 @@
 
 	<div class="container">
 		<div class="">
-			<h3>Item # ${produto.codigo}</h3>
-
+			<div class="page-header">
+				<h3>Item # ${produto.codigo}</h3>
+			</div>
+			
 			<div class="row">
-				<label></label>
-
+				<label class="col-sm-1"><span>Nome:</span></label>
+				<label class="col-md-11">${produto.nome}</label>
 
 			</div>
 			
-		    <div class="row">
-				<a class="btn btn-primary" href="ManterProduto.do?acao=editar&codigo=${produto.codigo}" >Editar</a>
+		    <div class="row col-md-12">
+				<a class="btn btn-primary " href="ManterProduto.do?acao=editar&codigo=${produto.codigo}" >Editar</a>
 				<button id="btn${produto.codigo}" type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal" data-produto="${produto.codigo}">Excluir</button>
 				<a class="btn btn-default" href="listar_produto.jsp" >Voltar</a>
 		    </div>

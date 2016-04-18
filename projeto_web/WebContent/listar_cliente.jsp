@@ -79,10 +79,16 @@
 					</thead>
 					<tbody>
 						<c:forEach var="cliente" items="${lista}" >
-							<tr id="${cliente.id}">
+							<tr id="${cliente.id}" class="">
 								<td>${cliente.id}</td>
 								<td>${cliente.nome}</td>
-								<td>${cliente.fone}</td>
+								<c:if test="${not empty cliente.fone}">
+									<td>${cliente.fone}</td>
+								</c:if>
+								<c:if test="${empty cliente.fone}">
+									<td >Não informado</td>
+								</c:if>
+								
 								<td class="actions">
 									<a class="btn btn-default btn-xs" href="ManterCliente.do?acao=consultar&id=${cliente.id}" >Visualizar</a>
 									<a class="btn btn-primary btn-xs" href="ManterCliente.do?acao=editar&id=${cliente.id}" >Editar</a>

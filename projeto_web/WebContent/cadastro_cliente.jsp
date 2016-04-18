@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"  pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <!DOCTYPE html>
 <html>
@@ -18,7 +17,7 @@
 
 	<div class="container">
 		<div class="">
-			<h3 class="">Cadastro de clientes</h3>
+			<h3 class="page-header">Cadastro de clientes</h3>
 			<form  action="ManterCliente.do" method="post">
 				<div class="row">
 					
@@ -35,13 +34,12 @@
 								<input type="text" name="fone" class="form-control" />
 							</div>
 						</div>
-				
-				</div>
-				
-				<div class="row">
-					<input class="btn btn-primary" type="submit" name="acao"
-						value="salvar" /> <a class="btn btn-default"
-						href="listar_cliente.jsp">Cancelar</a>
+						
+						<div class="form-group col-md-12">
+							<input class="btn btn-primary" type="submit" name="acao" value="salvar" /> 
+							<a class="btn btn-default" href="listar_cliente.jsp">Cancelar</a>
+						</div>
+		
 				</div>
 			</form>
 		</div>

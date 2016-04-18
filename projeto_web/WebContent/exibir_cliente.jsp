@@ -46,30 +46,35 @@
 			<div class="">
 				
 				<div class="row">
-					<div>
-						<h2>Cliente #${cliente.id}</h2>
+					<div class="page-header" >
+						<h3> Cliente #${cliente.id} </h3>
 					</div>
 					
 					<div class="col-md-12" >
 						<div>
-							<label> <strong>Nome</strong> </label> 
-							<label>${cliente.nome}</label>
+							<label class="col-sm-1"> <strong>Nome</strong> </label> 
+							<label >${cliente.nome}</label>
 						</div>
 					</div>
 					
 					<div class="col-md-12" >
-						<div>
-							<label> <strong>Fone</strong> </label> 
-							<label>${cliente.fone}</label>
+						<div class="">
+							<label class="col-sm-1"> <strong>Fone</strong> </label>
+							<c:if test="${not empty cliente.fone}"> 
+								<label>${cliente.fone}</label>
+							</c:if>
+							<c:if test="${empty cliente.fone}">
+								<label>não informado </label>
+							</c:if>
 						</div>
 					</div>
 					
 				</div>
 				
-				<div class="row">
-					<a class="btn btn-primary" href="ManterCliente.do?acao=editar&id=${cliente.id}" >Editar</a>
-					<button id="btn${cliente.id}" type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal" data-cliente="${cliente.id}">Excluir</button>
-					<a class="btn btn-default" href="listar_cliente.jsp" >Voltar</a>
+				<div class="row col-md-12">
+					<a class="btn btn-primary btn-xs" href="ManterCliente.do?acao=editar&id=${cliente.id}" >Editar</a>
+					<button class="btn btn-danger btn-xs" id="btn${cliente.id}" type="button" data-toggle="modal" data-target="#delete-modal" data-cliente="${cliente.id}">Excluir</button>
+					<a class="btn btn-default btn-xs" href="listar_cliente.jsp" >Voltar</a>
 				</div>
 				
 			</div>
