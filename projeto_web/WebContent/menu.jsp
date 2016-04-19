@@ -13,7 +13,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="listar_cliente.jsp">Cliente</a>
+                    <li><a href="ListaDeCliente.do?acao=reiniciar">Cliente</a>
                     </li>
                     <li><a href="listar_produto.jsp">Produto</a>
                     </li>

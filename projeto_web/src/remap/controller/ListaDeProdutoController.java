@@ -31,26 +31,25 @@ public class ListaDeProdutoController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String key = request.getParameter("key");
-		int codigo = 0;
-		
-		try {
-			codigo = Integer.parseInt(key);
-		} catch (Exception e) {
-			
-		}
+		String key  = request.getParameter("key");
+		String acao = request.getParameter("acao");
 		
 		Vendedor vendedor = new Vendedor();
 		List<ProdutoTO> lista = null;
 		
 		
-		if( codigo > 0 ){
-			lista = vendedor.listaDeProdutos(codigo);
-		}else{
-			lista = vendedor.listaDeProdutos(key);
+		if( acao.equals("buscar") ){		
+			if( key != null  && key.length() > 0 ){
+				lista = vendedor.listaDeProdutos(key);
+			}else{
+				lista = vendedor.listaDeProdutos();
+			}
+			request.setAttribute("listaProduto", lista );
+		}
+		else if( acao.equals("reiniciar") ){
+			request.setAttribute("listaProduto", null );
 		}
 		
-		request.setAttribute("lista", lista );
 		
 		RequestDispatcher view = request.getRequestDispatcher("listar_produto.jsp");
 		view.forward(request, response);

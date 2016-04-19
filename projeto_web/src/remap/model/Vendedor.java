@@ -2,22 +2,23 @@ package remap.model;
 
 import java.util.List;
 
-import remap.dao.VendedorDAO;
+import remap.dao.ClienteDAO;
+import remap.dao.ProdutoDAO;
 import remap.to.ClienteTO;
 import remap.to.ProdutoTO;
 
 public class Vendedor {
 	
-	public List<ClienteTO> listaDeClientes(int idCliente){
-		VendedorDAO dao = new VendedorDAO();
+	public List<ClienteTO> listaDeClientes(){
+		ClienteDAO dao = new ClienteDAO();
 		
-		List<ClienteTO> lista = dao.listaDeClientes(idCliente);
+		List<ClienteTO> lista = dao.listaDeClientes();
 		
 		return lista;
 	}
 	
 	public List<ClienteTO> listaDeClientes(String key){
-		VendedorDAO dao = new VendedorDAO();
+		ClienteDAO dao = new ClienteDAO();
 		
 		List<ClienteTO> lista = dao.listaDeClientes(key);
 		
@@ -26,16 +27,16 @@ public class Vendedor {
 	
 	
 	public List<ProdutoTO> listaDeProdutos(String key) {
-		VendedorDAO dao = new VendedorDAO();	
-		
-		return dao.listaDeProdutos(key);
+		ProdutoDAO dao = new ProdutoDAO();	
+		List<ProdutoTO> lista = dao.listaDeProdutos(key);
+		return lista;
 	
 	}
 	
-	public List<ProdutoTO> listaDeProdutos(int codigo) {
-		VendedorDAO dao = new VendedorDAO();	
-		
-		return dao.listaDeProdutos(codigo);
+	public List<ProdutoTO> listaDeProdutos() {
+		ProdutoDAO dao = new ProdutoDAO();	
+		List<ProdutoTO> lista = dao.listaDeProdutos();
+		return lista;
 	
 	}
 	

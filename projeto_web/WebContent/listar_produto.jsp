@@ -50,9 +50,9 @@
 			<form name="form" action="ListaDeProduto.do" method="post">
 				<div class="col-md-6">
 					<div class="input-group h2">
-						<input type="text" name="key" class="form-control" required placeholder="Digite o nome ou codigo do produto" /> 
+						<input type="text" name="key" class="form-control" placeholder="Digite o nome do produto" /> 
 						<span class="input-group-btn">
-							<button id="btn" class="btn btn-primary" type="submit">
+							<button id="btn" class="btn btn-primary"  type="submit" name="acao" value="buscar">
 								<span class="glyphicon glyphicon-search"></span>
 							</button>
 						</span>
@@ -65,7 +65,7 @@
 			</div>
 		</div>
 
-		<c:if test="${not empty lista }">
+		<c:if test="${not empty listaProduto }">
 
 			<hr />
 			<table id="table" class="table table-responsive table-hover">
@@ -79,7 +79,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="produto" items="${lista}">
+					<c:forEach var="produto" items="${listaProduto}">
 						<tr id="${produto.codigo}" class="" >
 							<td>${produto.codigo}</td>
 							<td>${produto.nome}</td>
@@ -111,7 +111,7 @@
                 
              $("#btn_excluir").on('click' , function(){
                	$.post("ExcluirProduto.do?codigo="+( $("#id_excluir").val() ),function(response){
-           		$("#table").find("#"+( $("#id_excluir").val() ) ).remove();
+           			$("#table").find("#"+( $("#id_excluir").val() ) ).remove();
                	});
              });
         </script>

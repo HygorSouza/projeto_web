@@ -5,10 +5,10 @@ import java.util.List;
 
 import remap.to.ProdutoTO;
 
-public class ItensDaVenda {
+public class Carinho {
 	List<ProdutoTO> itens ;
 	
-	public ItensDaVenda(){
+	public Carinho(){
 		this.itens = new ArrayList<ProdutoTO>();
 	}
 	

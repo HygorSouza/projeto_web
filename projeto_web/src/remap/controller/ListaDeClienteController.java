@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import remap.model.Vendedor;
 import remap.to.ClienteTO;
@@ -24,25 +25,27 @@ public class ListaDeClienteController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String key = request.getParameter("key");
-		int idCliente = 0;
+		String key  = request.getParameter("key");
+		String acao = request.getParameter("acao");
 		
-		try{
-			idCliente = Integer.parseInt(key);
-		}catch(NumberFormatException e){
-			
-		}
+		HttpSession session = request.getSession();
+
 		
 		Vendedor vendedor = new Vendedor();
 		List<ClienteTO> lista = null;
 		
-		if( idCliente > 0 ){
-			lista = vendedor.listaDeClientes(idCliente);
-		}else{
-			
-			lista = vendedor.listaDeClientes(key);
+		if( acao.equals("buscar") ){
+			if( key != null && key.length() > 0 ){
+				lista = vendedor.listaDeClientes();
+			}else{
+				
+				lista = vendedor.listaDeClientes(key);
+			}
+			session.setAttribute("listaCliente", lista );
+		
+		}else if( acao.equals("reiniciar") ){
+			session.setAttribute("listaCliente", null );
 		}
-		request.setAttribute("lista", lista );
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("listar_cliente.jsp");
 		dispatcher.forward(request, response);

@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
+import java.util.List;
 
 import remap.factory.ConnectionFactory;
 import remap.to.ProdutoTO;
@@ -101,6 +103,73 @@ public class ProdutoDAO {
 		}
 		
 		return to;
+	}
+	
+	
+	public List<ProdutoTO> listaDeProdutos(String key) {
+		List<ProdutoTO> lista = new ArrayList<ProdutoTO>();
+		String sqlSelect = "SELECT * FROM tb_produto WHERE UPPER(nome_produto) LIKE ?";
+		ProdutoTO to;
+		
+		try (Connection conn = ConnectionFactory.getConnection();
+				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+				stm.setString( 1, key.toUpperCase()+"%" );
+			try (ResultSet rs = stm.executeQuery();) {
+
+				while(rs.next()) {
+					to  = new ProdutoTO();
+					to.setCodigo(  rs.getInt("cod_produto"));
+					to.setNome(rs.getString("nome_produto"));
+					to.setPreco(rs.getDouble("preco"));
+					to.setDescricao(rs.getString("descricao"));
+					to.setQuantidadeEmEstoque( rs.getInt("quantidade") );
+					
+					lista.add(to);
+				}
+
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return lista;
+	}
+	
+	public List<ProdutoTO> listaDeProdutos(){
+		List<ProdutoTO> lista = new ArrayList<ProdutoTO>(); 
+		String sqlSelect = "SELECT * FROM tb_produto";
+		ProdutoTO to;
+		try( Connection conn = ConnectionFactory.getConnection() ;
+			 PreparedStatement stm = conn.prepareStatement(sqlSelect);){
+			
+			try(ResultSet rs = stm.executeQuery() ;){
+				
+				while( rs.next() ){
+					to = new ProdutoTO();
+					to.setCodigo( rs.getInt("cod_produto") );
+					to.setNome(  rs.getString("nome_produto") );
+					to.setPreco( rs.getDouble("preco") );
+					to.setDescricao( rs.getString("descricao") );
+					to.setQuantidadeEmEstoque( rs.getInt("quantidade") );
+					
+					lista.add(to);
+				}
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+		
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return lista;
 	}
 	
 }

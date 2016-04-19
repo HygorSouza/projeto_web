@@ -28,10 +28,12 @@
                         Deseja realmente excluir este cliente?
                     </div>
                     <div class="modal-footer">
-                        <input type="hidden" name="id" id="id_excluir" />
-                            <button id="btn_excluir" type="button" class="btn btn-primary" data-dismiss="modal" >Sim</button>
+                    	<form action="ManterCliente.do" method="post">
+                        	<input type="hidden" name="id" id="id_excluir" />
+                            <button name="acao" id="btn_excluir" type="submit" class="btn btn-primary" value="excluir" >Sim</button>
                             <button  type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
-                        </div>
+                    	</form>
+                    </div>
                   </div>
               </div>
          </div>
@@ -47,12 +49,12 @@
 					<h2>Cliente</h2>
 				</div>
 				
-				<form name="form" action="ListaDeCliente.do" method="post">
+				<form action="ListaDeCliente.do" method="post">
 					<div class="col-md-6">
 						<div class="input-group h2">
-							<input type="text" name="key"  class="form-control"  required placeholder="Digite o nome ou id do cliente" />
+							<input type="text" name="key"  class="form-control" placeholder="Digite o nome do cliente" />
 							<span class="input-group-btn">
-			                <button id="btn" class="btn btn-primary" type="submit" >
+			                <button id="btn" class="btn btn-primary" type="submit" name="acao" value="buscar" >
 			                    <span class="glyphicon glyphicon-search"></span>
 			                </button>
 		            		</span>
@@ -65,7 +67,7 @@
 				</div>	
 			</div>
 			
-			<c:if test="${not empty lista }" >
+			<c:if test="${not empty listaCliente }" >
 			
 				<hr/>		
 				<table id="table" class="table table-responsive table-hover">
@@ -78,8 +80,8 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="cliente" items="${lista}" >
-							<tr id="${cliente.id}" class="">
+						<c:forEach var="cliente" items="${listaCliente}" >
+							<tr >
 								<td>${cliente.id}</td>
 								<td>${cliente.nome}</td>
 								<c:if test="${not empty cliente.fone}">
@@ -110,12 +112,6 @@
                  var button = $(event.relatedTarget); //botao que disparou a modal
   	             var recipient = button.data('cliente');
                 $("#id_excluir").val(recipient);
-             });
-                
-             $("#btn_excluir").on('click' , function(){
-               	$.post("ExcluirCliente.do?id="+( $("#id_excluir").val() ),function(response){
-           		$("#table").find("#"+( $("#id_excluir").val() ) ).remove();
-               	});
              });
         </script>
 	</body>

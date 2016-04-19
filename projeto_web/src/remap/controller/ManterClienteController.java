@@ -1,6 +1,8 @@
 package remap.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,8 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import remap.model.Cliente;
+import remap.to.ClienteTO;
 
 /**
  * Servlet implementation class ManterClienteController
@@ -51,7 +55,14 @@ public class ManterClienteController extends HttpServlet {
 		
 		if( acao.equals("salvar") ){
 			cliente.salvar();
-			view = request.getRequestDispatcher("ListaDeCliente.do?key="+cliente.getId() );
+			
+			HttpSession session = request.getSession();
+			
+			List<ClienteTO> list = new ArrayList<ClienteTO>();
+			list.add( cliente.geraTO() );
+			
+			session.setAttribute("listaCliente", list );
+			view = request.getRequestDispatcher("listar_cliente.jsp");
 		}
 		else if( acao.equals("atualizar") ){
 			cliente.setId(id);
@@ -66,7 +77,24 @@ public class ManterClienteController extends HttpServlet {
 		else if( acao.equals("excluir") ){
 			cliente.setId(id);
 			cliente.excluir();
-			response.setStatus(200);
+			
+			HttpSession session = request.getSession();
+			@SuppressWarnings("unchecked")
+			List<ClienteTO> list = (List<ClienteTO>) session.getAttribute("listaCliente");
+			
+			ClienteTO to;
+			for(int i = 0 ; i < list.size(); i++ ){
+				to = list.get(i);
+				
+				if( to.getId() == cliente.getId() ){
+					list.remove(i);
+					break;
+				}
+				
+			}
+			
+			session.setAttribute("listaCliente", list );
+			
 			view = request.getRequestDispatcher("listar_cliente.jsp");
 		}
 		else if(  acao.equals("consultar") ){
