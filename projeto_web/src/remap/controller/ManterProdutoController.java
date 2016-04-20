@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import remap.model.Produto;
 
@@ -68,7 +67,7 @@ public class ManterProdutoController extends HttpServlet {
 		
 		if( acao.equals("salvar") ){
 			produto.salvar();
-			view = request.getRequestDispatcher("ListaDeProduto.do?key="+produto.getCodigo() );
+			view = request.getRequestDispatcher("ListaDeProduto.do?key="+produto.getNome()+"acao=buscar" );
 			
 		}else if( acao.equals("editar") ){
 			produto.setCodigo(codigo);
@@ -78,7 +77,7 @@ public class ManterProdutoController extends HttpServlet {
 		}else if( acao.equals("atualizar") ){
 			produto.setCodigo(codigo);
 			produto.atualizar();
-			view = request.getRequestDispatcher("ListaDeProduto.do?key="+produto.getCodigo() );
+			view = request.getRequestDispatcher("ListaDeProduto.do?key="+produto.getNome()+"acao=buscar" );
 			
 		}else if( acao.equals("consultar") ){
 			produto.setCodigo(codigo);
@@ -89,7 +88,7 @@ public class ManterProdutoController extends HttpServlet {
 			produto.setCodigo(codigo);
 			produto.excluir();
 			
-			HttpSession session = request.getSession();
+			//HttpSession session = request.getSession();
 			
 			
 			view = request.getRequestDispatcher("listar_produto.jsp");
