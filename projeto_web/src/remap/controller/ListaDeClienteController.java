@@ -25,6 +25,8 @@ public class ListaDeClienteController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
 		String key  = request.getParameter("key");
 		String acao = request.getParameter("acao");
 		

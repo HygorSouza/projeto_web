@@ -1,0 +1,7 @@
+		<!-- jQuery-ui  css-->
+		<link href="jquery/jquery-ui/jquery-ui.css" rel="stylesheet">
+
+		// precisa do framework jQuery para funcionar
+    	
+    	<!--  library jQuery-ui -->
+    	<script src="jquery/jquery-ui/jquery-ui.js"></script>

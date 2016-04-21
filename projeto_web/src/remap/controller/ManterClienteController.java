@@ -35,6 +35,8 @@ public class ManterClienteController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		String sId  = request.getParameter("id");
 		String nome = request.getParameter("nome");
 		String fone = request.getParameter("fone");
@@ -42,7 +44,7 @@ public class ManterClienteController extends HttpServlet {
 		
 		int id = -1;
 		
-		request.setCharacterEncoding("UTF-8");
+		
 		
 		try {
 			id = Integer.parseInt(sId);
