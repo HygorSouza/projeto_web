@@ -6,6 +6,7 @@ import java.util.List;
 import remap.to.ProdutoTO;
 
 public class Carrinho {
+
 	List<ProdutoTO> itens ;
 	
 	public Carrinho(){
@@ -16,16 +17,24 @@ public class Carrinho {
 		return itens;
 	}
 	
+	public int size(){
+		return itens.size();
+	}
+	
 	public void add( ProdutoTO to ){
 		int indece = buscar( to.getCodigo() );
+		
 		if( indece >= 0 ){
-			juntarProdutoParecido( to , indece );
+			
+			if( to.getQuantidade() > 0 )
+				juntarProdutoParecido( to , indece );
 		}
 		else{
+			
 			int qtd        = to.getQuantidade();
 			int qtdEstoque = to.getQuantidadeEmEstoque();
 			
-			if( qtd <= qtdEstoque ){
+			if( qtd <= qtdEstoque && qtd > 0 ){
 				itens.add(to);
 			}
 		}
@@ -33,6 +42,7 @@ public class Carrinho {
 	
 	public void remove( int codigo ){
 		int indece = buscar( codigo );
+		
 		if( indece >= 0 ){
 			this.itens.remove(indece);
 		}
@@ -47,8 +57,8 @@ public class Carrinho {
 			
 			if( qtd < qtdEstoque && qtd >= 0 ){
 				
-				ProdutoTO outro = itens.get(indece);
-				itens.get(indece).setQuantidade( outro.getQuantidade() - to.getQuantidade() );
+				ProdutoTO mesmoProduto = itens.get(indece);
+				itens.get(indece).setQuantidade( mesmoProduto.getQuantidade() - to.getQuantidade() );
 				
 			}else if( qtd == qtdEstoque ){
 			
@@ -63,10 +73,10 @@ public class Carrinho {
 		ProdutoTO outro = this.itens.get(indece);
 		int quantidadeTO    = to.getQuantidade();
 		int quantidadeOutro = outro.getQuantidade();
-		int novaQtd = quantidadeOutro + quantidadeTO;
+		int novaQuantidade = quantidadeOutro + quantidadeTO;
 
-		if( novaQtd <= to.getQuantidadeEmEstoque() ){
-			this.itens.get(indece).setQuantidade(novaQtd);
+		if( novaQuantidade <= to.getQuantidadeEmEstoque() ){
+			this.itens.get(indece).setQuantidade(novaQuantidade);
 		}
 	}
 	
@@ -82,5 +92,13 @@ public class Carrinho {
 		return -1;
 	}
 	
+	public double valorTotal(){
+		double preco = 0.0;
+		
+		for(ProdutoTO to:itens)
+			preco += to.getPreco();
+			
+		return preco;
+	}
 	
 }

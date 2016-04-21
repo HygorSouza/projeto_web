@@ -26,11 +26,13 @@
                     <div class="modal-body">
                         Deseja realmente excluir este Item?
                     </div>
-                    <div class="modal-footer">
-                        <input type="hidden" name="id" id="id_excluir" />
-                            <button id="btn_excluir" type="button" class="btn btn-primary" data-dismiss="modal" >Sim</button>
-                            <button  type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
-                        </div>
+                    	<form action="ManterProduto.do" method="post">
+                   			<div class="modal-footer">
+	                        	<input type="hidden" name="id" id="id_excluir" />
+	                            <button id="btn_excluir" type="submit" class="btn btn-primary" >Sim</button>
+	                            <button  type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+	                        </div>
+                        </form>
                   </div>
               </div>
          </div>

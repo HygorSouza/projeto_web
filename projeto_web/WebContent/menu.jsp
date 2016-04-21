@@ -15,7 +15,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="ListaDeCliente.do?acao=reiniciar">Cliente</a>
                     </li>
-                    <li><a href="listar_produto.jsp">Produto</a>
+                    <li><a href="ListaDeProduto.do?acao=reiniciar">Produto</a>
                     </li>
                     <li><a href="tela_venda.jsp">Venda</a>
                     </li>

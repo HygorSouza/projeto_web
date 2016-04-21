@@ -67,7 +67,24 @@ public class ManterClienteController extends HttpServlet {
 		else if( acao.equals("atualizar") ){
 			cliente.setId(id);
 			cliente.atualizar();
-			view = request.getRequestDispatcher("ListaDeCliente.do?key="+cliente.getId() );
+			
+			HttpSession session = request.getSession();
+			List<ClienteTO> list = ( List<ClienteTO> ) session.getAttribute("listaCliente");
+			
+			ClienteTO to;
+			for(int i = 0 ; i < list.size(); i++ ){
+				to = list.get(i);
+				
+				if( to.getId() == cliente.getId() ){
+					to.setNome( cliente.getNome() );
+					to.setFone( cliente.getFone() );
+					break;
+				}
+			}
+			
+			session.setAttribute("listaCliente", list);
+			
+			view = request.getRequestDispatcher("ListaDeCliente.do");
 		}
 		else if( acao.equals("editar") ){
 			cliente.setId(id);
@@ -79,7 +96,7 @@ public class ManterClienteController extends HttpServlet {
 			cliente.excluir();
 			
 			HttpSession session = request.getSession();
-			@SuppressWarnings("unchecked")
+			
 			List<ClienteTO> list = (List<ClienteTO>) session.getAttribute("listaCliente");
 			
 			ClienteTO to;

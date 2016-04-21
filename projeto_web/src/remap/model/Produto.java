@@ -19,6 +19,10 @@ public class Produto {
 		this.quantidade = quantidade;
 	}
 	
+	public Produto(int codigo) {
+		this.codigo = codigo;
+	}
+
 	public int getCodigo() {
 		return codigo;
 	}
@@ -145,7 +149,6 @@ public class Produto {
 		setNome( to.getNome() );
 		setPreco( to.getPreco() );
 		setDescricao( to.getDescricao() );
-		setQuantidade( to.getQuantidade() );
 		setQuantidadeEmEstoque( to.getQuantidadeEmEstoque() );
 		
 		return this;

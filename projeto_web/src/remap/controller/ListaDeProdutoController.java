@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import remap.model.Vendedor;
 import remap.to.ProdutoTO;
@@ -37,6 +38,7 @@ public class ListaDeProdutoController extends HttpServlet {
 		Vendedor vendedor = new Vendedor();
 		List<ProdutoTO> lista = null;
 		
+		HttpSession session = request.getSession();
 		
 		if( acao.equals("buscar") ){		
 			if( key != null  && key.length() > 0 ){
@@ -44,10 +46,10 @@ public class ListaDeProdutoController extends HttpServlet {
 			}else{
 				lista = vendedor.listaDeProdutos();
 			}
-			request.setAttribute("listaProduto", lista );
+			session.setAttribute("listaProduto", lista );
 		}
 		else if( acao.equals("reiniciar") ){
-			request.setAttribute("listaProduto", null );
+			session.setAttribute("listaProduto", null );
 		}
 		
 		

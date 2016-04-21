@@ -36,10 +36,10 @@ public class ListaDeClienteController extends HttpServlet {
 		
 		if( acao.equals("buscar") ){
 			if( key != null && key.length() > 0 ){
-				lista = vendedor.listaDeClientes();
+				lista = vendedor.listaDeClientes(key);
 			}else{
 				
-				lista = vendedor.listaDeClientes(key);
+				lista = vendedor.listaDeClientes();
 			}
 			session.setAttribute("listaCliente", lista );
 		

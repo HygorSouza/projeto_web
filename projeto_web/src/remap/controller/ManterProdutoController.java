@@ -1,6 +1,8 @@
 package remap.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,8 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import remap.model.Produto;
+import remap.to.ProdutoTO;
 
 /**
  * Servlet implementation class ManterProdutoController
@@ -29,6 +33,8 @@ public class ManterProdutoController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
 		String sCodigo   	= request.getParameter("codigo");
 		String nome      	= request.getParameter("nome");
 		String sPreco    	= request.getParameter("preco");
@@ -36,14 +42,15 @@ public class ManterProdutoController extends HttpServlet {
 		String descricao 	= request.getParameter("descricao");
 		String acao      	= request.getParameter("acao");
 		
-		double valor = 0.0;
+		double preco = 0.0;
 		int codigo = -1;
 		int quantidade = 0;
 		
-		request.setCharacterEncoding("UTF-8");
+		
 		
 	    try{
-	    	valor = Double.parseDouble( sPreco.replace('.', ',' ) );
+	    	preco = Double.parseDouble( sPreco.replace(',', '.' ) );
+	    	
 	    }catch(Exception e){
 	    	
 	    }
@@ -61,38 +68,79 @@ public class ManterProdutoController extends HttpServlet {
 		}
 		
 		
-		Produto produto = new Produto(nome , descricao , valor , quantidade );
+		Produto produto = new Produto(nome , descricao , preco , quantidade );
 		
 		RequestDispatcher view = null;
 		
+		produto.setCodigo(codigo);
 		if( acao.equals("salvar") ){
 			produto.salvar();
-			view = request.getRequestDispatcher("ListaDeProduto.do?key="+produto.getNome()+"acao=buscar" );
+			
+			List<ProdutoTO> list = new ArrayList<ProdutoTO>();
+			list.add( produto.geraTO() );
+			
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("listaProduto", list );
+			view = request.getRequestDispatcher("listar_produto.jsp" );
 			
 		}else if( acao.equals("editar") ){
-			produto.setCodigo(codigo);
+			
 			produto.consultar();
 			view = request.getRequestDispatcher("alterar_produto.jsp");
 			
 		}else if( acao.equals("atualizar") ){
-			produto.setCodigo(codigo);
+			
 			produto.atualizar();
-			view = request.getRequestDispatcher("ListaDeProduto.do?key="+produto.getNome()+"acao=buscar" );
+			
+			HttpSession session = request.getSession();
+			
+			List<ProdutoTO> list = (List<ProdutoTO>) session.getAttribute("listaProduto");
+			
+			ProdutoTO to;
+			for(int i = 0 ; i < list.size() ; i++ ){
+				to = list.get(i);
+				
+				if( to.getCodigo() == produto.getCodigo() ){
+					
+					to.setNome( produto.getNome() );
+					to.setDescricao( produto.getDescricao() );
+					to.setPreco( produto.getPreco() );
+					
+					break;
+				}
+			}
+			
+			session.setAttribute("listaProduto", list );
+			
+			view = request.getRequestDispatcher("listar_produto.jsp" );
 			
 		}else if( acao.equals("consultar") ){
-			produto.setCodigo(codigo);
+			
 			produto.consultar();
 			view = request.getRequestDispatcher("exibir_produto.jsp");
 		
 		}else if(  acao.equals("excluir") ){
-			produto.setCodigo(codigo);
+			
 			produto.excluir();
 			
-			//HttpSession session = request.getSession();
+			HttpSession session = request.getSession();
 			
+			List<ProdutoTO> list = (List<ProdutoTO>) session.getAttribute("listaProduto");
 			
-			view = request.getRequestDispatcher("listar_produto.jsp");
-		
+			ProdutoTO to;
+			for(int i = 0 ; i < list.size() ; i++ ){
+				to = list.get(i);
+				
+				if( to.getCodigo() == produto.getCodigo() ){
+					list.remove(i);
+					break;
+				}
+			}
+			
+			session.setAttribute("listaProduto", list );
+			
+			view = request.getRequestDispatcher("listar_produto.jsp" );
 		}
 		
 		request.setAttribute("produto", produto.geraTO() );
