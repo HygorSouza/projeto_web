@@ -4,40 +4,38 @@ CREATE DATABASE remapbd_web;
 
 USE remapbd_web;
 
--- entidades ainda não estão de acordo com o sistema
+-- select * from tb_cliente;
+
+ --  truncate tb_cliente;
 
 CREATE TABLE tb_cliente(
 	id_cliente    SMALLINT UNSIGNED UNIQUE KEY AUTO_INCREMENT,
 	nome_cliente  VARCHAR(100) NOT NULL ,
     fone_cliente  VARCHAR(12) NULL,
     CONSTRAINT pk_cliente PRIMARY KEY(id_cliente)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE tb_produto(
 	cod_produto    SMALLINT UNSIGNED AUTO_INCREMENT,
     nome_produto   VARCHAR(50) NOT NULL,
     preco          DECIMAL(10,2) NOT NULL,
-    descricao      VARCHAR(200) NULL ,
-    quantidade     SMALLINT UNSIGNED NOT NULL,
-    
+    descricao      VARCHAR(200) NOT NULL,
+    quantidade     SMALLINT NOT NULL,
     CONSTRAINT pk_produto PRIMARY KEY(cod_produto)
-);
-
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE tb_usuario(
 	cod_usuario    SMALLINT UNSIGNED AUTO_INCREMENT,
 	nome_usuario   VARCHAR(50) NOT NULL,
 	senha_usuario  VARCHAR(20) NOT NULL,
-	cargo          VARCHAR(30) NOT NULL,
-	
+    cargo          VARCHAR(30) NOT NULL,
 	CONSTRAINT pk_usuario PRIMARY KEY(cod_usuario)
-);
-
-show tables;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ 
 
 /*
-	######   em desenvolvimento               #####
+
 use remapbd_web;
 select * from tb_funcionario;
 
@@ -84,5 +82,6 @@ CREATE TABLE tb_produto(
 );
 
 */
+
 
 USE remapbd_web;

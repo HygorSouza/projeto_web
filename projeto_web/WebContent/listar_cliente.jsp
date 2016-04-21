@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html;  charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 
 <!DOCTYPE html >
 <html>
 	<head>
 		<title>Insert title here</title>
-		<meta charset="ISO-8859-1">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    
@@ -39,7 +38,7 @@
          </div>
          <!-- /.modal -->
 		
-		<!-- Barra superior com os menus de navegação -->
+		<!-- Barra superior com os menus de navegaÃ§Ã£o -->
 		<%@ include file="menu.jsp" %>
 		
 		<div class="container">
@@ -88,7 +87,7 @@
 									<td>${cliente.fone}</td>
 								</c:if>
 								<c:if test="${empty cliente.fone}">
-									<td >Não informado</td>
+									<td >NÃ£o informado</td>
 								</c:if>
 								
 								<td class="actions">

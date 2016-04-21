@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"  pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html;  charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <!DOCTYPE html >
 <html>
 	<head>
 		<title>Insert title here</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 		
@@ -31,7 +31,7 @@
 					
 					<div class="form-group col-md-6">
 						<div class="input-group" >
-							<span class="input-group-addon" >Preço</span>
+							<span class="input-group-addon" >PreÃ§o</span>
 							<input type="text" name="preco" required class="form-control" />
 						</div>
 					</div>

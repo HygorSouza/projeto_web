@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html;  charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html >
 <html>
@@ -35,19 +35,19 @@
 					
 					<div class="form-group col-md-6">
 						<div class="input-group">
-							<span class="input-group-addon" >Preço</span>
+							<span class="input-group-addon" >PreÃ§o</span>
 							<input type="number" step="0.01" name="preco" value="${produto.preco}" class="form-control" />
 						</div>
 					</div>
 					
 					<div class="form-group col-md-12" >
 						<div  class="input-group">
-							<span class="input-group-addon">Descrição</span>
+							<span class="input-group-addon">DescriÃ§Ã£o</span>
 							<c:if test="${not empty produto.descricao}">
 								<textarea name="descricao"  class="form-control" >${produto.descricao}</textarea>
 							</c:if>
 							<c:if test="${empty produto.descricao}">
-								<textarea name="descricao"  class="form-control" placeholder="Descricão do produto não informada" ></textarea>
+								<textarea name="descricao"  class="form-control" placeholder="DescricÃ£o do produto nÃ£o informada" ></textarea>
 							</c:if>
 						</div>
 					</div>

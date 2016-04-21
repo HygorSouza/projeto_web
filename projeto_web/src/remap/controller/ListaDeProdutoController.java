@@ -32,6 +32,8 @@ public class ListaDeProdutoController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
 		String key  = request.getParameter("key");
 		String acao = request.getParameter("acao");
 		

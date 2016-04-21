@@ -76,13 +76,15 @@ public class ManterClienteController extends HttpServlet {
 			ClienteTO to;
 			for(int i = 0 ; i < list.size(); i++ ){
 				to = list.get(i);
-				
+					
 				if( to.getId() == cliente.getId() ){
 					to.setNome( cliente.getNome() );
 					to.setFone( cliente.getFone() );
 					break;
 				}
 			}
+
+
 			
 			session.setAttribute("listaCliente", list);
 			
