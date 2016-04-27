@@ -116,7 +116,10 @@ public class Produto {
 		to.setDescricao( getDescricao() );
 		to.setQuantidade( getQuantidade() );
 		
-		setCodigo(  dao.salvar(to).getCodigo()  );
+		ProdutoTO result = dao.salvar(to);
+		
+		setCodigo(  result.getCodigo()  );
+		setQuantidadeEmEstoque( result.getQuantidadeEmEstoque() );
 	}
 	
 	public void atualizar(){

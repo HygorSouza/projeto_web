@@ -39,6 +39,8 @@ public class CarrinhoDeCompraController extends HttpServlet {
 		int codigo     = -1;
 		int quantidade = 0;
 		
+		boolean resultado = false;
+		
 		try{
 			codigo = Integer.parseInt( sCodigo );
 			
@@ -71,11 +73,11 @@ public class CarrinhoDeCompraController extends HttpServlet {
 				if( carrinhoDeCompra == null ){
 					
 					carrinhoDeCompra = new Carrinho();
-					carrinhoDeCompra.add( produto.geraTO() );
+					resultado = carrinhoDeCompra.add( produto.geraTO() );
 				}
 				else{
 					
-					carrinhoDeCompra.add( produto.geraTO() );
+					resultado = carrinhoDeCompra.add( produto.geraTO() );
 				}
 				
 				session.setAttribute("carrinhoDeCompra", carrinhoDeCompra );
@@ -94,7 +96,9 @@ public class CarrinhoDeCompraController extends HttpServlet {
 			session.setAttribute("carrinhoDeCompra", null );
 		}
 		
-		
+		if( !resultado ){
+			request.setAttribute("resultado", produto.geraTO() );
+		}
 		
 		RequestDispatcher view = request.getRequestDispatcher("tela_venda.jsp");
 		view.forward(request, response);

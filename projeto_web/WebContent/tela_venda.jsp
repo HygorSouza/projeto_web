@@ -15,8 +15,11 @@
 <body>
 	<%@ include file="menu.jsp" %>
 	
+	<input type="hidden" id="produto_max_qtd" value="0"/>
+	
 	<div class="container">
 		<div class="row">
+		
 			<form action="CarrinhoDeCompra.do" method="post">
 			
 				<div class="form-group col-md-3">
@@ -74,6 +77,17 @@
 					</c:forEach>
 				</table>
 			</c:if>
+			
+			<c:if test="${ not empty resultado }">
+				<input type="hidden" id="max_qtd" value="${resultado.quantidadeEmEstoque}"/>
+			  	
+			  	<script>
+					var max_qtd =  document.getElementById("max_qtd").value;
+					
+					document.getElementById("produto_max_qtd").value = max_qtd;
+   				
+				</script>
+			</c:if>
 		
 	</div>
 	
@@ -81,7 +95,14 @@
 	<script src="js/jquery.min.js"></script>
    	<script src="js/bootstrap.min.js"></script>
    	<script>
-
+   
+   		var max = parseInt( document.getElementById("produto_max_qtd").value );
+   		
+		if(  max != 0 ){
+			var msg = "Quantidade em estoque insulficiente !\nQuantidade em estoque: "+max;
+			alert(msg);
+		}
+		
    	</script>
 </body>
 </html>

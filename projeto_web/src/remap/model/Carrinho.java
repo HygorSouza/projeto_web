@@ -21,13 +21,15 @@ public class Carrinho {
 		return itens.size();
 	}
 	
-	public void add( ProdutoTO to ){
+	public boolean add( ProdutoTO to ){
+		boolean resp = false;
+		
 		int indece = buscar( to.getCodigo() );
 		
 		if( indece >= 0 ){
 			
 			if( to.getQuantidade() > 0 )
-				juntarProdutoParecido( to , indece );
+			resp = juntarProdutoParecido( to , indece );
 		}
 		else{
 			
@@ -36,8 +38,11 @@ public class Carrinho {
 			
 			if( qtd <= qtdEstoque && qtd > 0 ){
 				itens.add(to);
+				resp = true;
 			}
 		}
+		
+		return resp;
 	}
 	
 	public void remove( int codigo ){
@@ -69,15 +74,20 @@ public class Carrinho {
 		
 	}
 	
-	private void juntarProdutoParecido(ProdutoTO to , int indece ){
+	private boolean juntarProdutoParecido(ProdutoTO to , int indece ){
 		ProdutoTO outro = this.itens.get(indece);
 		int quantidadeTO    = to.getQuantidade();
 		int quantidadeOutro = outro.getQuantidade();
 		int novaQuantidade = quantidadeOutro + quantidadeTO;
-
+		
+		boolean resp = false;
+		
 		if( novaQuantidade <= to.getQuantidadeEmEstoque() ){
 			this.itens.get(indece).setQuantidade(novaQuantidade);
+			resp = true;
 		}
+		
+		return resp;
 	}
 	
 	private int buscar( int codigo ){
