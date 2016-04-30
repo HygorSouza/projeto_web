@@ -15,7 +15,7 @@
 <body>
 	<%@ include file="menu.jsp" %>
 	
-	<input type="hidden" id="produto_max_qtd" value="0"/>
+	<input type="hidden" id="produto_max_qtd" value="-1"/>
 	
 	<div class="container">
 		<div class="row">
@@ -60,15 +60,15 @@
 						<th>Acões</th>
 						</tr>
 					</thead>
-					<c:forEach var="produto" items="${carrinhoDeCompra.itens}">
+					<c:forEach var="item" items="${carrinhoDeCompra.itens}">
 						<tbody>
 							<tr>
-								<td>${produto.codigo}</td>
-								<td>${produto.nome}</td>
-								<td>${produto.quantidade}</td>
-								<td>${produto.preco}</td>
+								<td>${item.produto.codigo}</td>
+								<td>${item.produto.nome}</td>
+								<td>${item.quantidade}</td>
+								<td>${item.produto.preco}</td>
 								<td>
-									<a href="CarrinhoDeCompra.do?acao=remover&codigo=${produto.codigo}" >
+									<a href="CarrinhoDeCompra.do?acao=remover&codigo=${item.produto.codigo}" >
 										<span class="glyphicon glyphicon-remove btn">Remover item</span>
 									</a>
 								</td>
@@ -78,8 +78,8 @@
 				</table>
 			</c:if>
 			
-			<c:if test="${ not empty resultado }">
-				<input type="hidden" id="max_qtd" value="${resultado.quantidadeEmEstoque}"/>
+			<c:if test="${ not empty produto }">
+				<input type="hidden" id="max_qtd" value="${produto.quantidade}"/>
 			  	
 			  	<script>
 					var max_qtd =  document.getElementById("max_qtd").value;
@@ -98,7 +98,7 @@
    
    		var max = parseInt( document.getElementById("produto_max_qtd").value );
    		
-		if(  max != 0 ){
+		if(  max != -1 ){
 			var msg = "Quantidade em estoque insulficiente !\nQuantidade em estoque: "+max;
 			alert(msg);
 		}

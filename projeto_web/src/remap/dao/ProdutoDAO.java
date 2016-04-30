@@ -25,8 +25,6 @@ public class ProdutoDAO {
 			 stm.setInt( 5 , to.getQuantidade() );
 			 stm.execute();
 			 
-			 to.setQuantidadeEmEstoque( to.getQuantidade() );
-			 
 			 try( PreparedStatement stm2 = conn.prepareStatement("SELECT LAST_INSERT_ID()");
 				  ResultSet rs = stm2.executeQuery(); ){
 				 
@@ -89,7 +87,7 @@ public class ProdutoDAO {
 					to.setNome(  rs.getString("nome_produto") );
 					to.setPreco( rs.getDouble("preco") );
 					to.setDescricao( rs.getString("descricao") );
-					to.setQuantidadeEmEstoque( rs.getInt("quantidade") );
+					to.setQuantidade( rs.getInt("quantidade") );
 				}
 				
 			} catch (SQLException e) {
@@ -122,7 +120,7 @@ public class ProdutoDAO {
 					to.setNome(rs.getString("nome_produto"));
 					to.setPreco(rs.getDouble("preco"));
 					to.setDescricao(rs.getString("descricao"));
-					to.setQuantidadeEmEstoque( rs.getInt("quantidade") );
+					to.setQuantidade( rs.getInt("quantidade") );
 					
 					lista.add(to);
 				}
@@ -155,7 +153,7 @@ public class ProdutoDAO {
 					to.setNome(  rs.getString("nome_produto") );
 					to.setPreco( rs.getDouble("preco") );
 					to.setDescricao( rs.getString("descricao") );
-					to.setQuantidadeEmEstoque( rs.getInt("quantidade") );
+					to.setQuantidade( rs.getInt("quantidade") );
 					
 					lista.add(to);
 				}

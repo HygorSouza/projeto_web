@@ -8,7 +8,6 @@ public class Produto {
 	private String nome  , descricao;
 	private double preco;
 	private int quantidade;
-	private int quantidadeEmEstoque;
 	
 	public Produto(){}
 
@@ -63,14 +62,6 @@ public class Produto {
 		this.quantidade = quantidade;
 	}
 
-	public int getQuantidadeEmEstoque() {
-		return quantidadeEmEstoque;
-	}
-
-	public void setQuantidadeEmEstoque(int quantidadeEmEstoque) {
-		this.quantidadeEmEstoque = quantidadeEmEstoque;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -96,12 +87,12 @@ public class Produto {
 	public ProdutoTO geraTO(){
 		ProdutoTO to = new ProdutoTO();
 		
-		to.setCodigo( getCodigo() );
-		to.setNome( getNome() );
-		to.setPreco( getPreco() );
-		to.setDescricao( getDescricao() );
-		to.setQuantidade( getQuantidade() );
-		to.setQuantidadeEmEstoque( getQuantidadeEmEstoque() );
+		to.setCodigo( codigo );
+		to.setNome( nome );
+		to.setPreco( preco );
+		to.setDescricao( descricao );
+		to.setQuantidade( quantidade );
+		
 		
 		return to;
 	}
@@ -109,7 +100,7 @@ public class Produto {
 	
 	public void salvar(){
 		ProdutoDAO dao = new ProdutoDAO();
-		ProdutoTO to = new ProdutoTO();
+		ProdutoTO to = geraTO();
 		
 		to.setNome( getNome() );
 		to.setPreco( getPreco() );
@@ -119,12 +110,11 @@ public class Produto {
 		ProdutoTO result = dao.salvar(to);
 		
 		setCodigo(  result.getCodigo()  );
-		setQuantidadeEmEstoque( result.getQuantidadeEmEstoque() );
 	}
 	
 	public void atualizar(){
 		ProdutoDAO dao = new ProdutoDAO();
-		ProdutoTO to = new ProdutoTO();
+		ProdutoTO to = geraTO();
 		
 		to.setNome  ( getNome()   );
 		to.setPreco ( getPreco()  );
@@ -139,7 +129,7 @@ public class Produto {
 		ProdutoDAO dao = new ProdutoDAO();
 		ProdutoTO to = new ProdutoTO();
 		
-		to.setCodigo( getCodigo() );
+		to.setCodigo( codigo );
 		
 		dao.excluir(to);
 		
@@ -147,12 +137,12 @@ public class Produto {
 	
 	public Produto consultar(){
 		ProdutoDAO dao = new ProdutoDAO();
-		ProdutoTO to = dao.consultar(getCodigo());
+		ProdutoTO to = dao.consultar(codigo);
 		
 		setNome( to.getNome() );
 		setPreco( to.getPreco() );
 		setDescricao( to.getDescricao() );
-		setQuantidadeEmEstoque( to.getQuantidadeEmEstoque() );
+		setQuantidade( to.getQuantidade() );
 		
 		return this;
 	}	

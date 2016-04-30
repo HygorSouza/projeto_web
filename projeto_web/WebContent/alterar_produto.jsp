@@ -23,7 +23,7 @@
 		
 			<form action="ManterProduto.do" method="post">
 				<input type="hidden" name="codigo"  value="${produto.codigo}" />
-				<input type="hidden" name="quantidade" value="${produto.quantidadeEmEstoque}"/>
+				<input type="hidden" name="quantidade" value="${produto.quantidade}"/>
 				
 				<div class="row">
 					<div class="form-group col-md-12">

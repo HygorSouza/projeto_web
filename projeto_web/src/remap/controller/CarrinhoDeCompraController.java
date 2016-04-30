@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import remap.model.Carrinho;
+
+import remap.model.CarrinhoDeCompras;
+import remap.model.Item;
 import remap.model.Produto;
 
 /**
@@ -37,7 +39,7 @@ public class CarrinhoDeCompraController extends HttpServlet {
 		String sQuantidade = request.getParameter("quantidade");
 		String acao    = request.getParameter("acao");
 		int codigo     = -1;
-		int quantidade = 0;
+		int quantidade = -1;
 		
 		boolean resultado = false;
 		
@@ -57,27 +59,37 @@ public class CarrinhoDeCompraController extends HttpServlet {
 	
 		 
 		Produto produto = new Produto(codigo);
-		produto.setQuantidade(quantidade);
-
+		
 		
 		HttpSession session = request.getSession();
 		
-		Carrinho carrinhoDeCompra =  (Carrinho) session.getAttribute("carrinhoDeCompra");
+		CarrinhoDeCompras carrinhoDeCompra =  (CarrinhoDeCompras) session.getAttribute("carrinhoDeCompra");
 		
+		
+		
+		//
 		if( acao.equals("adicionar") ){
 			
 			produto.consultar();
 			
 			if( produto.getNome() != null ){
 				
+				Item item =  new Item( produto.geraTO() , quantidade );
+				// na primeira vez o if e executado
 				if( carrinhoDeCompra == null ){
 					
-					carrinhoDeCompra = new Carrinho();
-					resultado = carrinhoDeCompra.add( produto.geraTO() );
-				}
-				else{
+					carrinhoDeCompra = new CarrinhoDeCompras();
 					
-					resultado = carrinhoDeCompra.add( produto.geraTO() );
+					resultado = carrinhoDeCompra.add(  item  );
+				}
+				else{ // para quando o objeto CarrinhoDeCompras ja estiver sido estanciado
+					
+					resultado = carrinhoDeCompra.add(  item );
+				}
+				
+				// verifico se o produto foi adicionado com sucesso no carrinho
+				if( !resultado ){
+					request.setAttribute("produto", produto.geraTO() );
 				}
 				
 				session.setAttribute("carrinhoDeCompra", carrinhoDeCompra );
@@ -94,10 +106,6 @@ public class CarrinhoDeCompraController extends HttpServlet {
 		}
 		else if( acao.equals("cancelar") ){
 			session.setAttribute("carrinhoDeCompra", null );
-		}
-		
-		if( !resultado ){
-			request.setAttribute("resultado", produto.geraTO() );
 		}
 		
 		RequestDispatcher view = request.getRequestDispatcher("tela_venda.jsp");

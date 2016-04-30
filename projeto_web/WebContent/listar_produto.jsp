@@ -27,8 +27,8 @@
                     </div>
                     	<form action="ManterProduto.do" method="post">
                    			<div class="modal-footer">
-	                        	<input type="hidden" name="id" id="id_excluir" />
-	                            <button id="btn_excluir" type="submit" class="btn btn-primary" >Sim</button>
+	                        	<input type="hidden" name="codigo" id="codigo_excluir" />
+	                            <button id="btn_excluir" type="submit" name="acao" value="excluir" class="btn btn-primary" >Sim</button>
 	                            <button  type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
 	                        </div>
                         </form>
@@ -85,7 +85,7 @@
 							<td>${produto.codigo}</td>
 							<td>${produto.nome}</td>
 							<td>${produto.preco}</td>
-							<td>${produto.quantidadeEmEstoque}</td>
+							<td>${produto.quantidade}</td>
 							<td class="actions">
 								<a class="btn btn-default btn-xs" href="ManterProduto.do?acao=consultar&codigo=${produto.codigo}">Visualizar</a>
 								<a class="btn btn-primary btn-xs" href="ManterProduto.do?acao=editar&codigo=${produto.codigo}">Editar</a>
@@ -107,13 +107,7 @@
              $("#delete-modal").on('show.bs.modal', function(event) {
                  var button = $(event.relatedTarget); //botao que disparou a modal
   	             var recipient = button.data('produto');
-                $("#id_excluir").val(recipient);
-             });
-                
-             $("#btn_excluir").on('click' , function(){
-               	$.post("ExcluirProduto.do?codigo="+( $("#id_excluir").val() ),function(response){
-           			$("#table").find("#"+( $("#id_excluir").val() ) ).remove();
-               	});
+                $("#codigo_excluir").val(recipient);
              });
         </script>
 </body>
