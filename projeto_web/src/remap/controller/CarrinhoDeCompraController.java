@@ -74,7 +74,8 @@ public class CarrinhoDeCompraController extends HttpServlet {
 			
 			if( produto.getNome() != null ){
 				
-				Item item =  new Item( produto.geraTO() , quantidade );
+				Item item =  new Item( produto , quantidade );
+				
 				// na primeira vez o if e executado
 				if( carrinhoDeCompra == null ){
 					
@@ -95,18 +96,29 @@ public class CarrinhoDeCompraController extends HttpServlet {
 				session.setAttribute("carrinhoDeCompra", carrinhoDeCompra );
 			}
 		}
-		else if( acao.equals("remover") ){
+		else if( acao.equals("remover") && quantidade != -1 ){
+
+			carrinhoDeCompra.remove(codigo , quantidade );
 			
-			carrinhoDeCompra.remove(codigo);
-			
-			if( carrinhoDeCompra.size() == 0 )
+			if( carrinhoDeCompra.isEmpty() )
 				session.setAttribute("carrinhoDeCompra", null );
 			else
 				session.setAttribute("carrinhoDeCompra", carrinhoDeCompra );
 		}
+		else if( acao.equals("remover") ){
+
+			carrinhoDeCompra.remove(codigo);
+			
+			if( carrinhoDeCompra.isEmpty() )
+				session.setAttribute("carrinhoDeCompra", null );
+			else
+				session.setAttribute("carrinhoDeCompra", carrinhoDeCompra );
+			
+		}
 		else if( acao.equals("cancelar") ){
 			session.setAttribute("carrinhoDeCompra", null );
 		}
+		
 		
 		RequestDispatcher view = request.getRequestDispatcher("tela_venda.jsp");
 		view.forward(request, response);

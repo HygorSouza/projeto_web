@@ -50,7 +50,7 @@
 			</form>
 		</div>
 			<c:if test="${not empty carrinhoDeCompra}">
-				<table class="table table-responsive table-hover">
+				<table class="table table-responsive table-hover" >
 					<thead>
 						<tr>
 						<th>Codigo</th>
@@ -60,21 +60,24 @@
 						<th>Acões</th>
 						</tr>
 					</thead>
-					<c:forEach var="item" items="${carrinhoDeCompra.itens}">
-						<tbody>
+					<tbody>
+						<c:forEach var="item" items="${carrinhoDeCompra.itens}">
 							<tr>
 								<td>${item.produto.codigo}</td>
 								<td>${item.produto.nome}</td>
 								<td>${item.quantidade}</td>
 								<td>${item.produto.preco}</td>
 								<td>
-									<a href="CarrinhoDeCompra.do?acao=remover&codigo=${item.produto.codigo}" >
-										<span class="glyphicon glyphicon-remove btn">Remover item</span>
-									</a>
+									<a class="btn btn-xs btn-danger" href="CarrinhoDeCompra.do?acao=remover&codigo=${item.produto.codigo}" >Remover item</a>
+									
 								</td>
 							</tr>
-						</tbody>
-					</c:forEach>
+						</c:forEach>
+							<tr>
+								<td>Total:</td>
+								<td>${carrinhoDeCompra.valorTotal}</td>
+							</tr>
+					</tbody>
 				</table>
 			</c:if>
 			
@@ -101,8 +104,7 @@
 		if(  max != -1 ){
 			var msg = "Quantidade em estoque insulficiente !\nQuantidade em estoque: "+max;
 			alert(msg);
-		}
-		
+		}	
    	</script>
 </body>
 </html>

@@ -1,23 +1,23 @@
 package remap.model;
 
 import remap.to.ItemTO;
-import remap.to.ProdutoTO;
+
 
 public class Item {
 	// atributos
-	private ProdutoTO 	produto;
+	private Produto 	produto;
 	private int       	quantidade;
 
-	public Item( ProdutoTO produto, int quantidade) {
+	public Item( Produto produto, int quantidade) {
 		this.produto = produto;
 		this.quantidade = quantidade;
 	}
 	
-	public void setProduto( ProdutoTO to ){
+	public void setProduto( Produto to ){
 		produto = to;
 	}
 	
-	public ProdutoTO getProduto(){
+	public Produto getProduto(){
 		return produto;
 	}
 	
@@ -27,6 +27,10 @@ public class Item {
 	
 	public int getQuantidade(){
 		return quantidade;	
+	}
+	
+	public double total(){
+		return ( produto.getPreco() * quantidade );
 	}
 	
 	public ItemTO geraTO(){

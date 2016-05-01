@@ -4,21 +4,26 @@ package remap.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import remap.to.ProdutoTO;
-
 public class CarrinhoDeCompras {
 	private List<Item> itens;
+	private double     valorTotal;
 	
-	public int size(){
-		return itens.size();
+	// construtor
+	public CarrinhoDeCompras(){
+		itens = new ArrayList<Item>();
+		valorTotal = 0.0;
 	}
 	
+	public boolean isEmpty(){
+		return itens.isEmpty();
+	}
+		
 	public List<Item> getItens(){
 		return itens;
 	}
 	
-	public CarrinhoDeCompras(){
-		itens = new ArrayList<Item>();
+	public double getValorTotal(){
+		return valorTotal;
 	}
 	
 	/*  o metodo add retorna um boolean
@@ -37,11 +42,12 @@ public class CarrinhoDeCompras {
 		}
 		else{
 			
-			int qtd        = item.getQuantidade();
-			int qtdEstoque = item.getProduto().getQuantidade();
+			int quantidade  = item.getQuantidade();
+			int qtdEstoque  = item.getProduto().getQuantidade();
 			
-			if( qtd <= qtdEstoque && qtd > 0 ){
+			if( quantidade <= qtdEstoque && quantidade > 0 ){
 				itens.add(item);
+				atualizarValorTotal( item.total() );
 				resp = true;
 			}
 		}
@@ -49,12 +55,33 @@ public class CarrinhoDeCompras {
 		return resp;
 	}
 	
-	public void remove( int codigo ){
+	public boolean remove( int codigo ){
+		boolean resp = false;
 		int indece = buscar( codigo );
 		
 		if( indece >= 0 ){
-			this.itens.remove(indece);
+			Item item = this.itens.remove(indece);
+			atualizarValorTotal( - item.total() );
+			resp = true;
 		}
+		return resp;
+	}
+	
+	public boolean remove( int codigo , int qtd ){
+		boolean resp = false;
+		
+		int indece = buscar( codigo );
+		
+		if( indece >= 0  ){
+			Item item = this.itens.get(indece);
+			if( item.getQuantidade() > 1 ){
+				item.setQuantidade( -qtd );
+				atualizarValorTotal( - item.total() );
+				resp = true;
+			}
+		}
+		
+		return resp;
 	}
 	
 	
@@ -73,6 +100,10 @@ public class CarrinhoDeCompras {
 		return resp;
 	}
 	
+	private void atualizarValorTotal( double valor ){
+		valorTotal += valor;
+	}
+	
 	/*
 	    metodo buscar retorna o indece onde se encontra um item 
 	   ou -1 caso não encontrar um item com o codigo passado como parametro  
@@ -81,7 +112,7 @@ public class CarrinhoDeCompras {
 	private int buscar( int codigo ){
 		int indece = -1;
 		for(int i = 0 ; i < itens.size() ; i++ ){
-			ProdutoTO to = itens.get(i).getProduto();
+			Produto to = itens.get(i).getProduto();
 			int cod = to.getCodigo();
 			if( codigo == cod ){
 				indece = i;
