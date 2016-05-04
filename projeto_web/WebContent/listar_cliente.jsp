@@ -48,12 +48,12 @@
 					<h2>Cliente</h2>
 				</div>
 				
-				<form action="ListaDeCliente.do" method="post">
+				<form action="servletController.do" method="post">
 					<div class="col-md-6">
 						<div class="input-group h2">
 							<input type="text" name="key"  class="form-control" placeholder="Digite o nome do cliente" />
 							<span class="input-group-btn">
-			                <button id="btn" class="btn btn-primary" type="submit" name="acao" value="buscar" >
+			                <button id="btn" class="btn btn-primary" type="submit" name="command" value="ListarCliente" >
 			                    <span class="glyphicon glyphicon-search"></span>
 			                </button>
 		            		</span>
