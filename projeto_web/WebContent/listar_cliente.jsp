@@ -27,9 +27,9 @@
                         Deseja realmente excluir este cliente?
                     </div>
                     <div class="modal-footer">
-                    	<form action="ManterCliente.do" method="post">
+                    	<form action="servletController.do" method="post">
                         	<input type="hidden" name="id" id="id_excluir" />
-                            <button name="acao" id="btn_excluir" type="submit" class="btn btn-primary" value="excluir" >Sim</button>
+                            <button name="command" id="btn_excluir" type="submit" class="btn btn-primary" value="ExcluirCliente" >Sim</button>
                             <button  type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
                     	</form>
                     </div>

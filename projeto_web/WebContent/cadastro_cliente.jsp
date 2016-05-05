@@ -19,7 +19,7 @@
 	<div class="container">
 		<div class="">
 			<h3 class="page-header">Cadastro de clientes</h3>
-			<form  action="ManterCliente.do" method="post">
+			<form  action="servletController.do" method="post">
 				<div class="row">
 					
 						<div class="form-group col-md-12">
@@ -37,7 +37,7 @@
 						</div>
 						
 						<div class="form-group col-md-12">
-							<input class="btn btn-primary" type="submit" name="acao" value="salvar" /> 
+							<input class="btn btn-primary" type="submit" name="command" value="SalvarCliente" /> 
 							<a class="btn btn-default" href="listar_cliente.jsp">Cancelar</a>
 						</div>
 		

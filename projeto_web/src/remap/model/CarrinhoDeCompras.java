@@ -94,6 +94,7 @@ public class CarrinhoDeCompras {
 		
 		if( novaQtd <= qtdEmEstoque ){
 			itemNaLista.setQuantidade(  novaQtd );
+			atualizarValorTotal( item.total() );
 			resp = true;
 		}
 		
