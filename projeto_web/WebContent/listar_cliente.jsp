@@ -91,8 +91,8 @@
 								</c:if>
 								
 								<td class="actions">
-									<a class="btn btn-default btn-xs" href="ManterCliente.do?acao=consultar&id=${cliente.id}" >Visualizar</a>
-									<a class="btn btn-primary btn-xs" href="ManterCliente.do?acao=editar&id=${cliente.id}" >Editar</a>
+									<a class="btn btn-default btn-xs" href="servletController.do?command=PesquisarCliente&id=${cliente.id}" >Visualizar</a>
+									<a class="btn btn-primary btn-xs" href="servletController.do?command=EditarCliente&id=${cliente.id}" >Editar</a>
 									<button id="btn${cliente.id}" type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal" data-cliente="${cliente.id}">Excluir</button>
 								</td>
 							</tr>
