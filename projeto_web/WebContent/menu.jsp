@@ -15,7 +15,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="servletController.do?command=ListarClientesReiniciar">Cliente</a>
                     </li>
-                    <li><a href="ListaDeProduto.do?acao=reiniciar">Produto</a>
+                    <li><a href="servletController.do?command=ListarProdutoReiniciar">Produto</a>
                     </li>
                     <li><a href="tela_venda.jsp">Venda</a>
                     </li>

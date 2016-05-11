@@ -21,7 +21,7 @@
 		
 			<h3>Item # ${produto.codigo}</h3>
 		
-			<form action="ManterProduto.do" method="post">
+			<form action="servletController.do" method="post">
 				<input type="hidden" name="codigo"  value="${produto.codigo}" />
 				<input type="hidden" name="quantidade" value="${produto.quantidade}"/>
 				
@@ -56,7 +56,7 @@
 				
 				<div class="row">
 					<div class="form-group col-md-12">
-						<input class="btn btn-primary" type="submit" name="acao" value="atualizar"/>
+						<button class="btn btn-primary" type="submit" name="command" value="AtualizarProduto">atualizar</button>
 						<a 	class="btn btn-default" href="listar_produto.jsp" >Cancelar</a>
 					</div>
 				</div>

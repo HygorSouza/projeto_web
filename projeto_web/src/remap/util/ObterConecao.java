@@ -5,19 +5,23 @@ import java.sql.SQLException;
 
 import remap.factory.ConnectionFactory;
 
-public class Singleton {
-	private static Singleton instance = null;
-	@SuppressWarnings("unused")
+public class ObterConecao {
+	private static ObterConecao instance = null;
+	
 	private static Connection conn = null;
 	
-	private Singleton() throws SQLException {
+	private ObterConecao() throws SQLException {
 		conn = ConnectionFactory.getConnection();
 	}
 	
-	public static Singleton getInstance(){
+	public Connection getConnection(){
+		return conn;
+	}
+	
+	public static ObterConecao getInstance(){
 		if( instance == null ){
 			try {
-				instance = new Singleton();
+				instance = new ObterConecao();
 			} catch (SQLException e) {
 				
 				e.printStackTrace();
