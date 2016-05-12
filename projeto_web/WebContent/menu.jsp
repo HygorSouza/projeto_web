@@ -13,7 +13,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="servletController.do?command=ListarClientesReiniciar">Cliente</a>
+                    <li><a href="servletController.do?command=ListarClienteReiniciar">Cliente</a>
                     </li>
                     <li><a href="servletController.do?command=ListarProdutoReiniciar">Produto</a>
                     </li>

@@ -14,29 +14,7 @@
 		<link href="css/style.css" rel="stylesheet"/>
 	</head>
 	<body>	
-		<!-- Modal -->
-        <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-             <div class="modal-dialog" role="document">
-                 <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span>
-                           </button>
-                           <h4 class="modal-title" id="modalLabel">Excluir Cliente</h4>
-                    </div>
-                    <div class="modal-body">
-                        Deseja realmente excluir este cliente?
-                    </div>
-                    <div class="modal-footer">
-                    	<form action="servletController.do" method="post">
-                        	<input type="hidden" name="id" id="id_excluir" />
-                            <button name="command" id="btn_excluir" type="submit" class="btn btn-primary" value="ExcluirCliente" >Sim</button>
-                            <button  type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
-                    	</form>
-                    </div>
-                  </div>
-              </div>
-         </div>
-         <!-- /.modal -->
+		<%@ include file="modal_cliente.jsp" %>
 		
 		<!-- Barra superior com os menus de navegação -->
 		<%@ include file="menu.jsp" %>
@@ -91,7 +69,7 @@
 								</c:if>
 								
 								<td class="actions">
-									<a class="btn btn-default btn-xs" href="servletController.do?command=PesquisarCliente&id=${cliente.id}" >Visualizar</a>
+									<a class="btn btn-default btn-xs" href="servletController.do?command=VisualizarCliente&id=${cliente.id}" >Visualizar</a>
 									<a class="btn btn-primary btn-xs" href="servletController.do?command=EditarCliente&id=${cliente.id}" >Editar</a>
 									<button id="btn${cliente.id}" type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal" data-cliente="${cliente.id}">Excluir</button>
 								</td>

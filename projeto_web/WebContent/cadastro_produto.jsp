@@ -20,7 +20,7 @@
 			
 			<h3 class="page-header">Cadastro de produtos</h3>
 			
-			<form action="ManterProduto.do" method="post">
+			<form action="servletController.do" method="post">
 				<div class="row">
 					<div class="form-group col-md-12">
 						<div class="input-group" >
@@ -50,7 +50,7 @@
 						</div>
 					</div>
 				</div>
-				<input type="submit" name="acao" value="salvar" class="btn btn-primary" />
+				<button type="submit" name="command" value="SalvarProduto" class="btn btn-primary" >Salvar</button>
 				<a href="listar_produto.jsp" class="btn btn-default" >Cancelar</a>
 				
 			</form>

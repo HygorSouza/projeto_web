@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import remap.model.Cliente;
 
-public class PesquisarCliente implements Command {
+public class VisualizarCliente implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

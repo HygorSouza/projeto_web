@@ -13,29 +13,9 @@
 	<link href="css/style.css" rel="stylesheet" />
 </head>
 <body>
-		<!-- Modal -->
-        <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-             <div class="modal-dialog" role="document">
-                 <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span>
-                           </button>
-                           <h4 class="modal-title" id="modalLabel">Excluir Produto</h4>
-                    </div>
-                    <div class="modal-body">
-                        Deseja realmente excluir este Item?
-                    </div>
-                    	<form action="ManterProduto.do" method="post">
-                   			<div class="modal-footer">
-	                        	<input type="hidden" name="codigo" id="codigo_excluir" />
-	                            <button id="btn_excluir" type="submit" name="acao" value="excluir" class="btn btn-primary" >Sim</button>
-	                            <button  type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
-	                        </div>
-                        </form>
-                  </div>
-              </div>
-         </div>
-         <!-- /.modal -->
+	<!-- Modal -->
+    <%@ include file="modal_produto.jsp" %>
+    <!-- /.modal -->
 
 	<!-- menu navegação -->
 	<%@ include file="menu.jsp" %>
@@ -87,8 +67,8 @@
 							<td>${produto.preco}</td>
 							<td>${produto.quantidade}</td>
 							<td class="actions">
-								<a class="btn btn-default btn-xs" href="ManterProduto.do?acao=consultar&codigo=${produto.codigo}">Visualizar</a>
-								<a class="btn btn-primary btn-xs" href="ManterProduto.do?acao=editar&codigo=${produto.codigo}">Editar</a>
+								<a class="btn btn-default btn-xs" href="servletController.do?command=VisualizarProduto&codigo=${produto.codigo}">Visualizar</a>
+								<a class="btn btn-primary btn-xs" href="servletController.do?command=EditarProduto&codigo=${produto.codigo}">Editar</a>
 								<button id="btn${produto.codigo}" type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal" data-produto="${produto.codigo}">Excluir</button>
 							</td>
 						</tr>
