@@ -34,7 +34,7 @@ public class ManterUsuarioController extends HttpServlet {
 		
 		String sId   = request.getParameter("id");
 		String nome  = request.getParameter("nome");
-		String cargo = request.getParameter("cargo");
+		//String cargo = request.getParameter("cargo");
 		String acao  = request.getParameter("acao");
 		int id = -1;
 		
@@ -44,7 +44,7 @@ public class ManterUsuarioController extends HttpServlet {
 			
 		}
 		
-		Usuario user = new Usuario(nome,cargo,"password");
+		Usuario user = new Usuario(nome,"password");
 		
 		if( acao.equals("salvar") ){
 			user.salvar();

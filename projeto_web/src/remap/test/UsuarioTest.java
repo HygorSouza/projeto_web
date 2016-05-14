@@ -13,7 +13,7 @@ public class UsuarioTest {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		user = new Usuario("nome","cargo","senha");
+		user = new Usuario("nome","senha");
 		user.salvar();
 	}
 

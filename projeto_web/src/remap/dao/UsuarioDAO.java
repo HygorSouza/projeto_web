@@ -12,14 +12,14 @@ import remap.to.UsuarioTO;
 public class UsuarioDAO {
 	
 	public UsuarioTO salvar( UsuarioTO to ){
-		String sqlInsert = "INSERT INTO tb_usuario VALUES (?,?,?,?)";
+		String sqlInsert = "INSERT INTO tb_usuario VALUES (?,?,?)";
 		try( Connection conn = ConnectionFactory.getConnection(); 
 			 PreparedStatement stm = conn.prepareStatement(sqlInsert); ){
 			 
 		     stm.setNull( 1 , Types.INTEGER );
 			 stm.setString( 2 , to.getUsuario() );
 			 stm.setString( 3 , to.getSenha() );
-			 stm.setString( 4, to.getCargo() );
+			 //stm.setString( 4, to.getCargo() );
 			 stm.execute();
 			 
 			 try( PreparedStatement stm2 = conn.prepareStatement("SELECT LAST_INSERT_ID()");
@@ -41,12 +41,12 @@ public class UsuarioDAO {
 	}
 	
 	public void atualizar( UsuarioTO to ){
-		String sqlUpdate = "UPDATE tb_usuario SET nome_usuario = ? , cargo = ? WHERE  cod_usuario = ?";
+		String sqlUpdate = "UPDATE tb_usuario SET nome_usuario = ?  WHERE  cod_usuario = ?";
 		try( Connection conn = ConnectionFactory.getConnection();
 			 PreparedStatement stm = conn.prepareStatement(sqlUpdate); ){
 			stm.setString( 1 , to.getUsuario() );
-			stm.setString( 2 , to.getCargo() );
-			stm.setInt( 3 , to.getId() );
+			//stm.setString( 2 , to.getCargo() );
+			stm.setInt( 2 , to.getId() );
 			
 			stm.execute();
 		} catch (SQLException e) {
@@ -75,7 +75,7 @@ public class UsuarioDAO {
 			try( ResultSet rs = stm.executeQuery();){
 				if( rs.next() ){
 					to.setUsuario( rs.getString("nome_usuario") );
-					to.setCargo( rs.getString("cargo") );
+					//to.setCargo( rs.getString("cargo") );
 					to.setSenha( rs.getString("senha_usuario") );
 				}
 			} catch (SQLException e) {

@@ -5,13 +5,13 @@ import remap.to.UsuarioTO;
 
 public class Usuario {
 	private int    id;
-	private String usuario , cargo , senha;
+	private String usuario , senha;
+	private String cargo;
 	
 	public Usuario(){}
 	
-	public Usuario( String usuario, String cargo ,String senha  ){
+	public Usuario( String usuario , String senha  ){
 		this.usuario = usuario;
-		this.cargo = cargo;
 		this.senha = senha;
 	}
 
@@ -101,12 +101,7 @@ public class Usuario {
 	
 	public void atualizar(){
 		UsuarioDAO dao = new UsuarioDAO();
-		UsuarioTO to = new UsuarioTO();
-		
-		to.setId( getId() );
-		to.setUsuario( getUsuario() );
-		to.setSenha( getSenha() );
-		to.setCargo( getCargo() );
+		UsuarioTO to = geraTO();
 		
 		dao.atualizar(to);
 	}
@@ -116,7 +111,7 @@ public class Usuario {
 		UsuarioTO to = dao.consultar( getId() );
 		
 		setUsuario( to.getUsuario() );
-		setCargo( to.getCargo() );
+		//setCargo( to.getCargo() );
 		setSenha( to.getSenha() );
 		
 		return this;

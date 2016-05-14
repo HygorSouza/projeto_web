@@ -29,7 +29,7 @@ CREATE TABLE tb_usuario(
 	cod_usuario    SMALLINT UNSIGNED AUTO_INCREMENT,
 	nome_usuario   VARCHAR(50) NOT NULL,
 	senha_usuario  VARCHAR(20) NOT NULL,
-    cargo          VARCHAR(30) NOT NULL,
+   -- cargo          VARCHAR(30) NOT NULL,
 	CONSTRAINT pk_usuario PRIMARY KEY(cod_usuario)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
  
