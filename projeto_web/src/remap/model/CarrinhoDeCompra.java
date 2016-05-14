@@ -4,12 +4,12 @@ package remap.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarrinhoDeCompras {
+public class CarrinhoDeCompra {
 	private List<Item> itens;
 	private double     valorTotal;
 	
 	// construtor
-	public CarrinhoDeCompras(){
+	public CarrinhoDeCompra(){
 		itens = new ArrayList<Item>();
 		valorTotal = 0.0;
 	}

@@ -49,7 +49,7 @@
 				</div>
 				
 				<div class="row col-md-12">
-					<a class="btn btn-primary btn-xs" href="ManterCliente.do?acao=editar&id=${cliente.id}" >Editar</a>
+					<a class="btn btn-primary btn-xs" href="servletController.do?command=EditarCliente&id=${cliente.id}" >Editar</a>
 					<button class="btn btn-danger btn-xs" id="btn${cliente.id}" type="button" data-toggle="modal" data-target="#delete-modal" data-cliente="${cliente.id}">Excluir</button>
 					<a class="btn btn-default btn-xs" href="listar_cliente.jsp" >Voltar</a>
 				</div>

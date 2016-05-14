@@ -20,7 +20,7 @@
 	<div class="container">
 		<div class="row">
 		
-			<form action="CarrinhoDeCompra.do" method="post">
+			<form action="servletController.do" method="post">
 			
 				<div class="form-group col-md-3">
 
@@ -37,20 +37,15 @@
 						</div>
 						
 						<div class="input-group">
-							<button type="submit" name="acao" value="adicionar" >
+							<button type="submit" name="command" value="AdicionarItemNoCarrinho" >
 								<span class="glyphicon glyphicon-plus-sign">add</span>
 							</button>
 						</div>
-						<c:if test="${not empty carrinhoDeCompra}">
-							<a type="submit" href="CarrinhoDeCompra.do?acao=cancelar" >
-								<span class="glyphicon glyphicon-plus-sign">cancelar</span>
-							</a>
-						</c:if>
 				</div>
 			</form>
 		</div>
 			<c:if test="${not empty carrinhoDeCompra}">
-				<table class="table table-responsive table-hover" >
+				<table class="table table-responsive " >
 					<thead>
 						<tr>
 						<th>Codigo</th>
@@ -68,7 +63,7 @@
 								<td>${item.quantidade}</td>
 								<td>${item.produto.preco}</td>
 								<td>
-									<a class="btn btn-xs btn-danger" href="CarrinhoDeCompra.do?acao=remover&codigo=${item.produto.codigo}" >Remover item</a>
+									<a class="btn btn-xs btn-danger" href="servletController.do?command=RemoverItemDoCarrinho&codigo=${item.produto.codigo}" >Remover item</a>
 									
 								</td>
 							</tr>

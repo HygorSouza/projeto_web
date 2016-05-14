@@ -14,7 +14,7 @@
 </head>
 <body>
 	<!-- modal produto -->
-	<%@ include file="modal_produto.jsp" %>>
+	<%@ include file="modal_produto.jsp" %>
 
 	<%@ include file="menu.jsp"%>
 

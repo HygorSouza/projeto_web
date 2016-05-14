@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-import remap.model.CarrinhoDeCompras;
+import remap.model.CarrinhoDeCompra;
 import remap.model.Item;
 import remap.model.Produto;
 
@@ -63,7 +63,7 @@ public class CarrinhoDeCompraController extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		CarrinhoDeCompras carrinhoDeCompra =  (CarrinhoDeCompras) session.getAttribute("carrinhoDeCompra");
+		CarrinhoDeCompra carrinhoDeCompra =  (CarrinhoDeCompra) session.getAttribute("carrinhoDeCompra");
 		
 		
 		
@@ -79,7 +79,7 @@ public class CarrinhoDeCompraController extends HttpServlet {
 				// na primeira vez o if e executado
 				if( carrinhoDeCompra == null ){
 					
-					carrinhoDeCompra = new CarrinhoDeCompras();
+					carrinhoDeCompra = new CarrinhoDeCompra();
 					
 					resultado = carrinhoDeCompra.add(  item  );
 				}
