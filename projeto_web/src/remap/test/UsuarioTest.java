@@ -5,21 +5,21 @@ import static org.junit.Assert.assertEquals;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import remap.model.Usuario;
+import remap.model.UsuarioService;
 
 
 public class UsuarioTest {
-	static Usuario user ;
+	static UsuarioService user ;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		user = new Usuario("nome","senha");
+		user = new UsuarioService("nome","senha");
 		user.salvar();
 	}
 
 	@Test
 	public void testSalvar() {
-		Usuario s = new Usuario();
+		UsuarioService s = new UsuarioService();
 		s.setId( user.getId() );
 		s.consultar();
 		
@@ -31,7 +31,7 @@ public class UsuarioTest {
 	@Test
 	public void testAtualizar() {
 		
-		Usuario s = new Usuario();
+		UsuarioService s = new UsuarioService();
 		s.setId(  user.getId() );
 		
 		user.setUsuario("test");
@@ -44,7 +44,7 @@ public class UsuarioTest {
 
 	@Test
 	public void testConsultar() {
-		Usuario s = new Usuario();
+		UsuarioService s = new UsuarioService();
 		s.setId( user.getId() );
 		
 		user.consultar();
@@ -56,7 +56,7 @@ public class UsuarioTest {
 	
 	@Test
 	public void testExcluir() {
-		Usuario s = new Usuario();
+		UsuarioService s = new UsuarioService();
 		s.setId( user.getId() );
 		
 		

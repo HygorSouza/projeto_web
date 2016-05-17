@@ -4,24 +4,24 @@ import static org.junit.Assert.*;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import remap.model.Cliente;
+import remap.model.ClienteService;
 
 
 public class ClienteTest {
-	static Cliente cliente , copia;
+	static ClienteService cliente , copia;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		cliente = new Cliente("Bela Lugosi", "123456789" );
+		cliente = new ClienteService("Bela Lugosi", "123456789" );
 		cliente.salvar();
-		copia = new Cliente("Bela Lugosi", "123456789" );
+		copia = new ClienteService("Bela Lugosi", "123456789" );
 	}
 	
 	@Test
 	public void test00Consultar() {
-		Cliente cli = new Cliente("test","123");
+		ClienteService cli = new ClienteService("test","123");
 		cli.salvar();
-		Cliente c = new Cliente();
+		ClienteService c = new ClienteService();
 		c.setId(  cli.getId() );
 		c.consultar();
 		
@@ -57,7 +57,7 @@ public class ClienteTest {
 
 	@Test
 	public void tes03tExcluir() {
-		Cliente c = new Cliente(null,null);
+		ClienteService c = new ClienteService(null,null);
 		c.setId(  cliente.getId() );
 		cliente.excluir();
 		cliente.consultar();

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import remap.model.Usuario;
+import remap.model.UsuarioService;
 
 /**
  * Servlet implementation class ManterUsuarioController
@@ -44,7 +44,7 @@ public class ManterUsuarioController extends HttpServlet {
 			
 		}
 		
-		Usuario user = new Usuario(nome,"password");
+		UsuarioService user = new UsuarioService(nome,"password");
 		
 		if( acao.equals("salvar") ){
 			user.salvar();

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import remap.model.Cliente;
-import remap.to.ClienteTO;
+import remap.model.ClienteService;
 
 public class SalvarCliente implements Command {
 
@@ -21,13 +21,13 @@ public class SalvarCliente implements Command {
 		String nome = request.getParameter("nome");
 		String fone = request.getParameter("fone");
 
-		Cliente cliente = new Cliente(nome, fone);
+		ClienteService cliente = new ClienteService(nome, fone);
 
 		cliente.salvar();
 
 		HttpSession session = request.getSession();
 
-		List<ClienteTO> list = new ArrayList<ClienteTO>();
+		List<Cliente> list = new ArrayList<Cliente>();
 		list.add(cliente.geraTO());
 
 		session.setAttribute("listaCliente", list);

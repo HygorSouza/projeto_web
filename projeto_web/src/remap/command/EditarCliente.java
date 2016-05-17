@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import remap.model.Cliente;
+import remap.model.ClienteService;
 
 public class EditarCliente implements Command {
 
@@ -16,7 +16,7 @@ public class EditarCliente implements Command {
 		String sId  = request.getParameter("id");
 		int id = Integer.parseInt(sId);
 		
-		Cliente cliente = new Cliente();
+		ClienteService cliente = new ClienteService();
 		
 		cliente.setId(id);
 		cliente.consultar();

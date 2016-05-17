@@ -3,14 +3,14 @@ package remap.model;
 import remap.dao.UsuarioDAO;
 import remap.to.UsuarioTO;
 
-public class Usuario {
+public class UsuarioService {
 	private int    id;
 	private String usuario , senha;
 	private String cargo;
 	
-	public Usuario(){}
+	public UsuarioService(){}
 	
-	public Usuario( String usuario , String senha  ){
+	public UsuarioService( String usuario , String senha  ){
 		this.usuario = usuario;
 		this.senha = senha;
 	}
@@ -65,7 +65,7 @@ public class Usuario {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuario other = (Usuario) obj;
+		UsuarioService other = (UsuarioService) obj;
 		if (id != other.id)
 			return false;
 		return true;
@@ -106,7 +106,7 @@ public class Usuario {
 		dao.atualizar(to);
 	}
 	
-	public Usuario consultar(){
+	public UsuarioService consultar(){
 		UsuarioDAO dao = new UsuarioDAO();
 		UsuarioTO to = dao.consultar( getId() );
 		

@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import remap.model.Vendedor;
-import remap.to.ClienteTO;
+import remap.model.Cliente;
+import remap.model.VendedorService;
 
 public class ListarCliente implements Command {
 
@@ -21,8 +21,8 @@ public class ListarCliente implements Command {
 
 		HttpSession session = request.getSession();
 
-		Vendedor vendedor = new Vendedor();
-		List<ClienteTO> lista = null;
+		VendedorService vendedor = new VendedorService();
+		List<Cliente> lista = null;
 
 		if (key != null && key.length() > 0) {
 			lista = vendedor.listaDeClientes(key);

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import remap.model.Cliente;
-import remap.to.ClienteTO;
+import remap.model.ClienteService;
 
 public class AtualizarCliente implements Command {
 
@@ -30,15 +30,15 @@ public class AtualizarCliente implements Command {
 
 		}
 
-		Cliente cliente = new Cliente(nome, fone);
+		ClienteService cliente = new ClienteService(nome, fone);
 
 		cliente.setId(id);
 		cliente.atualizar();
 
 		HttpSession session = request.getSession();
-		List<ClienteTO> list = (List<ClienteTO>) session.getAttribute("listaCliente");
+		List<Cliente> list = (List<Cliente>) session.getAttribute("listaCliente");
 
-		ClienteTO to;
+		Cliente to;
 		for (int i = 0; i < list.size(); i++) {
 			to = list.get(i);
 

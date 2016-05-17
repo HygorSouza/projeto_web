@@ -4,23 +4,22 @@ import java.util.List;
 
 import remap.dao.ClienteDAO;
 import remap.dao.ProdutoDAO;
-import remap.to.ClienteTO;
 import remap.to.ProdutoTO;
 
-public class Vendedor {
+public class VendedorService {
 	
-	public List<ClienteTO> listaDeClientes(){
+	public List<Cliente> listaDeClientes(){
 		ClienteDAO dao = new ClienteDAO();
 		
-		List<ClienteTO> lista = dao.listaDeClientes();
+		List<Cliente> lista = dao.listaDeClientes();
 		
 		return lista;
 	}
 	
-	public List<ClienteTO> listaDeClientes(String key){
+	public List<Cliente> listaDeClientes(String key){
 		ClienteDAO dao = new ClienteDAO();
 		
-		List<ClienteTO> lista = dao.listaDeClientes(key);
+		List<Cliente> lista = dao.listaDeClientes(key);
 		
 		return lista;
 	}
