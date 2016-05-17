@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import remap.model.Produto;
 import remap.model.VendedorService;
-import remap.to.ProdutoTO;
 
 public class ListarProduto implements Command {
 
@@ -19,7 +19,7 @@ public class ListarProduto implements Command {
 		String key = request.getParameter("key");
 
 		VendedorService vendedor = new VendedorService();
-		List<ProdutoTO> lista = null;
+		List<Produto> lista = null;
 
 		HttpSession session = request.getSession();
 

@@ -4,7 +4,6 @@ import java.util.List;
 
 import remap.dao.ClienteDAO;
 import remap.dao.ProdutoDAO;
-import remap.to.ProdutoTO;
 
 public class VendedorService {
 	
@@ -25,16 +24,16 @@ public class VendedorService {
 	}
 	
 	
-	public List<ProdutoTO> listaDeProdutos(String key) {
+	public List<Produto> listaDeProdutos(String key) {
 		ProdutoDAO dao = new ProdutoDAO();	
-		List<ProdutoTO> lista = dao.listaDeProdutos(key);
+		List<Produto> lista = dao.listaDeProdutos(key);
 		return lista;
 	
 	}
 	
-	public List<ProdutoTO> listaDeProdutos() {
+	public List<Produto> listaDeProdutos() {
 		ProdutoDAO dao = new ProdutoDAO();	
-		List<ProdutoTO> lista = dao.listaDeProdutos();
+		List<Produto> lista = dao.listaDeProdutos();
 		return lista;
 	
 	}

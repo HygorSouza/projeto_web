@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import remap.model.CarrinhoDeCompra;
 import remap.model.Item;
-import remap.model.Produto;
+import remap.model.ProdutoService;
 
 public class AdicionarItemNoCarrinho implements Command {
 
@@ -39,7 +39,7 @@ public class AdicionarItemNoCarrinho implements Command {
 
 		}
 
-		Produto produto = new Produto(codigo);
+		ProdutoService produto = new ProdutoService(codigo);
 
 		HttpSession session = request.getSession();
 

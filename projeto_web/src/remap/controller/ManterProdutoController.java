@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import remap.model.ProdutoService;
 import remap.model.Produto;
-import remap.to.ProdutoTO;
 
 /**
  * Servlet implementation class ManterProdutoController
@@ -68,7 +68,7 @@ public class ManterProdutoController extends HttpServlet {
 		}
 		
 		
-		Produto produto = new Produto(nome , descricao , preco , quantidade );
+		ProdutoService produto = new ProdutoService(nome , descricao , preco , quantidade );
 		
 		RequestDispatcher view = null;
 		
@@ -76,7 +76,7 @@ public class ManterProdutoController extends HttpServlet {
 		if( acao.equals("salvar") ){
 			produto.salvar();
 			
-			List<ProdutoTO> list = new ArrayList<ProdutoTO>();
+			List<Produto> list = new ArrayList<Produto>();
 			list.add( produto.geraTO() );
 			
 			HttpSession session = request.getSession();
@@ -95,9 +95,9 @@ public class ManterProdutoController extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			
-			List<ProdutoTO> list = (List<ProdutoTO>) session.getAttribute("listaProduto");
+			List<Produto> list = (List<Produto>) session.getAttribute("listaProduto");
 			
-			ProdutoTO to;
+			Produto to;
 			for(int i = 0 ; i < list.size() ; i++ ){
 				to = list.get(i);
 				
@@ -126,9 +126,9 @@ public class ManterProdutoController extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			
-			List<ProdutoTO> list = (List<ProdutoTO>) session.getAttribute("listaProduto");
+			List<Produto> list = (List<Produto>) session.getAttribute("listaProduto");
 			
-			ProdutoTO to;
+			Produto to;
 			for(int i = 0 ; i < list.size() ; i++ ){
 				to = list.get(i);
 				

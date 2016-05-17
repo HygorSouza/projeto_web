@@ -1,10 +1,14 @@
 package remap.model;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarrinhoDeCompra {
+public class CarrinhoDeCompra  implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
 	private List<Item> itens;
 	private double     valorTotal;
 	
@@ -113,7 +117,7 @@ public class CarrinhoDeCompra {
 	private int buscar( int codigo ){
 		int indece = -1;
 		for(int i = 0 ; i < itens.size() ; i++ ){
-			Produto to = itens.get(i).getProduto();
+			ProdutoService to = itens.get(i).getProduto();
 			int cod = to.getCodigo();
 			if( codigo == cod ){
 				indece = i;

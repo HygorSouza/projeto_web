@@ -1,16 +1,16 @@
 package remap.to;
 
-import remap.model.Produto;
+import remap.model.ProdutoService;
 
 public class ItemTO {
-	private Produto 	produto;
+	private ProdutoService 	produto;
 	private int       	quantidade;
 	
-	public void setProduto( Produto to ){
+	public void setProduto( ProdutoService to ){
 		produto = to;
 	}
 	
-	public Produto getProduto(){
+	public ProdutoService getProduto(){
 		return produto;
 	}
 	

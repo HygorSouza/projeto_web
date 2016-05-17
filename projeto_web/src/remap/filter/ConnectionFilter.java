@@ -1,6 +1,7 @@
 package remap.filter;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -9,41 +10,31 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import remap.to.UsuarioTO;
+import remap.factory.ConnectionFactory;
 
 /**
- * Servlet Filter implementation class LoginUser
+ * Servlet Filter implementation class ConnectionFilter
  */
-
-@WebFilter("/*")
-public class LoginUserFilter implements Filter {
-
+@WebFilter( "/*")
+public class ConnectionFilter implements Filter {
 	/**
 	 * @see Filter#destroy()
 	 */
 	public void destroy() {
-		
 	}
 
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
-	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		
-		HttpServletRequest req = (HttpServletRequest) request;
-		HttpSession session = req.getSession();
-		
-		UsuarioTO user = (UsuarioTO) session.getAttribute("usuario");
-		
-		if( user == null ){
-			
+		try{
+			ConnectionFactory.getConnection();
+			chain.doFilter(request, response);
+			ConnectionFactory.closeConnection();
+		}catch(SQLException e){
+			throw new ServletException("Erro na ConnectionFactory");
 		}
-		
-		chain.doFilter(request, response);
 	}
 
 	/**

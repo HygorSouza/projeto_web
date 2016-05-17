@@ -5,16 +5,16 @@ import static org.junit.Assert.assertEquals;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import remap.model.Produto;
+import remap.model.ProdutoService;
 
 public class ProdutoTest {
-	static Produto produto , copia ;
+	static ProdutoService produto , copia ;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		produto = new Produto("test", "test", 2.00 , 10 );
+		produto = new ProdutoService("test", "test", 2.00 , 10 );
 		produto.salvar();
-		copia = new Produto("test", "test", 2.00  , 10 );
+		copia = new ProdutoService("test", "test", 2.00  , 10 );
 	}
 
 	@Test
@@ -42,7 +42,7 @@ public class ProdutoTest {
 
 	@Test
 	public void testConsultar() {
-		Produto p = new Produto();
+		ProdutoService p = new ProdutoService();
 		p.setCodigo( produto.getCodigo() );
 		
 		p.consultar();
@@ -53,7 +53,7 @@ public class ProdutoTest {
 	
 	@Test
 	public void testExcluir() {
-		Produto p = new Produto();
+		ProdutoService p = new ProdutoService();
 		p.setCodigo( produto.getCodigo() );
 		
 		produto.excluir();

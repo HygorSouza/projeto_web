@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import remap.model.Produto;
+import remap.model.ProdutoService;
 
 public class EditarProduto implements Command {
 
@@ -24,7 +24,7 @@ public class EditarProduto implements Command {
 			
 		}
 		
-		Produto produto = new Produto(codigo);
+		ProdutoService produto = new ProdutoService(codigo);
 		
 		produto.consultar();
 		request.setAttribute("produto", produto.geraTO() );

@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import remap.factory.ConnectionFactory;
-import remap.to.ProdutoTO;
+import remap.model.Produto;
 
 public class ProdutoDAO {
 	
-	public ProdutoTO salvar( ProdutoTO to ){
+	public void salvar( Produto to ){
 		String sqlInsert = "INSERT INTO tb_produto VALUES ( ?, ?, ?, ?, ?)";
 		try( Connection conn = ConnectionFactory.getConnection();
 			 PreparedStatement stm = conn.prepareStatement(sqlInsert);){
@@ -39,11 +39,9 @@ public class ProdutoDAO {
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		
-		return to;
 	}
 	
-	public void atualizar( ProdutoTO to ){
+	public void atualizar( Produto to ){
 		String sqlUpdate = "UPDATE tb_produto SET nome_produto = ? , descricao = ? , preco = ? WHERE cod_produto = ?";
 		try( Connection conn = ConnectionFactory.getConnection() ;
 			 PreparedStatement stm = conn.prepareStatement(sqlUpdate);){
@@ -61,7 +59,7 @@ public class ProdutoDAO {
 		
 	}
 	
-	public void excluir( ProdutoTO to ){
+	public void excluir( Produto to ){
 		String sqlDelete = "DELETE FROM tb_produto WHERE cod_produto = ? ";
 		try( Connection conn = ConnectionFactory.getConnection() ;
 			 PreparedStatement stm = conn.prepareStatement(sqlDelete);){
@@ -75,9 +73,9 @@ public class ProdutoDAO {
 		}
 	}
 	
-	public ProdutoTO consultar( int codigo ){
+	public Produto consultar( int codigo ){
 		String sqlSelect = "SELECT * FROM tb_produto WHERE cod_produto = ?";
-		ProdutoTO to = new ProdutoTO();
+		Produto to = new Produto();
 		try( Connection conn = ConnectionFactory.getConnection() ;
 			 PreparedStatement stm = conn.prepareStatement(sqlSelect);){
 			stm.setInt( 1 , codigo );
@@ -104,10 +102,10 @@ public class ProdutoDAO {
 	}
 	
 	
-	public List<ProdutoTO> listaDeProdutos(String key) {
-		List<ProdutoTO> lista = new ArrayList<ProdutoTO>();
+	public List<Produto> listaDeProdutos(String key) {
+		List<Produto> lista = new ArrayList<Produto>();
 		String sqlSelect = "SELECT * FROM tb_produto WHERE UPPER(nome_produto) LIKE ?";
-		ProdutoTO to;
+		Produto to;
 		
 		try (Connection conn = ConnectionFactory.getConnection();
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -115,7 +113,7 @@ public class ProdutoDAO {
 			try (ResultSet rs = stm.executeQuery();) {
 
 				while(rs.next()) {
-					to  = new ProdutoTO();
+					to  = new Produto();
 					to.setCodigo(  rs.getInt("cod_produto"));
 					to.setNome(rs.getString("nome_produto"));
 					to.setPreco(rs.getDouble("preco"));
@@ -138,17 +136,17 @@ public class ProdutoDAO {
 		return lista;
 	}
 	
-	public List<ProdutoTO> listaDeProdutos(){
-		List<ProdutoTO> lista = new ArrayList<ProdutoTO>(); 
+	public List<Produto> listaDeProdutos(){
+		List<Produto> lista = new ArrayList<Produto>(); 
 		String sqlSelect = "SELECT * FROM tb_produto";
-		ProdutoTO to;
+		Produto to;
 		try( Connection conn = ConnectionFactory.getConnection() ;
 			 PreparedStatement stm = conn.prepareStatement(sqlSelect);){
 			
 			try(ResultSet rs = stm.executeQuery() ;){
 				
 				while( rs.next() ){
-					to = new ProdutoTO();
+					to = new Produto();
 					to.setCodigo( rs.getInt("cod_produto") );
 					to.setNome(  rs.getString("nome_produto") );
 					to.setPreco( rs.getDouble("preco") );

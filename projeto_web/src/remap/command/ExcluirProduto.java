@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import remap.model.ProdutoService;
 import remap.model.Produto;
-import remap.to.ProdutoTO;
 
 public class ExcluirProduto implements Command {
 
@@ -29,15 +29,15 @@ public class ExcluirProduto implements Command {
 	    	
 	    }		
 		
-		Produto produto = new Produto(codigo);
+		ProdutoService produto = new ProdutoService(codigo);
 
 			produto.excluir();
 			
 			HttpSession session = request.getSession();
 			
-			List<ProdutoTO> list = (List<ProdutoTO>) session.getAttribute("listaProduto");
+			List<Produto> list = (List<Produto>) session.getAttribute("listaProduto");
 			
-			ProdutoTO to;
+			Produto to;
 			for(int i = 0 ; i < list.size() ; i++ ){
 				to = list.get(i);
 				

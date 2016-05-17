@@ -5,19 +5,19 @@ import remap.to.ItemTO;
 
 public class Item {
 	// atributos
-	private Produto 	produto;
+	private ProdutoService 	produto;
 	private int       	quantidade;
 
-	public Item( Produto produto, int quantidade) {
+	public Item( ProdutoService produto, int quantidade) {
 		this.produto = produto;
 		this.quantidade = quantidade;
 	}
 	
-	public void setProduto( Produto to ){
+	public void setProduto( ProdutoService to ){
 		produto = to;
 	}
 	
-	public Produto getProduto(){
+	public ProdutoService getProduto(){
 		return produto;
 	}
 	

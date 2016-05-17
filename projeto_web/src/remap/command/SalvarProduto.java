@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import remap.model.ProdutoService;
 import remap.model.Produto;
-import remap.to.ProdutoTO;
 
 public class SalvarProduto implements Command {
 
@@ -46,13 +46,13 @@ public class SalvarProduto implements Command {
 
 		}
 
-		Produto produto = new Produto(nome, descricao, preco, quantidade);
+		ProdutoService produto = new ProdutoService(nome, descricao, preco, quantidade);
 
 		produto.setCodigo(codigo);
 
 		produto.salvar();
 
-		List<ProdutoTO> list = new ArrayList<ProdutoTO>();
+		List<Produto> list = new ArrayList<Produto>();
 		list.add(produto.geraTO());
 
 		HttpSession session = request.getSession();
