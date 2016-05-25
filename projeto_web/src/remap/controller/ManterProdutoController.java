@@ -95,6 +95,7 @@ public class ManterProdutoController extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			
+			@SuppressWarnings("unchecked")
 			List<Produto> list = (List<Produto>) session.getAttribute("listaProduto");
 			
 			Produto to;
@@ -126,6 +127,7 @@ public class ManterProdutoController extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			
+			@SuppressWarnings("unchecked")
 			List<Produto> list = (List<Produto>) session.getAttribute("listaProduto");
 			
 			Produto to;
