@@ -49,12 +49,16 @@ public class LogFilter implements Filter {
 		} else {
 			textoLog = String.format("[%1$tA, %1$tB %1$td, %1$tY %1$tZ %1$tI:%1$tM:%1$tS:%1$tL %tp] %s -> %s\n",timestamp, usuario.getNome(), comando);
 		}
-		synchronized (textoLog) {
-			Log arqLog = new Log();
-			arqLog.abrir(Log.NOME);
-			arqLog.abrir(contextPath+File.separator+"log"+File.separator+Log.NOME);
-			arqLog.escrever(textoLog);
-			arqLog.fechar();
+		try{
+			synchronized (textoLog) {
+				Log arqLog = new Log();
+				arqLog.abrir(Log.NOME);
+				arqLog.abrir(contextPath+File.separator+"log"+File.separator+Log.NOME);
+				arqLog.escrever(textoLog);
+				arqLog.fechar();
+			}
+		}catch(IOException e){
+			//e.printStackTrace();
 		}
 		// pass the request along the filter chain
 		chain.doFilter(request, response);

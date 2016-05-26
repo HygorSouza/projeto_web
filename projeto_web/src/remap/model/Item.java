@@ -6,19 +6,19 @@ public class Item implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	// atributos
-	private ProdutoService 	produto;
+	private Produto 	produto;
 	private int       	quantidade;
 
-	public Item( ProdutoService produto, int quantidade) {
+	public Item( Produto produto, int quantidade) {
 		this.produto = produto;
 		this.quantidade = quantidade;
 	}
 	
-	public void setProduto( ProdutoService to ){
+	public void setProduto( Produto to ){
 		produto = to;
 	}
 	
-	public ProdutoService getProduto(){
+	public Produto getProduto(){
 		return produto;
 	}
 	

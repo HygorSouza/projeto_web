@@ -31,12 +31,13 @@ public class FazerLogin implements Command {
 		HttpSession session = request.getSession();
 		if(usuarioService.validar()){
 			session.setAttribute("logado", usuarioService.geraTO());
-			//System.out.println("Logou "+usuarioService.getData());
+			
+			response.sendRedirect("home.jsp");
 		} else {
-			//System.out.println("Não Logou "+usuarioService.getData());
-			//throw new ServletException("Usuário/Senha inválidos");
+			
+			response.sendRedirect("index.jsp");
 		}
-		response.sendRedirect("home.jsp");
+		
 	}
 
 }

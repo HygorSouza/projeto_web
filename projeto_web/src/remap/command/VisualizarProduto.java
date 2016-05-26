@@ -1,16 +1,20 @@
 package remap.command;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import remap.model.Produto;
 import remap.model.ProdutoService;
 
 public class VisualizarProduto implements Command {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -25,10 +29,20 @@ public class VisualizarProduto implements Command {
 		}
 
 		ProdutoService produto = new ProdutoService(codigo);
+		
+		HttpSession session = request.getSession();
+		
+		List<Produto> lista = (List<Produto>) session.getAttribute("listaProduto");
+		Produto to = null;
+		
+		for( int i = 0; i < lista.size(); i++ ){
+			to = lista.get(i);
+			if( to.getCodigo() == produto.getCodigo() ){
+				break;
+			}
+		}
 
-		produto.consultar();
-
-		request.setAttribute("produto", produto.geraTO());
+		request.setAttribute("produto", to );
 
 		RequestDispatcher view = request.getRequestDispatcher("exibir_produto.jsp");
 

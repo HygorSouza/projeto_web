@@ -5,15 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-import remap.factory.ConnectionFactory;
 import remap.model.Item;
 
 public class ItemDAO {
 	
-	public void finalizarVenda( List<Item> lista , int codigoVenda  ){
+	public void finalizarVenda( Connection conn , List<Item> lista , int codigoVenda  ){
 		String sqlInsert = "INSERT INTO tb_itens_venda VALUES ( ?, ?, ?)";
-		try( Connection conn = ConnectionFactory.getConnection(); 
-			 PreparedStatement stm = conn.prepareStatement(sqlInsert); ){
+		try( PreparedStatement stm = conn.prepareStatement(sqlInsert); ){
 			 
 				for( int i = 0 ; i < lista.size(); i++ ){
 					Item item = lista.get(i);
@@ -30,10 +28,9 @@ public class ItemDAO {
 		}
 	}
 	
-	public void atualizar( List<Item> lista ){
+	public void atualizar( Connection conn,  List<Item> lista ){
 		String sqlUpdate = "UPDATE tb_produto SET quantidade = ?  WHERE cod_produto = ?";
-		try( Connection conn = ConnectionFactory.getConnection() ;
-			 PreparedStatement stm = conn.prepareStatement(sqlUpdate);){
+		try( PreparedStatement stm = conn.prepareStatement(sqlUpdate);){
 			
 			for( int i = 0 ; i < lista.size(); i++ ){
 				

@@ -9,24 +9,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="home.jsp">projeto_web</a>
+                <a class="navbar-brand" href="index.jsp">projeto_web</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="servletController.do?command=ListarClienteReiniciar">Cliente</a>
-                    </li>
-                    <li><a href="servletController.do?command=ListarProdutoReiniciar">Produto</a>
-                    </li>
-	                <c:if test="${ not empty clienteVenda}">
-	                    <li>
-	                    	<a href="tela_venda.jsp">Venda</a>
-	                    </li>
-                    </c:if>
                     <li>
-                    	<a>Pesquisar Venda </a>
-                    </li>
-                    <li><a href="servletController.do?command=FazerLogout">sair</a>
-                    </li>
+                    	<a href="cadastro_usuario.jsp">Cadastro Usuario</a>
+                    </li>            
                 </ul>
             </div>
         </div>

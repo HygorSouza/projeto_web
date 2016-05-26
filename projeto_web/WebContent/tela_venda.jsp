@@ -3,7 +3,7 @@
 <!DOCTYPE html >
 <html>
 <head>
-	<title>Insert title here</title>
+	<title>Venda</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,18 +19,23 @@
 	
 	<div class="container">
 		<div class="row">
+			<table id="table" class="table table-responsive ">
+				<caption> Dados do cliente</caption>
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Nome</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>${clienteVenda.id}</td>
+						<td>${clienteVenda.nome}</td>
+					</tr>
+				</tbody>
+			</table>
 		
-			<form action="servletController.do" method="post">
-				
-				<c:if test="${ empty clienteVenda }">
-					<div class="form-group col-md-3">
-	
-							<div class="input-group ">
-								<span class="input-group-addon">Codigo Cliente</span>
-								<input type="number" required  name="id" min="1" class="form-control" />
-							</div>
-					</div>
-				</c:if>
+			<form action="servletController.do" method="post">		
 				
 				<div class="form-group col-md-3">
 
@@ -82,6 +87,7 @@
 								<td>Total:</td>
 								<td>${carrinhoDeCompra.valorTotal}</td>
 								<td><a class="btn btn-xs btn-primary" href="servletController.do?command=FinalizarVenda" >Finalizar Venda</a></td>
+								<td><a class="btn btn-xs btn-default" href="servletController.do?command=CancelarVenda" >Cancelar Venda</a></td>
 							</tr>
 					</tbody>
 				</table>

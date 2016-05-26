@@ -8,25 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import remap.model.CarrinhoDeCompra;
-import remap.model.Cliente;
-import remap.model.VendaService;
-
-public class FinalizarVenda implements Command {
+public class CancelarVenda implements Command{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		
-		Cliente cliente = (Cliente) session.getAttribute("clienteVenda");
-		
-		VendaService venda = new VendaService( cliente.getId() );
-		
-		CarrinhoDeCompra carrinho = (CarrinhoDeCompra) session.getAttribute("carrinhoDeCompra");
-		
-		
-		venda.finalizarVenda(  carrinho.getItens() );
 		
 		session.setAttribute( "carrinhoDeCompra", null );
 		
@@ -34,6 +21,7 @@ public class FinalizarVenda implements Command {
 		
 		RequestDispatcher view = request.getRequestDispatcher("home.jsp");
 		view.forward(request, response);
+		
 	}
 
 }

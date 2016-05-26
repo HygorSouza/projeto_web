@@ -15,14 +15,14 @@ import javax.servlet.http.HttpSession;
 
 import remap.model.Usuario;
 
-@WebFilter("/controller.do")
+@WebFilter("/servletController.do")
 public class LoginFilter implements Filter {
 
 	public void destroy() {
 	}
 
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
 		// place your code here
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession();
@@ -30,15 +30,15 @@ public class LoginFilter implements Filter {
 		String path = req.getContextPath();
 		String uri = req.getRequestURI();
 		String comando = req.getParameter("command");
-		if(comando == null){
+		if (comando == null) {
 			comando = "";
 		}
-		if( comando.equals("CadastroUsuario") ){
+
+		if (comando.equals("CadastroUsuario")) {
 			chain.doFilter(request, response);
-		}
-		else if (logado == null && !uri.equals(path + "/Login.jsp")
-				&& !comando.equals("FazerLogin") && !comando.equals("Login")) {
-			((HttpServletResponse) response).sendRedirect("controller.do?command=Login");
+		} else if (logado == null && !uri.equals(path + "/index.jsp") && !comando.equals("FazerLogin")
+				&& !comando.equals("Login")) {
+			((HttpServletResponse) response).sendRedirect("servletController.do?command=Login");
 		} else {
 			// pass the request along the filter chain
 			chain.doFilter(request, response);

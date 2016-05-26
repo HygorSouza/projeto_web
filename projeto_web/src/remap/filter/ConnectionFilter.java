@@ -16,7 +16,7 @@ import remap.factory.ConnectionFactory;
 /**
  * Servlet Filter implementation class ConnectionFilter
  */
-@WebFilter( "/*")
+@WebFilter( "/*"  )
 public class ConnectionFilter implements Filter {
 	/**
 	 * @see Filter#destroy()
@@ -33,7 +33,8 @@ public class ConnectionFilter implements Filter {
 			chain.doFilter(request, response);
 			ConnectionFactory.closeConnection();
 		}catch(SQLException e){
-			throw new ServletException("Erro na ConnectionFactory");
+			e.printStackTrace();
+			throw new ServletException(e);
 		}
 	}
 

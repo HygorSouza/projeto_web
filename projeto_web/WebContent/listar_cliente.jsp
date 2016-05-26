@@ -72,6 +72,7 @@
 									<a class="btn btn-default btn-xs" href="servletController.do?command=VisualizarCliente&id=${cliente.id}" >Visualizar</a>
 									<a class="btn btn-primary btn-xs" href="servletController.do?command=EditarCliente&id=${cliente.id}" >Editar</a>
 									<button id="btn${cliente.id}" type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal" data-cliente="${cliente.id}">Excluir</button>
+									<a class="btn btn-default btn-xs" href="servletController.do?command=TelaVenda&id=${cliente.id}" >Iniciar Venda</a>
 								</td>
 							</tr>
 						</c:forEach>

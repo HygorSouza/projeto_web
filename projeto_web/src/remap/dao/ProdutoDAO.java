@@ -59,12 +59,12 @@ public class ProdutoDAO {
 		
 	}
 	
-	public void excluir( Produto to ){
+	public void excluir( int codigo ){
 		String sqlDelete = "DELETE FROM tb_produto WHERE cod_produto = ? ";
 		try( Connection conn = ConnectionFactory.getConnection() ;
 			 PreparedStatement stm = conn.prepareStatement(sqlDelete);){
 			
-			stm.setInt(  1 , to.getCodigo() );
+			stm.setInt(  1 , codigo );
 			stm.execute();
 			
 		} catch (SQLException e) {
@@ -86,6 +86,7 @@ public class ProdutoDAO {
 					to.setPreco( rs.getDouble("preco") );
 					to.setDescricao( rs.getString("descricao") );
 					to.setQuantidade( rs.getInt("quantidade") );
+					to.setCodigo(codigo);
 				}
 				
 			} catch (SQLException e) {

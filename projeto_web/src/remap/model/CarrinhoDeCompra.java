@@ -117,7 +117,7 @@ public class CarrinhoDeCompra  implements Serializable{
 	private int buscar( int codigo ){
 		int indece = -1;
 		for(int i = 0 ; i < itens.size() ; i++ ){
-			ProdutoService to = itens.get(i).getProduto();
+			Produto to = itens.get(i).getProduto();
 			int cod = to.getCodigo();
 			if( codigo == cod ){
 				indece = i;

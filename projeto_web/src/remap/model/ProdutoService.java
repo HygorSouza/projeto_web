@@ -3,7 +3,7 @@ package remap.model;
 import remap.dao.ProdutoDAO;
 
 public class ProdutoService {
-	private Produto data = new Produto();
+	private Produto produto = new Produto();
 	
 	public ProdutoService(){}
 
@@ -15,89 +15,77 @@ public class ProdutoService {
 	}
 	
 	public ProdutoService(int codigo) {
-		this.setCodigo(codigo);
+		setCodigo(codigo);
 	}
 
 	public int getCodigo() {
-		return data.getCodigo();
+		return produto.getCodigo();
 	}
 
 	public void setCodigo(int codigo) {
-		this.data.setCodigo(codigo);
+		this.produto.setCodigo(codigo);
 	}
 
 	public String getNome() {
-		return data.getNome();
+		return produto.getNome();
 	}
 
 	public void setNome(String nome) {
-		this.data.setNome(nome);
+		this.produto.setNome(nome);
 	}
 
 	public double getPreco() {
-		return data.getPreco();
+		return produto.getPreco();
 	}
 
 	public void setPreco(double preco) {
-		this.data.setPreco(preco);
+		this.produto.setPreco(preco);
 	}
 	
 	public String getDescricao() {
-		return data.getDescricao();
+		return produto.getDescricao();
 	}
 
 	public void setDescricao(String descricao) {
-		this.data.setDescricao(descricao);
+		this.produto.setDescricao(descricao);
 	}
 	
 	public int getQuantidade() {
-		return data.getQuantidade();
+		return produto.getQuantidade();
 	}
 
 	public void setQuantidade(int quantidade) {
-		this.data.setQuantidade(quantidade);
+		this.produto.setQuantidade(quantidade);
 	}
 
 
 
 	public Produto geraTO(){
-		Produto to = new Produto();
-		
-		to.setCodigo( data.getCodigo() );
-		to.setNome( data.getNome() );
-		to.setPreco( data.getPreco() );
-		to.setDescricao( data.getDescricao() );
-		to.setQuantidade( data.getQuantidade() );
-		
-		return to;
+		return produto;
 	}
 	
 	
 	public void salvar(){
 		ProdutoDAO dao = new ProdutoDAO();
-		dao.salvar(data);
+		dao.salvar(produto);
 	}
 	
 	public void atualizar(){
 		ProdutoDAO dao = new ProdutoDAO();
-		dao.atualizar(data);
+		dao.atualizar(produto);
 		
 	}
 	
 	public void excluir(){
 		ProdutoDAO dao = new ProdutoDAO();
-		dao.excluir(data);
+		dao.excluir(produto.getCodigo());
 		
 	}
 	
 	public ProdutoService consultar(){
 		ProdutoDAO dao = new ProdutoDAO();
-		Produto to = dao.consultar( data.getCodigo() );
-		
-		setNome( to.getNome() );
-		setPreco( to.getPreco() );
-		setDescricao( to.getDescricao() );
-		setQuantidade( to.getQuantidade() );
+		Produto to = dao.consultar( produto.getCodigo() );
+		produto = to;
 		
 		return this;
 	}	

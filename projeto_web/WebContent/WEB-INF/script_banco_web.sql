@@ -4,10 +4,10 @@ CREATE DATABASE remapbd_web;
 
 USE remapbd_web;
 
--- select * from tb_cliente;
+-- select * from tb_usuario;
 
- --  truncate tb_cliente;
-
+ --  truncate tb_cliente; -- drop table tb_venda;
+	
 CREATE TABLE tb_cliente(
 	id_cliente    SMALLINT UNSIGNED UNIQUE KEY AUTO_INCREMENT,
 	nome_cliente  VARCHAR(100) NOT NULL ,
@@ -28,11 +28,30 @@ CREATE TABLE tb_produto(
 CREATE TABLE tb_usuario(
 	cod_usuario    SMALLINT UNSIGNED AUTO_INCREMENT,
 	nome_usuario   VARCHAR(50) NOT NULL,
-	senha_usuario  VARCHAR(20) NOT NULL,
-   -- cargo          VARCHAR(30) NOT NULL,
+	senha_usuario  VARCHAR(30) NOT NULL,
 	CONSTRAINT pk_usuario PRIMARY KEY(cod_usuario)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
  
+ 
+ CREATE TABLE tb_venda(
+	codigo_venda   SMALLINT UNSIGNED AUTO_INCREMENT,
+    id_cliente     SMALLINT UNSIGNED NOT NULL,
+    data_venda     DATETIME NOT NULL,
+    CONSTRAINT pk_venda PRIMARY KEY(codigo_venda)
+ )ENGINE = InnoDB DEFAULT CHARSET=utf8;
+ 
+ ALTER TABLE tb_venda ADD CONSTRAINT fk_cliente FOREIGN KEY(id_cliente) REFERENCES tb_cliente(id_cliente);
+ 
+ CREATE TABLE tb_itens_venda(
+	codigo_venda     SMALLINT UNSIGNED NOT NULL,
+    cod_produto      SMALLINT UNSIGNED NOT NULL,
+    quantidade_item  SMALLINT UNSIGNED NOT NULL,
+    CONSTRAINT pk_itens_venda PRIMARY KEY( codigo_venda , cod_produto )
+ )ENGINE = InnoDB DEFAULT CHARSET=utf8;
+ 
+ ALTER TABLE tb_itens_venda ADD CONSTRAINT fk_venda FOREIGN KEY(codigo_venda) REFERENCES tb_venda(codigo_venda); 
+
+ALTER TABLE tb_itens_venda  ADD CONSTRAINT fk_produto FOREIGN KEY(cod_produto) REFERENCES tb_produto(cod_produto);
 
 /*
 
@@ -82,6 +101,8 @@ CREATE TABLE tb_produto(
 );
 
 */
+
+
 
 
 USE remapbd_web;

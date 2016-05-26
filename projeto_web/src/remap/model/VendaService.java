@@ -1,8 +1,8 @@
 package remap.model;
 
+import java.util.Calendar;
 import java.util.List;
 
-import remap.dao.ItemDAO;
 import remap.dao.VendaDAO;
 
 public class VendaService {
@@ -10,6 +10,15 @@ public class VendaService {
 	
 	public VendaService( int idCliente ){
 		setIdCliente(idCliente);
+		setData(Calendar.getInstance());
+	}
+	
+	public Calendar getData(){
+		return venda.getData();
+	}
+	
+	public void setData( Calendar data ){
+		this.venda.setData(data);
 	}
 	
 	public int getId() {
@@ -27,11 +36,7 @@ public class VendaService {
 	
 	public void finalizarVenda( List<Item> lista ){
 		VendaDAO dao = new VendaDAO();
-		dao.finalizarVenda( venda );
-		
-		ItemDAO item = new ItemDAO();
-		item.finalizarVenda( lista, getId() );
-		item.atualizar(lista);
+		dao.finalizarVenda(venda, lista);		
 		
 	}
 	
