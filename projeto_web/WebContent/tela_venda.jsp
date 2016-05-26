@@ -21,7 +21,17 @@
 		<div class="row">
 		
 			<form action="servletController.do" method="post">
-			
+				
+				<c:if test="${ empty clienteVenda }">
+					<div class="form-group col-md-3">
+	
+							<div class="input-group ">
+								<span class="input-group-addon">Codigo Cliente</span>
+								<input type="number" required  name="id" min="1" class="form-control" />
+							</div>
+					</div>
+				</c:if>
+				
 				<div class="form-group col-md-3">
 
 						<div class="input-group ">

@@ -1,8 +1,5 @@
 package remap.model;
 
-import remap.to.ItemTO;
-
-
 public class Item {
 	// atributos
 	private ProdutoService 	produto;
@@ -33,13 +30,5 @@ public class Item {
 		return ( produto.getPreco() * quantidade );
 	}
 	
-	public ItemTO geraTO(){
-		ItemTO to = new ItemTO();
-		
-		to.setProduto(produto);
-		to.setQuantidade(quantidade);
-		
-		return to;
-	}
 	
 }

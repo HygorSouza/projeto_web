@@ -34,7 +34,7 @@ public class UsuarioTest {
 		UsuarioService s = new UsuarioService();
 		s.setId(  user.getId() );
 		
-		user.setUsuario("test");
+		user.setNome("test");
 		user.atualizar();
 		
 		s.consultar();

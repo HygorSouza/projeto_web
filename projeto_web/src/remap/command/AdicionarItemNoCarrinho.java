@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import remap.model.CarrinhoDeCompra;
+import remap.model.ClienteService;
 import remap.model.Item;
 import remap.model.ProdutoService;
 
@@ -16,10 +17,19 @@ public class AdicionarItemNoCarrinho implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String sCodigo = request.getParameter("codigo");
+		String sId         = request.getParameter("clienteVenda");
+		String sCodigo     = request.getParameter("codigo");
 		String sQuantidade = request.getParameter("quantidade");
-
+		int id = -1;
+		
+		try {
+			id = Integer.parseInt(sId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		ClienteService cliente = new ClienteService(id);
+		
 		int codigo = -1;
 		int quantidade = -1;
 
@@ -55,6 +65,7 @@ public class AdicionarItemNoCarrinho implements Command {
 			if ( carrinhoDeCompra == null ) {
 
 				carrinhoDeCompra = new CarrinhoDeCompra();
+				session.setAttribute("clienteVenda", cliente.geraTO() );
 
 				resultado = carrinhoDeCompra.add(item);
 			} else { // para quando o objeto CarrinhoDeCompras ja estiver sido

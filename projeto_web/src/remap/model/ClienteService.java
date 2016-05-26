@@ -10,8 +10,12 @@ public class ClienteService {
 	}
 	
 	public ClienteService(String nome, String fone) {
-		this.data.setNome(nome);
-		this.data.setFone(fone);
+		setNome(nome);
+		setFone(fone);
+	}
+
+	public ClienteService(int id) {
+		setId(id);
 	}
 
 	public int getId() {

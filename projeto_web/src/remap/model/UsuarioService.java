@@ -1,50 +1,40 @@
 package remap.model;
 
 import remap.dao.UsuarioDAO;
-import remap.to.UsuarioTO;
 
 public class UsuarioService {
-	private int    id;
-	private String usuario , senha;
-	private String cargo;
+	private Usuario usuario = new Usuario();
+	//private String cargo;
 	
 	public UsuarioService(){}
 	
-	public UsuarioService( String usuario , String senha  ){
-		this.usuario = usuario;
-		this.senha = senha;
+	public UsuarioService( String nome , String senha  ){
+		setNome(nome);
+		setSenha(senha);
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public String getNome() {
+		return usuario.getNome();
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public String getCargo() {
-		return cargo;
-	}
-
-	public void setCargo(String cargo) {
-		this.cargo = cargo;
+	public void setNome(String nome) {
+		this.usuario.setNome(nome);
 	}
 
 	public String getSenha() {
-		return senha;
+		return usuario.getSenha();
 	}
 
 	public void setSenha(String senha) {
-		this.senha = senha;
+		this.usuario.setSenha(senha);;
 	}
 
 	public int getId() {
-		return id;
+		return usuario.getId();
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.usuario.setId(id);
 	}
 	
 	
@@ -53,7 +43,7 @@ public class UsuarioService {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + usuario.getId();
 		return result;
 	}
 
@@ -66,31 +56,25 @@ public class UsuarioService {
 		if (getClass() != obj.getClass())
 			return false;
 		UsuarioService other = (UsuarioService) obj;
-		if (id != other.id)
+		if (usuario.getId() != other.usuario.getId() )
 			return false;
 		return true;
 	}
 
-	public UsuarioTO geraTO(){
-		UsuarioTO to = new UsuarioTO();
+	public Usuario geraTO(){
+		Usuario to = new Usuario();
 		
-		to.setSenha(getSenha());
-		to.setUsuario(getUsuario());
-		to.setId(getId());
-		to.setCargo( getCargo() );
+		to.setSenha(usuario.getSenha());
+		to.setNome(usuario.getNome() );
+		to.setId(usuario.getId());
 		
 		return to;
 	}
 	
 	public void salvar(){
 		UsuarioDAO dao = new UsuarioDAO();
-		UsuarioTO to = new UsuarioTO();
 		
-		to.setUsuario( getUsuario() );
-		to.setSenha( getSenha() );
-		to.setCargo( getCargo() );
-		
-		setId(  dao.salvar(to).getId() );
+		dao.salvar(usuario);
 	}
 	
 	public void excluir(){
@@ -101,18 +85,15 @@ public class UsuarioService {
 	
 	public void atualizar(){
 		UsuarioDAO dao = new UsuarioDAO();
-		UsuarioTO to = geraTO();
+
 		
-		dao.atualizar(to);
+		dao.atualizar(usuario);
 	}
 	
 	public UsuarioService consultar(){
 		UsuarioDAO dao = new UsuarioDAO();
-		UsuarioTO to = dao.consultar( getId() );
-		
-		setUsuario( to.getUsuario() );
-		//setCargo( to.getCargo() );
-		setSenha( to.getSenha() );
+		Usuario to = dao.consultar( getId() );
+		usuario = to;
 		
 		return this;
 	}
