@@ -97,5 +97,10 @@ public class UsuarioService {
 		
 		return this;
 	}
+
+	public boolean validar() {
+	 UsuarioDAO dao = new UsuarioDAO();
+	 return dao.validar(usuario);
+	}
 	
 }

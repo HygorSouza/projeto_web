@@ -1,6 +1,10 @@
 package remap.model;
 
-public class Item {
+import java.io.Serializable;
+
+public class Item implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	// atributos
 	private ProdutoService 	produto;
 	private int       	quantidade;

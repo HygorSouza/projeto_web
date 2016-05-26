@@ -81,6 +81,7 @@
 							<tr>
 								<td>Total:</td>
 								<td>${carrinhoDeCompra.valorTotal}</td>
+								<td><a class="btn btn-xs btn-primary" href="servletController.do?command=FinalizarVenda" >Finalizar Venda</a></td>
 							</tr>
 					</tbody>
 				</table>
