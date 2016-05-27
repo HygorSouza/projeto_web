@@ -7,10 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import remap.factory.ConnectionFactory;
+import remap.model.DadosVenda;
 import remap.model.Item;
+import remap.model.Produto;
 import remap.model.Venda;
 
 public class VendaDAO {
@@ -43,14 +46,17 @@ public class VendaDAO {
 	}
 	
 	
-	public List<Venda> bucarVenda( int idCliente ){
+	public List<DadosVenda> bucarVenda( int idCliente ){
 		String sql = " SELECT * FROM tb_venda venda INNER JOIN tb_cliente cliente "
 				+ " ON  venda.id_cliente = cliente.id_cliente    INNER JOIN tb_itens_venda itens "
-				+ " ON itens.codigo_venda = venda.codigo_venda"
+				+ " ON itens.codigo_venda = venda.codigo_venda   INNER JOIN tb_produto  "
+				+ " ON produto.cod_produto = itens.cod_produto"
 				//+ " GROUP BY venda.codigo_venda "
 				+ " WHERE cliente.id_cliente = ?";
 	
-		List<Venda> lista = new ArrayList<Venda>();
+		List<DadosVenda> lista = new ArrayList<DadosVenda>();
+		DadosVenda to = new DadosVenda();
+		
 		try( Connection conn = ConnectionFactory.getConnection();
 			 PreparedStatement stm = conn.prepareStatement(sql);){
 			
@@ -58,7 +64,26 @@ public class VendaDAO {
 			
 			try( ResultSet rs = stm.executeQuery(); ){
 				while( rs.next() ){
-				
+					Venda venda = new Venda();
+					
+					Calendar c = Calendar.getInstance();
+					c.setTime( new Date( Long.parseLong( rs.getString("data_venda") ) ) );
+					venda.setData(c);
+					
+					venda.setIdCliente(idCliente);
+					
+					venda.setId( rs.getInt("tb_venda.codigo_venda") );
+					
+					to.setVenda(venda);
+					
+					Produto produto = new Produto();
+					
+					//produto.setCodigo( rs.getInt("cod_produto") );
+					
+					to.setProduto(produto);
+					
+					
+					lista.add(to);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

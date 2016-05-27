@@ -73,12 +73,12 @@ public class ProdutoDAO {
 		}
 	}
 	
-	public Produto consultar( int codigo ){
+	public Produto consultar( Produto to ){
 		String sqlSelect = "SELECT * FROM tb_produto WHERE cod_produto = ?";
-		Produto to = new Produto();
+		
 		try( Connection conn = ConnectionFactory.getConnection() ;
 			 PreparedStatement stm = conn.prepareStatement(sqlSelect);){
-			stm.setInt( 1 , codigo );
+			stm.setInt( 1 , to.getCodigo() );
 			try(ResultSet rs = stm.executeQuery() ;){
 				
 				if( rs.next() ){
@@ -86,7 +86,6 @@ public class ProdutoDAO {
 					to.setPreco( rs.getDouble("preco") );
 					to.setDescricao( rs.getString("descricao") );
 					to.setQuantidade( rs.getInt("quantidade") );
-					to.setCodigo(codigo);
 				}
 				
 			} catch (SQLException e) {

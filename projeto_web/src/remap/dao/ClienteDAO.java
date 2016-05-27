@@ -61,13 +61,13 @@ public class ClienteDAO {
 		}
 	}
 	
-	public Cliente consultar( int id ){
-		Cliente to = new Cliente();
+	public Cliente consultar( Cliente to ){
 		String sqlSelect = "SELECT * FROM tb_cliente WHERE id_cliente = ?";
+		
 		try( Connection conn = ConnectionFactory.getConnection(); 
 			 PreparedStatement stm = conn.prepareStatement(sqlSelect);){
 			
-			stm.setInt( 1 , id );
+			stm.setInt( 1 , to.getId() );
 			
 			try(ResultSet rs = stm.executeQuery();){
 				if( rs.next() ){

@@ -92,7 +92,7 @@ public class UsuarioService {
 	
 	public UsuarioService consultar(){
 		UsuarioDAO dao = new UsuarioDAO();
-		Usuario to = dao.consultar( getId() );
+		Usuario to = dao.consultar( usuario );
 		usuario = to;
 		
 		return this;

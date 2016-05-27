@@ -100,10 +100,7 @@ public class ClienteService {
 	
 	public ClienteService consultar(){
 		ClienteDAO dao = new ClienteDAO();
-		Cliente to = dao.consultar( data.getId() );
-		
-		data.setNome( to.getNome() );
-		data.setFone( to.getFone() );
+		data = dao.consultar( data );
 		
 		return this;
 	}

@@ -66,12 +66,12 @@ public class UsuarioDAO {
 		
 	}
 	
-	public Usuario consultar( int id ){
+	public Usuario consultar( Usuario to){
 		String sqlSelect = "SELECT * FROM tb_usuario WHERE cod_usuario = ?";
-		Usuario to = new Usuario();
+		
 		try( Connection conn = ConnectionFactory.getConnection();
 			 PreparedStatement stm = conn.prepareStatement(sqlSelect);){
-			stm.setInt( 1 , id );
+			stm.setInt( 1 , to.getId() );
 			try( ResultSet rs = stm.executeQuery();){
 				if( rs.next() ){
 					to.setNome( rs.getString("nome_usuario") );

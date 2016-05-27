@@ -84,9 +84,8 @@ public class ProdutoService {
 	
 	public ProdutoService consultar(){
 		ProdutoDAO dao = new ProdutoDAO();
-		Produto to = dao.consultar( produto.getCodigo() );
-		produto = to;
-		
+		produto = dao.consultar( produto );
+
 		return this;
 	}	
 }

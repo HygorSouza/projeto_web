@@ -5,7 +5,6 @@ import java.util.Calendar;
 public class Venda {
 	private int id;
 	private int idCliente;
-	private Cliente cliente;
 	private Calendar data;
 	
 	public int getId() {
@@ -19,12 +18,6 @@ public class Venda {
 	}
 	public void setIdCliente(int idCliente) {
 		this.idCliente = idCliente;
-	}
-	public Cliente getCliente() {
-		return cliente;
-	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
 	}
 	
 	public Calendar getData() {
