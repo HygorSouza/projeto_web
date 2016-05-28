@@ -1,34 +1,42 @@
 package remap.model;
 
+import java.util.Calendar;
+
 public class DadosVenda {
-	
-	private Venda  venda;
-	private Produto produto;
-	private Cliente cliente;
+	private Calendar data;
+	private int idCliente;
+	private double valor;
 	
 	public DadosVenda(){}
 	
-	public DadosVenda( Cliente to ){
-		setCliente(to);
+	public DadosVenda( int idCliente ){
+		setIdCliente(idCliente);
+		setData(Calendar.getInstance());
+		setValor(0.0);
 	}
-	
-	public Venda getVenda() {
-		return venda;
+
+	public Calendar getData() {
+		return data;
 	}
-	public void setVenda(Venda venda) {
-		this.venda = venda;
+
+	public void setData(Calendar data) {
+		this.data = data;
 	}
-	public Produto getProduto() {
-		return produto;
+
+	public int getIdCliente() {
+		return idCliente;
 	}
-	public void setProduto(Produto produto) {
-		this.produto = produto;
+
+	public void setIdCliente(int idCliente) {
+		this.idCliente = idCliente;
 	}
-	public Cliente getCliente() {
-		return cliente;
+
+	public double getValor() {
+		return valor;
 	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+
+	public void setValor(double valor) {
+		this.valor = valor;
 	}
 	
 	
