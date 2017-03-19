@@ -39,7 +39,6 @@ public class PesquisarVendaDAO {
 					
 					dados.setData( c );
 					
-					
 					lista.add(dados);
 				}
 			} catch (SQLException e) {
